@@ -1,0 +1,12 @@
+{
+  "number": 10,
+  "title_en": "Decentralized Storage and IPFS",
+  "title_hr": "Decentralizirana pohrana i IPFS",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "number": 12,
+  "title_en": "Scaling, Limitations and When to Use Blockchain",
+  "title_hr": "Skaliranje, ograničenja i kada koristiti blockchain",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

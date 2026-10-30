@@ -1,0 +1,407 @@
+[
+  {
+    "name": "figure-02",
+    "mode": "roles",
+    "nodes": [
+      "Vlastite evidencije|A, B i C vode svoje zapise",
+      "Obračun i poravnanje|Plaća se razlika; svi vjeruju središnjoj banci",
+      "Ako nastane spor|Ugovor, dokazi, pravna zaštita"
+    ],
+    "caption": "Redovito poravnanje i sudsko rješavanje spora različiti su postupci"
+  },
+  {
+    "name": "intro-courts",
+    "mode": "roles",
+    "nodes": [
+      "Vrijeme|1.147 dana ≈ 3,1 godine",
+      "Izravni troškovi|Pristojbe i pravno zastupanje",
+      "Trošak čekanja|Novac i rad vezani uz spor"
+    ],
+    "caption": "Hrvatska, 2024.: prosjek prvostupanjskih trgovačkih parnica",
+    "shape": "panel"
+  },
+  {
+    "name": "intro-prevention",
+    "mode": "steps",
+    "nodes": [
+      "Provjerljiva pravila|Ovlasti i dopuštene promjene",
+      "Zajednička odluka|Dogovor neovisnih sudionika",
+      "Zajednički zapis|Ista prihvaćena povijest"
+    ],
+    "caption": "Hipoteza: manje sporova o prihvaćenom stanju; trošak koordinacije ostaje"
+  },
+  {
+    "name": "state-model",
+    "mode": "chain",
+    "txs": [
+      "U1: uplata|+100 na Ana",
+      "U2: uplata|+20 na Boris",
+      "K1: plaćanje|Ana → Boris 30",
+      "K2: plaćanje|Boris → Ana 10"
+    ],
+    "nodes": [
+      "S_0|Ana 0 Boris 0",
+      "S_1|Ana 100 Boris 0",
+      "S_2|Ana 100 Boris 20",
+      "S_3|Ana 70 Boris 50",
+      "S_4|Ana 80 Boris 40"
+    ],
+    "caption": "Svaka transakcija vodi u sljedeće stanje; isti ledger uvijek daje isto stanje"
+  },
+  {
+    "name": "figure-orgs",
+    "mode": "orgs",
+    "nodes": [
+      "A|član budžeta",
+      "B|član budžeta",
+      "C|član budžeta",
+      "Budžet F|saldo 100"
+    ],
+    "caption": "Svi čitaju isti saldo; svaki član smije predložiti isplatu"
+  },
+  {
+    "name": "figure-04",
+    "mode": "budget",
+    "nodes": [
+      "A|ne predlaže ništa",
+      "B|predlaže tx1",
+      "C|predlaže tx2",
+      "S_7|F:100 · X:0 · Y:0",
+      "S_8|samo tx1 ili tx2"
+    ],
+    "caption": "Članovi predlažu; protokol od S_7 pravi S_8 s točno jednom isplatom",
+    "txs": [
+      "tx1: isplata 80|iz F na račun X",
+      "tx2: isplata 60|iz F na račun Y"
+    ]
+  },
+  {
+    "name": "figure-05",
+    "mode": "transition",
+    "nodes": [
+      "S_7|F:100 · X:0 · Y:0",
+      "tx1: isplata 80 iz F na račun X|očekuje v7",
+      "S_8|F:20 · X:80 · Y:0"
+    ],
+    "caption": "Jedna isplata: terećenje F i odobrenje X"
+  },
+  {
+    "name": "figure-06",
+    "mode": "branch",
+    "nodes": [
+      "S_7|F:100 · X:0 · Y:0",
+      "tx1: isplata 80 iz F na račun X|očekuje v7",
+      "tx2: isplata 60 iz F na račun Y|očekuje v7",
+      "S_8 nakon tx1|F:20 · X:80 · Y:0",
+      "S_8′ nakon tx2|F:40 · X:0 · Y:60"
+    ],
+    "caption": "Dvije moguće povijesti, a prihvaćamo samo jednu"
+  },
+  {
+    "name": "figure-07",
+    "mode": "central",
+    "nodes": [
+      "Organizacije|A · B · C",
+      "Koordinator|Provjera i redoslijed",
+      "Baza|Prihvaćeno stanje"
+    ],
+    "caption": "Koordinator radi na čvoru kod A; svi prihvaćaju autoritet istog operatora"
+  },
+  {
+    "name": "figure-race",
+    "mode": "race",
+    "nodes": [
+      "Provjera|saldo 100 · v7 ✓",
+      "Provjera|saldo 100 · v7 ✓",
+      "Terećenje 80|F:20 · v8",
+      "Terećenje 60|F:−40, nema pokrića"
+    ],
+    "caption": "Obje provjere prošle su prije prve promjene"
+  },
+  {
+    "name": "figure-10",
+    "mode": "transaction",
+    "nodes": [
+      "Zaključaj i provjeri|Ovlast · iznos · pokriće · v7",
+      "Ažuriraj račune|F:20 · X:80 · v8",
+      "COMMIT|Tek zatim potvrdi klijentu"
+    ],
+    "caption": "Jedna baza kod pouzdanog koordinatora"
+  },
+  {
+    "name": "figure-11",
+    "mode": "steps",
+    "nodes": [
+      "Klijent|Lokalni prikaz",
+      "Usluga|Lokalna obrada",
+      "Baza|Lokalno stanje"
+    ],
+    "caption": "Poruka prelazi granicu procesa",
+    "shape": "node"
+  },
+  {
+    "name": "figure-12",
+    "mode": "replicas",
+    "nodes": [
+      "A · primarna baza|Prihvaća upise",
+      "B · replika|Dio čitanja",
+      "C · replika|Dio čitanja"
+    ],
+    "caption": "A je čvor koordinatora; B i C su replike za čitanje i oporavak; isti operator"
+  },
+  {
+    "name": "figure-14",
+    "mode": "staleread",
+    "nodes": [
+      "A · primarna baza|tx1 prihvaćen · F:20 · v8",
+      "C · replika|Još prikazuje F:100 · v7",
+      "Sučelje ne smije prikazati 100 kao raspoloživo. Dva izbora:",
+      "1 · čitaj s A, gdje je upis prihvaćen",
+      "2 · pričekaj da C dosegne v8"
+    ],
+    "caption": "Za korisnika B staro čitanje izgleda kao poništena isplata"
+  },
+  {
+    "name": "figure-16",
+    "mode": "steps",
+    "nodes": [
+      "K42 prvi put|Promjena + rezultat",
+      "K42 ponovno|Pronađi spremljeni ishod",
+      "Odgovor|Isti rezultat, bez novog upisa"
+    ],
+    "caption": "ID zahtjeva nije broj mrežne dostave"
+  },
+  {
+    "name": "figure-17",
+    "mode": "triangle",
+    "nodes": [
+      "A|Radi i poslužuje svoje korisnike",
+      "B|Ne dobiva odgovor od A",
+      "C|Dobiva odgovore od A i od B"
+    ],
+    "caption": "Radi li sustav? A kaže da, B kaže ne, a C ne zna za prekid A–B."
+  },
+  {
+    "name": "figure-19",
+    "mode": "compare",
+    "nodes": [
+      "Izvođenje 1|A je stao",
+      "Izvođenje 2|Odgovor od A kasni",
+      "B vidi|Nema odgovora do roka"
+    ],
+    "caption": "Isto opažanje, različiti stvarni uzroci"
+  },
+  {
+    "name": "figure-20",
+    "mode": "partition",
+    "nodes": [
+      "A|F:100 · v7",
+      "B|F:100 · v7",
+      "C|F:100 · v7"
+    ],
+    "caption": "Sva tri čvora rade; prekinute su samo veze preko particije",
+    "layout": "three-nodes"
+  },
+  {
+    "name": "figure-21",
+    "mode": "split-history",
+    "rows": [
+      {
+        "side": "strana 1",
+        "nodes": [
+          "A",
+          "B"
+        ],
+        "from": "S_7|F:100",
+        "tx": "tx1: isplata 80|iz F na račun X",
+        "to": "S_8|F:20 · X:80"
+      },
+      {
+        "side": "strana 2",
+        "nodes": [
+          "C"
+        ],
+        "from": "S_7|F:100",
+        "tx": "tx2: isplata 60|iz F na račun Y",
+        "to": "S_8′|F:40 · Y:60"
+      }
+    ],
+    "nodes": [],
+    "merge": [
+      "spajanje: 140 iz 100",
+      "F bi pao na −40"
+    ],
+    "caption": "Svaka strana poštuje pravilo nad svojom kopijom; zajedno to je dvostruko trošenje"
+  },
+  {
+    "name": "figure-22",
+    "mode": "axes",
+    "nodes": [
+      "Raspodijeljenost|Gdje su procesi i podaci?",
+      "Decentralizacija|Tko ima ovlasti?",
+      "P2P|Tko traži i pruža uslugu?"
+    ],
+    "caption": "Jedan sustav opisujemo po više osi"
+  },
+  {
+    "name": "figure-23",
+    "mode": "control",
+    "nodes": [
+      "Replika 1|Operator X",
+      "Replika 2|Operator X",
+      "Replika 100|Operator X"
+    ],
+    "caption": "Jedna upravljačka granica obuhvaća sve kopije"
+  },
+  {
+    "name": "figure-24",
+    "mode": "peers",
+    "nodes": [
+      "A|Traži i pruža",
+      "B|Traži i pruža",
+      "C|Traži i pruža"
+    ],
+    "caption": "Razmjena podataka ≠ pravilo prihvaćanja"
+  },
+  {
+    "name": "figure-25",
+    "mode": "axes",
+    "nodes": [
+      "Sustav 1|20 kopija / jedna tvrtka",
+      "Sustav 2|Tri odobrenja / jedna tvrtka drži sustav",
+      "Sustav 3|P2P / središnje članstvo"
+    ],
+    "caption": "Tko može sam promijeniti važno pravilo?"
+  },
+  {
+    "name": "figure-26",
+    "mode": "independent",
+    "nodes": [
+      "Organizacija A|Vlastite ovlasti i kopija",
+      "Organizacija B|Vlastite ovlasti i kopija",
+      "Organizacija C|Vlastite ovlasti i kopija"
+    ],
+    "caption": "Dogovor mora povezati neovisne operatore"
+  },
+  {
+    "name": "figure-27",
+    "mode": "permissions",
+    "nodes": [
+      "Upis i potvrda|Tko odobrava isplatu iz fonda?",
+      "Pravila|Tko mijenja pravilo pokrića ili limit?",
+      "Članstvo|Tko smije primiti D ili isključiti C?"
+    ],
+    "caption": "Za svaku ovlast: kome je dajemo i što ako je zloupotrijebi?"
+  },
+  {
+    "name": "figure-28",
+    "mode": "compare",
+    "nodes": [
+      "Pad čvora|Nema novih odgovora",
+      "Bizantsko ponašanje|Mogući proturječni odgovori",
+      "Posljedica|Treba drukčije pravilo prihvaćanja"
+    ],
+    "caption": "Protokol ovisi o dopuštenim vrstama odstupanja",
+    "danger": true
+  },
+  {
+    "name": "figure-29",
+    "mode": "equivocation",
+    "nodes": [
+      "A → B|„Odobravam tx1” · 80 · v7",
+      "A → C|„Odobravam tx2” · 60 · v7",
+      "B i C|Vide različita odobrenja"
+    ],
+    "caption": "Poruka je stvarno od A, ali to ne čini odluku ispravnom"
+  },
+  {
+    "name": "figure-30",
+    "mode": "compare",
+    "nodes": [
+      "Zaostala replika|Jedna odluka, C je još nije primio",
+      "Proturječne potvrde|Dvije isplate, pokriće za samo jednu",
+      "Provjera|Što poruke stvarno dokazuju?"
+    ],
+    "caption": "Različit prikaz nije automatski bizantski kvar"
+  },
+  {
+    "name": "figure-31",
+    "mode": "steps",
+    "nodes": [
+      "Podrijetlo|Koji je član poslao?",
+      "Pravilo|Ima li ovlast i pokriće?",
+      "Prihvaćanje|Je li to zajednička odluka?"
+    ],
+    "caption": "Ovlašten član također može predložiti nedopuštenu isplatu"
+  },
+  {
+    "name": "figure-32",
+    "mode": "votes",
+    "nodes": [
+      "B vidi|A + B potvrđuju tx1",
+      "Presjek|A potvrđuje oboje",
+      "C vidi|A + C potvrđuju tx2"
+    ],
+    "caption": "Dva lokalna skupa glasova, dva različita zaključka"
+  },
+  {
+    "name": "figure-33",
+    "mode": "membership",
+    "nodes": [
+      "Organizacija A|Može pokrenuti 10 procesa",
+      "Organizacija B|Jedan dogovoreni član",
+      "Organizacija C|Jedan dogovoreni član"
+    ],
+    "caption": "Više procesa ne daje više odobrenih glasova"
+  },
+  {
+    "name": "figure-34",
+    "mode": "activity",
+    "nodes": [
+      "A|Šalji prema kartici scenarija",
+      "B|Bilježi samo primljeno",
+      "C|Bilježi samo primljeno"
+    ],
+    "caption": "Poruka → lokalna odluka → izričita potvrda"
+  },
+  {
+    "name": "figure-35",
+    "mode": "steps",
+    "nodes": [
+      "Opažanje|Što je stvarno stiglo?",
+      "Pravilo|Zašto je potvrđeno?",
+      "Protuprimjer|Koji korak krši pravilo?"
+    ],
+    "caption": "Odgovor mora pokazati konkretan korak izvođenja"
+  },
+  {
+    "name": "figure-37",
+    "mode": "counter",
+    "nodes": [
+      "„decentraliziran”|Sva tri poslužitelja vodi isti administrator.|ranije: Sto poslužitelja, jedan administrator",
+      "„prihvaćena”|Poslužitelj 1 potvrdi tx1, poslužitelj 2 potvrdi tx2: 140 od 100.|ranije: Dvije strane ne smiju obećati suprotno",
+      "„nije prošla”|tx1 je prošao, izgubila se potvrda; novi zahtjev plati opet.|ranije: Ponovljeni pokušaj treba isti identitet"
+    ],
+    "caption": "Popravak: pravilo prihvaćanja, isti ID pokušaja i izričito tko upravlja."
+  },
+  {
+    "name": "figure-38",
+    "mode": "counter",
+    "nodes": [
+      "Replika ≠ ovlast|Kopija podataka ne određuje tko smije mijenjati stanje.|ranije: Sto poslužitelja, jedan administrator",
+      "Istek roka ≠ neuspjeh|Bez odgovora ishod je nepoznat; ponovni pokušaj nosi isti ID.|ranije: Zahtjev je izvršen, potvrda nije stigla",
+      "Poruka ≠ odluka|Odluku sustava određuje pravilo prihvaćanja, ne jedan čvor.|ranije: „Uzmimo dva od tri” još nije protokol"
+    ],
+    "caption": "Jamstvo vrijedi samo uz izričit model: ovlasti, kvarovi i mreža."
+  },
+  {
+    "name": "figure-39",
+    "mode": "handoff",
+    "nodes": [
+      "Ulaz|Članovi, poruke, prijedlozi",
+      "Ograničenja|Kašnjenje i odstupanje",
+      "Cilj|Valjana zajednička odluka"
+    ],
+    "caption": "Dobra specifikacija prethodi izboru protokola"
+  }
+]

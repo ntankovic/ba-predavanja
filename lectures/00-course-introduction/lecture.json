@@ -1,0 +1,14 @@
+{
+  "slides_only": true,
+  "status": "draft",
+  "scaffold": false,
+  "duration_minutes": 41.0,
+  "authoring_language": "hr",
+  "review_hr": "pending",
+  "translation_en": "not_started",
+  "language_status": {
+    "hr": "draft",
+    "en": "planned"
+  },
+  "slides_version": "1.9"
+}

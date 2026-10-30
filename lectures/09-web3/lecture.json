@@ -1,0 +1,12 @@
+{
+  "number": 9,
+  "title_en": "Web3 Application Development",
+  "title_hr": "Razvoj Web3 aplikacija",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

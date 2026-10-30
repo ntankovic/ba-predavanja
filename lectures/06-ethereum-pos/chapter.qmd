@@ -1,0 +1,49 @@
+---
+title: "Proof of Stake and Modern Ethereum"
+lang: en
+---
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+## Learning outcomes
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem and prerequisites
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Concepts and assumptions
+
+Validators; staking; proposer/attester model; finality; slashing; PoS vs PoW; consensus vs execution; L1 scalability; introduction to L2/rollups
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Scenario and state trace
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Failure and improved design
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Discussion and checks
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Recap and references
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

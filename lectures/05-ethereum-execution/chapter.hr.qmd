@@ -1,0 +1,51 @@
+---
+title: "Ethereum i programabilni blockchain"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Usporediti račune i UTXO
+- Pratiti promjenu stanja kroz izvršavanje
+- Objasniti svrhu gasa i događaja
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Što se mijenja kada transakcija izvršava program?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+From Bitcoin to Ethereum; account model vs UTXO; EVM; world state; transactions; gas; smart contracts; blocks; events; Ethereum execution model
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Poziv jednostavnog ugovora mijenja stanje; usporediti uspjeh i prekinuto izvršavanje.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

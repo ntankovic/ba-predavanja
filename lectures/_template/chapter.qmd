@@ -1,0 +1,50 @@
+---
+title: "[Lecture title]"
+lang: en
+---
+
+<!-- Author the complete Croatian script first; translate after review. Target: 90–120 minutes. -->
+
+## Learning outcomes
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Prerequisites and connection to the previous week
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Request and initial application state
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Problem and naive implementation
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Step-by-step execution and failure
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Underlying reason and improved design
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Assumptions, guarantees and trade-offs
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Misconceptions and AI-generated code review
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Questions, exercises and discussion
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Recap and transition to the next week
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## References
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->

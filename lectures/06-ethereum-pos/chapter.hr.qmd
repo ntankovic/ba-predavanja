@@ -1,0 +1,51 @@
+---
+title: "Dokaz uloga i moderni Ethereum"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Razlikovati predlaganje i potvrđivanje
+- Objasniti finalnost i kažnjavanje
+- Razdvojiti izvršni i konsenzusni sloj
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Tko predlaže blokove i kada odluku smatramo konačnom?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+Validators; staking; proposer/attester model; finality; slashing; PoS vs PoW; consensus vs execution; L1 scalability; introduction to L2/rollups
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Pratiti prijedlog bloka, glasove validatora i finalnost; usporediti s PoW modelom.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

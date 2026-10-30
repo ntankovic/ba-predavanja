@@ -1,0 +1,51 @@
+---
+title: "Pametni ugovori u Solidityju"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Implementirati mali ugovor
+- Razlikovati stanje i poziv funkcije
+- Postaviti ugovor u razvojno okruženje i pozvati ga
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Kako poslovna radnja postaje provjerljiva promjena stanja ugovora?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+Solidity syntax; contract structure; state/storage; mappings; structs; functions; modifiers; events; inheritance/interfaces; deploying and interacting with a simple contract
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Izraditi registar radova/izložaka s vlasnikom, identifikatorom i događajem pri dodavanju.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

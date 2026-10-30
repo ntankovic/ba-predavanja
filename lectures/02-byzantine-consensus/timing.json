@@ -1,0 +1,282 @@
+[
+  {
+    "slide": 1,
+    "title": "Konsenzus i problem bizantskih generala",
+    "start": 0,
+    "end": 0.5,
+    "minutes": 0.5
+  },
+  {
+    "slide": 2,
+    "title": "Evidencija prisutnosti",
+    "start": 0.5,
+    "end": 1,
+    "minutes": 0.5
+  },
+  {
+    "slide": 3,
+    "title": "Gdje smo stali",
+    "start": 1,
+    "end": 4,
+    "minutes": 3
+  },
+  {
+    "slide": 4,
+    "title": "Dva pitanja predavanja",
+    "start": 4,
+    "end": 6,
+    "minutes": 2
+  },
+  {
+    "slide": 5,
+    "title": "Ishodi i predznanje",
+    "start": 6,
+    "end": 8,
+    "minutes": 2
+  },
+  {
+    "slide": 6,
+    "title": "Prvo zadatak, onda protokol",
+    "start": 8,
+    "end": 11,
+    "minutes": 3
+  },
+  {
+    "slide": 7,
+    "title": "Dogovor: nitko ne odluči drukčije",
+    "start": 11,
+    "end": 14,
+    "minutes": 3
+  },
+  {
+    "slide": 8,
+    "title": "Valjanost: dogovor nije dovoljan",
+    "start": 14,
+    "end": 17,
+    "minutes": 3
+  },
+  {
+    "slide": 9,
+    "title": "Okončanje: odluka mora doći",
+    "start": 17,
+    "end": 20,
+    "minutes": 3
+  },
+  {
+    "slide": 10,
+    "title": "Sigurnost i živost",
+    "start": 20,
+    "end": 23,
+    "minutes": 3
+  },
+  {
+    "slide": 11,
+    "title": "Vježba: koje svojstvo krši?",
+    "start": 23,
+    "end": 27,
+    "minutes": 4
+  },
+  {
+    "slide": 12,
+    "title": "Model je dio zadatka",
+    "start": 27,
+    "end": 30,
+    "minutes": 3
+  },
+  {
+    "slide": 13,
+    "title": "Tri modela vremena",
+    "start": 30,
+    "end": 34,
+    "minutes": 4
+  },
+  {
+    "slide": 14,
+    "title": "„FLP”: spor ili zaustavljen, opet",
+    "start": 34,
+    "end": 38,
+    "minutes": 4
+  },
+  {
+    "slide": 15,
+    "title": "Što „FLP” ne kaže",
+    "start": 38,
+    "end": 40,
+    "minutes": 2
+  },
+  {
+    "slide": 16,
+    "title": "GST: pretpostavka za dokaz, ne postavka mreže",
+    "start": 40,
+    "end": 43,
+    "minutes": 3
+  },
+  {
+    "slide": 17,
+    "title": "Kvorum: dovoljno glasova za odluku",
+    "start": 43,
+    "end": 45,
+    "minutes": 2
+  },
+  {
+    "slide": 18,
+    "title": "Uz padove: n ≥ 2f + 1",
+    "start": 45,
+    "end": 49,
+    "minutes": 4
+  },
+  {
+    "slide": 19,
+    "title": "Vježba: koliko padova podnosimo?",
+    "start": 49,
+    "end": 52,
+    "minutes": 3
+  },
+  {
+    "slide": 20,
+    "title": "Zašto većina ne pomaže uz lažljivca",
+    "start": 52,
+    "end": 55,
+    "minutes": 3
+  },
+  {
+    "slide": 21,
+    "title": "Problem bizantskih generala",
+    "start": 55,
+    "end": 59,
+    "minutes": 4
+  },
+  {
+    "slide": 22,
+    "title": "Tri generala, jedan izdajica",
+    "start": 59,
+    "end": 63,
+    "minutes": 4
+  },
+  {
+    "slide": 23,
+    "title": "Uz bizantske članove: n ≥ 3f + 1",
+    "start": 63,
+    "end": 67,
+    "minutes": 4
+  },
+  {
+    "slide": 24,
+    "title": "Naš budžet s četiri organizacije",
+    "start": 67,
+    "end": 71,
+    "minutes": 4
+  },
+  {
+    "slide": 25,
+    "title": "Kad bizantski član šuti",
+    "start": 71,
+    "end": 73,
+    "minutes": 2
+  },
+  {
+    "slide": 26,
+    "title": "Prag ovisi o modelu",
+    "start": 73,
+    "end": 75,
+    "minutes": 2
+  },
+  {
+    "slide": 27,
+    "title": "Što model vremena mijenja u algoritmu",
+    "start": 75,
+    "end": 78,
+    "minutes": 3
+  },
+  {
+    "slide": 28,
+    "title": "Kako izgleda BFT protokol",
+    "start": 78,
+    "end": 81,
+    "minutes": 3
+  },
+  {
+    "slide": 29,
+    "title": "Cijena BFT-a",
+    "start": 81,
+    "end": 83,
+    "minutes": 2
+  },
+  {
+    "slide": 30,
+    "title": "Prešutna pretpostavka: znamo tko su članovi",
+    "start": 83,
+    "end": 85,
+    "minutes": 2
+  },
+  {
+    "slide": 31,
+    "title": "Otvorena mreža",
+    "start": 85,
+    "end": 87,
+    "minutes": 2
+  },
+  {
+    "slide": 32,
+    "title": "Sybil napad",
+    "start": 87,
+    "end": 91,
+    "minutes": 4
+  },
+  {
+    "slide": 33,
+    "title": "Brojimo identitete, a trebamo neovisne strane",
+    "start": 91,
+    "end": 93,
+    "minutes": 2
+  },
+  {
+    "slide": 34,
+    "title": "Kako ograničiti identitete?",
+    "start": 93,
+    "end": 96,
+    "minutes": 3
+  },
+  {
+    "slide": 35,
+    "title": "Klasični BFT nasuprot otvorenoj mreži",
+    "start": 96,
+    "end": 98,
+    "minutes": 2
+  },
+  {
+    "slide": 36,
+    "title": "Ponavljanje: što ne štima u ovom prijedlogu protokola?",
+    "start": 98,
+    "end": 102,
+    "minutes": 4
+  },
+  {
+    "slide": 37,
+    "title": "Tri zaključka, tri protuprimjera",
+    "start": 102,
+    "end": 105,
+    "minutes": 3
+  },
+  {
+    "slide": 38,
+    "title": "Sažetak",
+    "start": 105,
+    "end": 107,
+    "minutes": 2
+  },
+  {
+    "slide": 39,
+    "title": "Otvoreno pitanje za predavanje 03",
+    "start": 107,
+    "end": 109,
+    "minutes": 2
+  },
+  {
+    "slide": 40,
+    "title": "Literatura za produbljivanje",
+    "start": 109,
+    "end": 110,
+    "minutes": 1
+  }
+]

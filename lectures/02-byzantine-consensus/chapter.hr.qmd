@@ -1,0 +1,404 @@
+---
+title: "Konsenzus i problem bizantskih generala"
+lang: hr
+---
+
+**Nacrt za nastavnikov pregled.** Predavanje traje 110 minuta s raspravom, zadacima i ponavljanjem. Engleski prijevod slijedi nakon pregleda hrvatske verzije.
+
+## Vodič kroz predavanje
+
+Nastavljamo s istim budžetom iz predavanja 01: fond F ima 100 jedinica, B predlaže isplatu $\mathrm{tx}_{1}$ (80 iz F na račun X), a C isplatu $\mathrm{tx}_{2}$ (60 iz F na račun Y). Obje polaze od stanja $S_{7}$ i zajedno nemaju pokriće. Predavanje 01 završilo je bez rješenja: pokazali smo koja pravila ne rade, a pravilo koje radi još nemamo. Sada najprije precizno zapisujemo što protokol mora postići, zatim pokazujemo koliko poštenih članova treba uz padove i uz bizantsko ponašanje, a na kraju napuštamo pretpostavku da znamo tko su članovi. Bitcoin i kriptografske mehanizme ne uvodimo; potpis samo imenujemo kao alat iz predavanja 03.
+
+## Gdje smo stali
+
+U trećem izvođenju studije slučaja iz predavanja 01 nije bilo koordinatora. Vrijedilo je pravilo „isplata je konačna kad je odobre dva od tri člana”. B je predložio $\mathrm{tx}_{1}$ i skupio svoj glas i glas od A. C je predložio $\mathrm{tx}_{2}$ i također skupio svoj glas i glas od A. A je glasao za oba prijedloga. Oba skupa imala su po dva glasa, pa su B i C proglasili različite isplate konačnima: iz fonda od 100 obećano je 140.
+
+Pravilo nije propalo zato što je glasanje loša ideja. Propalo je zato što jedini zajednički član dvaju skupova glasova nije poštovao protokol. Iz toga slijede dva pitanja za ovo predavanje: koliko članova treba da presjek uvijek sadrži poštenog člana i što se događa kad ni broj članova ne znamo.
+
+![Lekcija 01: pravilo „dva od tri” dalo je 140 iz 100](assets/recap-two-of-three.hr.pdf){width=95% fig-alt="Dva preklopljena skupa glasova: B i A za tx1, A i C za tx2; u presjeku je A, koji glasa za oba prijedloga. Lekcija 01: pravilo „dva od tri” dalo je 140 iz 100"}
+
+**Nastavni rad (1–4 min):** Neka studenti bez gledanja u bilješke ponove tko je za što glasao i gdje je pravilo prekršeno.
+
+## Dva pitanja predavanja
+
+Pitanje predavanja glasi: kako postići dogovor ako neki sudionici lažu, a identiteti se mogu stvarati? Rastavljamo ga na dva dijela. U prvom dijelu članovi su poznate organizacije, ali neke od njih mogu odstupati od protokola. Tražimo uvjet pod kojim pošteni članovi ipak dolaze do iste odluke. U drugom dijelu pretpostavka poznatog članstva otpada: u otvorenoj mreži jedna strana može predstaviti više identiteta. Tada se mijenja i ono što glasanje uopće broji.
+
+![Dva dijela predavanja, isti budžet F:100](assets/two-questions.hr.pdf){width=95% fig-alt="Neki sudionici lažu: koliko poštenih treba? (bizantski članovi). Identiteti se mogu stvarati: što tada broji glasanje? (Sybil napad). Dva dijela predavanja, isti budžet F:100"}
+
+**Nastavni rad (4–6 min):** Napišite oba pitanja na ploču i ostavite ih vidljivima do kraja predavanja.
+
+## Ishodi i predznanje
+
+Ne učimo popis protokola. Cilj je da za predloženo pravilo odlučivanja znate reći koje svojstvo jamči, uz koji model i koliko članova pritom smije odstupati.
+
+- Razlikovati dogovor, valjanost i okončanje te ih povezati sa sigurnošću (*safety*) i živošću (*liveness*).
+- Objasniti kako model vremena određuje što protokol može jamčiti: zašto u asinkronoj mreži nijedan deterministički protokol ne jamči završetak čim i jedan član može stati (rezultat „FLP”, po autorima Fischer, Lynch i Paterson).
+- Izračunati i obrazložiti pragove $n \geq 2f + 1$ uz padove i $n \geq 3f + 1$ uz bizantske članove.
+- Objasniti Sybil napad i zašto broj identiteta nije broj neovisnih članova.
+- Obrazložiti zašto klasični BFT protokoli za konsenzus (*Byzantine fault tolerance*, otporni na bizantske članove) sami ne rješavaju otvorenu mrežu.
+
+**Nastavni rad (6–8 min):** Najavite 110 minuta s dvije kratke vježbe i završnim ponavljanjem.
+
+## Prvo zadatak, onda protokol
+
+Do sada smo uglavnom predlagali pravila i tražili protuprimjere. Da bismo mogli reći je li neki protokol ispravan, najprije moramo zapisati što od njega tražimo. Taj zadatak u raspodijeljenim sustavima zove se konsenzus.
+
+::: {.definition number="2.1"}
+**Konsenzus (*consensus*)**: svaki od n članova počinje s ulaznom vrijednošću (prijedlogom) i najviše jednom donosi nepromjenjivu odluku. Protokol rješava konsenzus uz najviše f neispravnih članova ako u svakom izvođenju za ispravne članove vrijede:
+
+- **dogovor** (*agreement*): nijedna dva ispravna člana ne odluče različito;
+- **valjanost** (*validity*): ako svi članovi počnu s istom vrijednošću v, odluka je v;
+- **okončanje** (*termination*): svaki ispravan član na kraju odluči.
+
+Prema Dwork, Lynch i Stockmeyer (1988), §2.4.
+:::
+
+U našem primjeru vrijednost je isplata koja postaje sljedeća promjena stanja: iz $S_{7}$ u $S_{8}$ prelazi ili $\mathrm{tx}_{1}$ ili $\mathrm{tx}_{2}$. Ispravan član (*correct*) je onaj koji slijedi protokol; neispravan može stati ili, u bizantskom modelu, ponašati se proizvoljno. Svojstva se odnose samo na ispravne članove: od člana koji laže ne možemo tražiti ništa.
+
+![Konsenzus: od različitih prijedloga do jedne zajedničke odluke](assets/consensus-task.hr.pdf){width=95% fig-alt="B predlaže tx1 v7, C predlaže tx2 v7, A ne predlaže ništa; svi ispravni članovi odluče isto, npr. tx1 v8. Konsenzus: od različitih prijedloga do jedne zajedničke odluke"}
+
+**Nastavni rad (8–11 min):** Pitajte zašto svojstva ne mogu vrijediti i za neispravne članove.
+
+## Dogovor: nijedna dva ispravna člana ne odluče različito
+
+Prvo svojstvo je dogovor (*agreement*): nijedna dva ispravna člana ne odluče različito. Upravo ono je prekršeno u studiji slučaja: B je $\mathrm{tx}_{1}$ smatrao konačnim, C je $\mathrm{tx}_{2}$ smatrao konačnim, a oba su bila ispravna. Dogovor je svojstvo sigurnosti: kad je jednom prekršen, nikakav kasniji korak to ne popravlja. B i C su već nekome potvrdili isplatu.
+
+Dogovor ne traži da svi odluče u istom trenutku. Član koji još nije odlučio ne krši dogovor; krši ga tek različita odluka.
+
+![Dva ispravna člana, dvije različite odluke: dogovor je prekršen](assets/agreement-broken.hr.pdf){width=95% fig-alt="B: odlučio tx1 konačan, F:20; C: odlučio tx2 konačan, F:40. Dva ispravna člana, dvije različite odluke: dogovor je prekršen"}
+
+**Nastavni rad (11–14 min):** Pitajte krši li dogovor član koji još čeka. Ne krši.
+
+## Valjanost: dogovor nije dovoljan
+
+Dogovor je lako postići na beskoristan način. Protokol „uvijek odbij sve prijedloge” nikad ne daje dvije različite odluke: svi uvijek odluče isto, ništa. Zato definicija traži i valjanost (*validity*). Formalna inačica iz definicije 2.1 (jaka jednoglasnost) kaže: ako svi članovi počnu s istom vrijednošću, odluka mora biti ta vrijednost. Za budžet tražimo strožu inačicu prilagođenu aplikaciji: odluka mora biti valjan prijedlog nekog člana. U našem primjeru to znači da $S_{8}$ nastaje iz $\mathrm{tx}_{1}$ ili iz $\mathrm{tx}_{2}$, i to samo ako ta isplata poštuje pravila iz predavanja 01: ovlast, pozitivan iznos i pokriće u $S_{7}$.
+
+Dwork, Lynch i Stockmeyer uz jaku navode i slabiju jednoglasnost, a u literaturi postoje i druge inačice valjanosti. Sve isključuju protokol koji odluku izmišlja ili je unaprijed fiksira. [Dwork, Lynch i Stockmeyer, 1988, §2.4](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf).
+
+![Protokol „uvijek odbij sve” ispunjava dogovor, ali je beskoristan](assets/validity-trivial.hr.pdf){width=95% fig-alt="A, B i C odlučili su ništa; dogovor vrijedi (svi isto), valjanost ne vrijedi (nije prijedlog). Protokol „uvijek odbij sve” ispunjava dogovor, ali je beskoristan"}
+
+**Nastavni rad (14–17 min):** Tražite drugi trivijalan protokol koji ispunjava dogovor, npr. „uvijek odluči $\mathrm{tx}_{1}$”, i pitajte što krši.
+
+## Okončanje: odluka mora doći
+
+Treće svojstvo je okončanje (*termination*): svaki ispravan član na kraju odluči. Bez njega je opet lako: protokol „čekaj glasove svih članova” nikad ne krši dogovor, jer nitko ne odluči dok svi ne potvrde isto. Ali ako C stane, A i B čekaju zauvijek. Isplata nikad ne prođe, a korisnik nikad ne dobije odgovor.
+
+„Na kraju” ne znači unutar određenog roka. Znači da ne postoji izvođenje u kojem ispravan član čeka beskonačno. Koliko dugo smije čekati u praksi, ovisi o modelu vremena, kojem se vraćamo za nekoliko minuta.
+
+![Protokol „čekaj sve” nikad ne krši dogovor, ali može zauvijek čekati](assets/termination-wait.hr.pdf){width=95% fig-alt="A i B čekaju glas od C, a C je stao; nitko nikad ne odluči. Protokol „čekaj sve” nikad ne krši dogovor, ali može zauvijek čekati"}
+
+**Nastavni rad (17–20 min):** Povežite s predavanjem 01: to je bio prvi prijedlog popravka „neka svi čekaju sve”.
+
+## Sigurnost i živost
+
+Tri svojstva dijele se u dvije skupine. Dogovor i valjanost su svojstva sigurnosti (*safety*): kažu da se nešto loše nikad ne dogodi. Njihovo kršenje uvijek možemo pokazati konačnim dijelom izvođenja, npr. trenutkom kad je drugi član odlučio drukčije. Okončanje je svojstvo živosti (*liveness*): kaže da se nešto dobro na kraju dogodi. Nijedan konačan dio izvođenja ne dokazuje da odluka nikad neće doći.
+
+Ta podjela ima praktičnu posljedicu. Protokoli koje ćemo vidjeti čuvaju sigurnost u svim izvođenjima, a za živost traže dodatne pretpostavke o mreži. Ako mreža dugo ne radi, sustav smije stati, ali ne smije potvrditi dvije različite isplate.
+
+![Sigurnost: ništa loše; živost: nešto dobro na kraju](assets/properties.hr.pdf){width=95% fig-alt="Dogovor: nijedna dva ispravna člana ne odluče različito (sigurnost). Valjanost: odluka poštuje prijedloge, nije izmišljena (sigurnost). Okončanje: svaki ispravan član na kraju odluči (živost)."}
+
+**Nastavni rad (20–23 min):** Pitajte što bi korisnik budžeta radije prihvatio: da isplata kasni ili da prođu obje.
+
+## Vježba: koje svojstvo krši?
+
+Za svaki prijedlog navedite koje od tri svojstva može prekršiti i u kojem izvođenju.
+
+| Prijedlog | Krši | Izvođenje |
+|:---|:---|:---|
+| „Svaki član odmah odluči svoj prijedlog.” | dogovor | B odluči $\mathrm{tx}_{1}$, C odluči $\mathrm{tx}_{2}$ |
+| „Odluči $\mathrm{tx}_{1}$ bez obzira na prijedloge.” | valjanost | B i C predlože samo $\mathrm{tx}_{2}$ |
+| „Odluči tek kad svi glasaju isto.” | okončanje | C stane |
+
+Treći prijedlog u stvarnosti krši i živost kad se članovi ne slože: ako jedan glasa za $\mathrm{tx}_{1}$, a drugi za $\mathrm{tx}_{2}$, nitko ne skupi jednoglasnost.
+
+**Nastavni rad (23–27 min):** Dvije minute u parovima, zatim otkrivajte odgovore redak po redak.
+
+## Model je dio zadatka
+
+Pitanje „postoji li protokol koji ostvaruje konsenzus?” nema odgovor bez modela. U predavanju 01 zapisali smo model u tablicu: tko su članovi, što se događa s porukama, postoji li rok dostave i kako članovi mogu biti neispravni. Ovdje dodajemo dva stupca koji će odrediti odgovor: koliko članova smije biti neispravno (f od ukupno n) i mogu li se poruke provjerljivo potpisati.
+
+| Pretpostavka | Pitanje | Primjer |
+|:---|:---|:---|
+| Vrijeme | postoji li poznat rok dostave? | sinkrono, asinkrono, djelomično sinkrono |
+| Kvarovi | što neispravan član smije? | stati ili ponašati se proizvoljno |
+| Broj | koliko neispravnih od n? | f = 1 od n = 4 |
+| Članstvo | znamo li tko glasa? | A, B, C, D unaprijed |
+| Potpisi | može li se poruka krivotvoriti? | zasad ne pretpostavljamo potpise |
+
+Isti protokol može biti ispravan u jednom modelu i neispravan u drugom. Zato tvrdnja „naš sustav podnosi lažljivce” bez modela ne znači ništa.
+
+**Nastavni rad (27–30 min):** Neka studenti za „dva od tri” iz predavanja 01 popune stupac Primjer.
+
+## Tri modela vremena
+
+U sinkronom modelu (*synchronous*) postoji poznat rok Δ unutar kojeg svaka poruka stiže, a brzine procesa su ograničene. Izostanak odgovora nakon roka tada je dokaz pada. U asinkronom modelu (*asynchronous*) takvog roka nema: poruka može kasniti proizvoljno dugo. U djelomično sinkronom modelu (*partial synchrony*) rok postoji, ali ga ne znamo, ili vrijedi tek od nekog nepoznatog trenutka koji se označava GST (*global stabilization time*). GST nije određeni sat ni događaj koji bismo mogli izmjeriti: to je trenutak od kojeg se mreža smirila, npr. nakon što prođe zagušenje ili popravi pokvarena veza. Protokol ne zna kada će GST nastupiti i ne smije ga čekati, ali smije računati da će jednom nastupiti. Taj model uveli su Dwork, Lynch i Stockmeyer. [Dwork, Lynch i Stockmeyer, 1988, sažetak i §1](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf).
+
+Djelomična sinkronija dobro opisuje stvarnu mrežu: većinu vremena poruke stižu brzo, ali povremeno postoje razdoblja kad kasne. Protokol mora sačuvati sigurnost i u tim razdobljima, a odluku smije donijeti kad se mreža smiri.
+
+![Gornja traka šalje, donja prima; vrijeme teče slijeva nadesno](assets/timing-models.hr.pdf){width=95% fig-alt="Prostorno-vremenski dijagram, B šalje, C prima. Sinkrono: poruka stiže unutar poznatog roka Δ. Asinkrono: poruka stiže kad stigne, bez gornje granice. Djelomično sinkrono: prije GST poruka kasni proizvoljno; od GST, kad se mreža smirila, stiže unutar roka Δ."}
+
+**Nastavni rad (30–34 min):** Pitajte koji je model u tablici iz predavanja 01 (redak Vrijeme: „nemamo poznat konačan rok dostave”). Asinkroni.
+
+## „FLP”: spor ili zaustavljen, opet
+
+Fischer, Lynch i Paterson dokazali su 1985. da u potpuno asinkronom modelu svaki deterministički protokol za konsenzus ima izvođenje u kojem ne završi, čak i ako samo jedan proces može stati. [Fischer, Lynch i Paterson, 1985, sažetak](https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf). Dokaz se oslanja na točno ono što smo vidjeli u predavanju 01: proces ne može razlikovati drugi proces koji je stao od procesa koji radi vrlo sporo (isto, §1).
+
+Intuicija na našem primjeru: B čeka glas od C. Ako čeka dalje, a C je stao, čeka zauvijek i krši okončanje. Ako odluči bez C, a C samo kasni, C je možda u međuvremenu sudjelovao u drukčijoj odluci i krši se dogovor. U asinkronom modelu nijedan rok ne razdvaja ta dva slučaja. Ovo je intuicija, a ne dokaz; sam dokaz je precizniji i pokazuje da protivnik uvijek može odabrati redoslijed poruka koji odgađa odluku.
+
+![B ne može razlikovati spor i zaustavljen čvor (lekcija 01)](assets/flp-dilemma.hr.pdf){width=95% fig-alt="B nema glasa od C. Čeka dalje: možda zauvijek (C je stao). Odluči bez C: C je možda odlučio drukčije. B ne može razlikovati spor i zaustavljen čvor (lekcija 01)"}
+
+**Nastavni rad (34–38 min):** Neka studenti sami ispričaju oba ishoda prije nego što pokažete crtež.
+
+## Što „FLP” ne kaže
+
+„FLP” ne kaže da je konsenzus nemoguć. Kaže da u potpuno asinkronom modelu deterministički protokol ne može jamčiti i sigurnost i okončanje u svakom izvođenju. Stvarni sustavi izlaze iz tog okvira na nekoliko načina. Prvo, djelomična sinkronija: sigurnost se čuva uvijek, a okončanje se jamči kad poruke počnu stizati na vrijeme. Drugo, istek vremena (*timeout*) koriste samo za živost: kad vođa ne odgovori, pokreće se zamjena vođe, ali istek nikad nije razlog da se prekrši dogovor. Treće, slučajnost: randomizirani protokoli završavaju s vjerojatnošću 1.
+
+Za naš budžet zaključak je praktičan: ako mreža dugo ne radi, isplata može čekati. To je cijena sigurnosti i treba je pokazati korisniku kao stanje „na čekanju”, kao u predavanju 01.
+
+**Nastavni rad (38–40 min):** Pitajte koja od tri tvrdnje na ploči nije posljedica „FLP-a”: „konsenzus je nemoguć”, „asinkroni deterministički protokol može ne završiti”, „istek roka ne dokazuje pad”.
+
+## GST: pretpostavka za dokaz, ne postavka mreže
+
+GST je alat modela, a ne nešto što postoji u stvarnoj mreži ili što bi itko mjerio i podešavao. Nakon FLP-a Dwork, Lynch i Stockmeyer tražili su najslabiju dodatnu pretpostavku uz koju okončanje opet postaje moguće. Pretpostavka „kašnjenje je ograničeno s Δ, ali tek od nekog nepoznatog trenutka GST” omogućuje dokaz tvrdnje u dva dijela: sigurnost vrijedi u svakom izvođenju, čak i ako GST nikad ne nastupi, a okončanje vrijedi u svakom izvođenju u kojem GST jednom nastupi. [Dwork, Lynch i Stockmeyer, 1988, §1](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf). To je pošten oblik onoga što od stvarnog sustava želimo: nikad pogrešan odgovor, a odgovor kad se mreža dovoljno dugo ponaša dobro.
+
+Doslovno, model kaže da je mreža dobra zauvijek nakon GST. Stvarne mreže su dobre neko vrijeme, pa opet loše. Protokolu ne treba „zauvijek”, nego dovoljno dugo stabilno razdoblje da završi jedan krug odlučivanja, npr. da vođa skupi kvorum; „zauvijek” samo pojednostavljuje dokaz. Protokol pritom ne mora znati ni GST ni Δ. Nakon svakog neuspjelog kruga povećava istek roka, npr. udvostručavanjem, dok istek ne premaši stvarno kašnjenje i krug uspije. Uvjet živosti u PBFT-u odgovara tome: kašnjenje ne smije neograničeno rasti brže od 2t. [Castro i Liskov, 1999, §3](https://pmg.csail.mit.edu/papers/osdi99.pdf). Ako mreža nikad ne postane stabilna, sustav čeka; to je cijena sigurnosti.
+
+![Neuspjeli krug udvostruči istek roka dok ne premaši stvarno kašnjenje](assets/growing-timeouts.hr.pdf){width=95% fig-alt="Tri kruga: istek roka 1 s neuspješan, 2 s neuspješan, 4 s uspješan; stvarno kašnjenje je 3 s i protokol ga ne zna. Neuspjeli krug udvostruči istek roka dok ne premaši stvarno kašnjenje"}
+
+**Nastavni rad (40–43 min):** Pitajte što sustav radi ako mreža nikad ne postane stabilna. Čeka; ne potvrđuje dvije isplate.
+
+## Kvorum: dovoljno glasova za odluku
+
+Pravilo „dva od tri” bilo je pravilo kvoruma.
+
+::: {.definition number="2.2"}
+**Kvorum (*quorum*)**: skup članova čiji su glasovi za isti prijedlog dovoljni da ga protokol smatra odlučenim.
+:::
+
+Kvorum mora imati dva svojstva. Mora biti dostupan: i kad f članova ne odgovara, ostali moraju moći skupiti kvorum, inače se krši okončanje. I dva kvoruma moraju se preklapati u poštenom članu, inače se krši dogovor. Kad pošten član glasa samo za jedan prijedlog po stanju, njegov glas ne može ući u oba kvoruma.
+
+U modelu bez bizantskih članova to je jednostavno. Uz n = 3, kvorumi {A, B} i {B, C} dijele B. B je pošten i glasa samo jednom, pa ne mogu proći obje isplate.
+
+![Dvije većine od tri uvijek dijele barem jednog člana](assets/quorum-majority.hr.pdf){width=95% fig-alt="Kvorum za tx1: A i B; kvorum za tx2: B i C; presjek je B, koji je pošten i glasa samo jednom. Dvije većine od tri uvijek dijele barem jednog člana"}
+
+**Nastavni rad (43–45 min):** Pitajte zašto „jedan od tri” nije kvorum. Dva takva skupa ne moraju se preklapati.
+
+## Uz padove: $n \geq 2f + 1$
+
+Neka do f članova može stati, a nijedan ne laže. Protokol smije čekati samo n − f glasova, jer f članova možda nikad ne odgovori. Dva kvoruma veličine n − f preklapaju se ako zajedno imaju više od n članova: 2(n − f) > n, tj. n > 2f. Najmanji takav broj je n = 2f + 1, a kvorum je tada većina, f + 1 članova.
+
+Za n = 3 sustav podnosi jedan pad uz kvorum 2; za n = 5 dva pada uz kvorum 3. Dwork, Lynch i Stockmeyer pokazuju da je uz djelomičnu sinkroniju i padove upravo $n \geq 2f + 1$ granica. [Dwork, Lynch i Stockmeyer, 1988, Tablica I](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf).
+
+![Uz padove: $n \geq 2f + 1$, kvorum je većina](assets/crash-threshold.hr.pdf){width=95% fig-alt="n = 3, f = 1: A i B rade, C je pao, kvorum 2 = n − f. n = 5, f = 2: A, B i C rade, D i E su pali, kvorum 3 = n − f. Uz padove: n ≥ 2f + 1, kvorum je većina"}
+
+**Nastavni rad (45–49 min):** Izvedite nejednakost na ploči zajedno sa studentima, korak po korak.
+
+## Vježba: koliko padova podnosimo?
+
+| n | najveći f uz padove | kvorum |
+|:---|:---|:---|
+| 4 | 1 | 3 |
+| 5 | 2 | 3 |
+| 7 | 3 | 4 |
+
+Za n = 4 dobivamo isto što i za n = 3: četvrti član ne povećava broj padova koje podnosimo, a povećava kvorum. Zato se uz padove često koristi neparan broj članova.
+
+**Nastavni rad (49–52 min):** Prvo n = 5, zatim n = 7, a n = 4 kao pitanje za brže studente.
+
+## Zašto većina ne pomaže uz lažljivca
+
+Vratimo se studiji slučaja. Kvorumi {A, B} i {A, C} preklapaju se, kao što zahtijeva $n \geq 2f + 1$. Ali u presjeku je samo A, a A se ponaša bizantski i glasa za oba prijedloga. Preklapanje u bilo kojem članu nije dovoljno: treba preklapanje u poštenom članu. Uz f bizantskih članova presjek mora imati barem f + 1 člana, jer tada svih f ne može popuniti presjek.
+
+![Presjek postoji, ali je u njemu samo član koji laže](assets/byz-overlap.hr.pdf){width=95% fig-alt="Kvorum za tx1: A i B; kvorum za tx2: A i C; u presjeku je A, koji je bizantski i glasa za oba. Presjek postoji, ali je u njemu samo član koji laže"}
+
+**Nastavni rad (52–55 min):** Pitajte koliko bi članova presjek morao imati uz f = 2.
+
+## Problem bizantskih generala
+
+Lamport, Shostak i Pease opisali su 1982. isti problem kao priču o generalima bizantske vojske. Zapovjednik šalje zapovijed „napad” ili „povlačenje” poručnicima, a oni komuniciraju samo glasnicima. Neki generali, uključujući možda i zapovjednika, su izdajice. Traže se dva uvjeta: svi odani poručnici izvrše istu zapovijed (IC1) i, ako je zapovjednik odan, svaki odani poručnik izvrši njegovu zapovijed (IC2). [Lamport, Shostak i Pease, 1982, §1](https://lamport.azurewebsites.net/pubs/byz.pdf).
+
+IC1 je naš dogovor, a IC2 naša valjanost. Zapovjednik je član koji predlaže isplatu, a poručnici su ostali članovi. Model je sinkron: rad pretpostavlja da se izostanak poruke može otkriti (pretpostavka A3, §3).
+
+![Lamport, Shostak i Pease (1982): izdajica može biti i zapovjednik](assets/generals.hr.pdf){width=95% fig-alt="Zapovjednik šalje zapovijed „napad” poručniku 1 i poručniku 2; poručnici prepričavaju jedan drugome što su čuli. Lamport, Shostak i Pease (1982): izdajica može biti i zapovjednik"}
+
+**Nastavni rad (55–59 min):** Na ploči spojite IC1 s dogovorom i IC2 s valjanošću.
+
+## Tri generala, jedan izdajica
+
+Rad pokazuje da uz obične, nepotpisane poruke tri generala ne mogu podnijeti jednog izdajicu. U slučaju a zapovjednik je odan i šalje „napad”, a izdajica je poručnik 2 i javlja poručniku 1 da je čuo „povlačenje”. Da bi vrijedio IC2, poručnik 1 mora napasti. U slučaju b izdajica je zapovjednik: poručniku 1 šalje „napad”, a poručniku 2 „povlačenje”, a poručnik 2 iskreno javlja što je čuo. Poručnik 1 u oba slučaja vidi isto, pa mora napasti. Istim argumentom poručnik 2 u slučaju b mora se povući, i IC1 je prekršen. [Lamport, Shostak i Pease, 1982, §2](https://lamport.azurewebsites.net/pubs/byz.pdf).
+
+Autori sami upozoravaju da je ovakvo neformalno zaključivanje varljivo i upućuju na strogi dokaz. Mi ga koristimo kao intuiciju, a iz njega izvode i općenitiji rezultat: uz m izdajica i nepotpisane poruke treba barem 3m + 1 generala (isto, §2).
+
+![Poručnik 1 u oba slučaja vidi isto: „napad” i „rekao je povlačenje”](assets/generals-two-views.hr.pdf){width=95% fig-alt="Slučaj a: odan zapovjednik šalje napad, izdajica poručnik 2 javlja poručniku 1 da je zapovjednik rekao povlačenje. Slučaj b: zapovjednik izdajica šalje napad poručniku 1 i povlačenje poručniku 2, koji to iskreno prenosi. Poručnik 1 u oba slučaja vidi isto"}
+
+**Nastavni rad (59–63 min):** Dvoje studenata neka glume poručnika 1 u oba slučaja i objasne zašto ne mogu odlučiti drukčije.
+
+## Uz bizantske članove: $n \geq 3f + 1$
+
+Sada možemo izvesti prag. Protokol i dalje smije čekati samo n − f glasova, jer f članova može šutjeti. Dva kvoruma veličine n − f dijele barem 2(n − f) − n = n − 2f članova. Da bi u presjeku bio barem jedan pošten, presjek mora biti veći od f: n − 2f > f, tj. n > 3f. Najmanji takav broj je n = 3f + 1, a kvorum je tada 2f + 1. Castro i Liskov u radu o PBFT-u navode isti argument (§3), a rezultat se slaže s pragom 3m + 1 Lamporta, Shostaka i Peasea. [Castro i Liskov, 1999, §3](https://pmg.csail.mit.edu/papers/osdi99.pdf).
+
+Za f = 1 treba četiri člana i kvorum od tri. Dva kvoruma od tri među četiri člana dijele barem dva člana. Najviše jedan od njih laže.
+
+![Uz bizantske članove: $n \geq 3f + 1$, kvorum 2f + 1](assets/byz-threshold.hr.pdf){width=95% fig-alt="n = 4, f = 1: kvorum za tx1 je B, A, C; kvorum za tx2 je A, C, D; presjek je A i C (f + 1 = 2), barem jedan pošten. Uz bizantske članove: n ≥ 3f + 1, kvorum 2f + 1"}
+
+**Nastavni rad (63–67 min):** Izvedite nejednakost na ploči uz prethodnu za padove i usporedite korake.
+
+## Naš budžet s četiri organizacije
+
+Dodajemo četvrtu organizaciju D, a A se i dalje ponaša bizantski. Kvorum je tri glasa. B predlaže $\mathrm{tx}_{1}$, C predlaže $\mathrm{tx}_{2}$, a A glasa za oba. D prima zahtjev od B i glasa za $\mathrm{tx}_{1}$. Kad C zatraži glas za $\mathrm{tx}_{2}$ iz istog stanja $S_{7}$, D odbija: pošten član glasa najviše za jedan prijedlog po stanju. $\mathrm{tx}_{1}$ skupi tri glasa (A, B, D) i postaje $S_{8}$. $\mathrm{tx}_{2}$ ima samo dva glasa (A, C) i ne prolazi. C više ne može skupiti kvorum, jer bi mu trebao glas od B ili D, a oboje su već glasali za $\mathrm{tx}_{1}$.
+
+Pravilo „glasaj najviše jednom po stanju” ključno je. Bez njega bi D mogao glasati i za $\mathrm{tx}_{2}$ i presjek ne bi štitio ništa.
+
+![Četiri organizacije: pošten D ne glasa dvaput, $\mathrm{tx}_{2}$ ne skupi kvorum](assets/four-orgs.hr.pdf){width=95% fig-alt="A (bizantski) šalje DA za tx1 B-u i DA za tx2 C-u; D šalje DA za tx1 B-u; C traži glas za tx2 od D, D odbija jer je već glasao za v7; A + B + D = 3, tx1 konačan; B i D imaju tx1 v8, C ima samo 2 glasa za tx2. Četiri organizacije: pošten D ne glasa dvaput, tx2 ne skupi kvorum"}
+
+**Nastavni rad (67–71 min):** Pitajte što bi se dogodilo da D glasa za $\mathrm{tx}_{2}$ prije nego što primi zahtjev od B. Tada $\mathrm{tx}_{1}$ ne skupi kvorum, a $\mathrm{tx}_{2}$ prođe; obje isplate nikad.
+
+## Kad bizantski član šuti
+
+Bizantski član ne mora lagati. Može i šutjeti, u nadi da će odluka zapeti. Uz n = 3f + 1 to ne pomaže: B, C i D zajedno čine kvorum od tri i odlučuju bez A. Prag 3f + 1 tako istodobno štiti dogovor (presjek sadrži poštenog člana) i okončanje (pošteni članovi sami čine kvorum).
+
+![n − f = 3 poštenih dovoljno je za kvorum i bez A](assets/silent-member.hr.pdf){width=95% fig-alt="A šuti; B, C i D zajedno čine 3 = 2f + 1 glasa i donose odluku. n − f = 3 poštenih dovoljno je za kvorum i bez A"}
+
+**Nastavni rad (71–73 min):** Pitajte zašto kvorum ne smije biti svih četiri. Jedan šutljiv član tada bi zaustavio sve.
+
+## Prag ovisi o modelu
+
+Brojevi 2f + 1 i 3f + 1 nisu univerzalni. Dwork, Lynch i Stockmeyer daju tablicu najmanjeg broja članova za različite modele vremena i kvarova. Pojednostavljeno:
+
+| Kvarovi | Sinkrono | Djelomično sinkrono | Asinkrono, deterministički |
+|:---|:---|:---|:---|
+| Pad | bilo koji n | $n \geq 2f + 1$ | nema rješenja („FLP”) |
+| Bizantski, bez potpisa | $n \geq 3f + 1$ | $n \geq 3f + 1$ | nema rješenja |
+| Bizantski, s potpisima | bilo koji n | $n \geq 3f + 1$ | nema rješenja |
+
+[Dwork, Lynch i Stockmeyer, 1988, Tablica I](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf); za sinkroni slučaj s potpisima [Lamport, Shostak i Pease, 1982, §4](https://lamport.azurewebsites.net/pubs/byz.pdf). Potpisi dakle ne uklanjaju prag 3f + 1 u djelomično sinkronoj mreži, a upravo takvu mrežu imamo u praksi. Potpise uvodimo u predavanju 03; ovdje je važno samo da njihova korist ovisi o modelu vremena.
+
+**Nastavni rad (73–75 min):** Neka studenti pronađu redak i stupac za naš budžet: bizantski, djelomično sinkrono, bez potpisa.
+
+## Što model vremena mijenja u algoritmu
+
+Algoritam GST ne vidi i ne obrađuje: nijedan protokol nema korak „ako je nastupio GST, onda…”. GST postoji samo u analizi, kao uvjet pod kojim dokazujemo da protokol napreduje. Ali razlika između sinkronog i djelomično sinkronog algoritma vidi se u kodu, i to u odgovoru na pitanje smije li istek roka utjecati na odluku.
+
+Sinkroni algoritam zna Δ i na njemu gradi zaključke: izostanak poruke nakon Δ tretira kao dokaz da je pošiljatelj pao ili laže. Lamport, Shostak i Pease upravo to pretpostavljaju: izostanak poruke može se otkriti (A3). Na budžetu bi to bilo pravilo „ako C ne odgovori za 3 s, C je pao, pa odlučujemo bez njega”. To je ispravno samo ako je 3 s stvarno gornja granica; ako mreža jednom zakasni dulje, C je možda već sudjelovao u drugoj odluci i dogovor je prekršen.
+
+Djelomično sinkroni algoritam ne smije istek roka koristiti za sigurnost. Odluku donosi samo kvorumom 2f + 1, čiji presjek štiti dogovor bez obzira na vrijeme; istek roka koristi samo za napredak, kao „nema odgovora, pokušaj novi krug ili novog vođu”, i pritom produljuje rok jer Δ ne zna. Prije GST krugovi propadaju, ali ništa pogrešno se ne potvrdi; nakon GST istek roka jednom premaši stvarno kašnjenje i krug uspije. PBFT je takav: sigurnost ne ovisi o sinkroniji, a zamjena vođe pokreće se istekom roka. [Castro i Liskov, 1999, §3 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf). Cijena je u broju članova: kad šutnja ne dokazuje ništa, treba više poštenih, kao u tablici prethodnog odjeljka.
+
+![Vrijeme smije ubrzati odluku, ali je ne smije učiniti pogrešnom](assets/timing-algorithms.hr.pdf){width=95% fig-alt="Isto opažanje, B nema glas od C, dva algoritma. Sinkroni: zna rok Δ, nakon Δ zaključi da je C pao, odluči bez C; ispravno samo ako je Δ stvarna granica. Djelomično sinkroni: ne zna rok Δ, na isteku roka pokreće novi krug s duljim rokom, odlučuje tek s 2f + 1 glasova; istek roka nikad ne mijenja odluku. Vrijeme smije ubrzati odluku, ali je ne smije učiniti pogrešnom"}
+
+**Nastavni rad (75–78 min):** Pitajte što bi na budžetu značilo pravilo „ako C ne odgovori za 3 s, C je pao, odluči bez njega”.
+
+## Kako izgleda BFT protokol
+
+Protokoli za konsenzus koji podnose bizantske članove zovu se BFT (*Byzantine fault tolerance*, tolerancija bizantskih kvarova). Castro i Liskov opisali su 1999. praktičan BFT protokol, PBFT, za n = 3f + 1 replika. U normalnom radu ima tri faze: vođa predlaže redoslijed zahtjeva (*pre-prepare*), replike razmjenjuju poruke da prihvaćaju prijedlog (*prepare*) i zatim poruke da znaju da su ga prihvatili i drugi (*commit*); u fazama pripreme i potvrde čekaju kvorum. Ako vođa šuti ili šalje proturječne prijedloge, ostali na isteku roka biraju novog vođu. [Castro i Liskov, 1999, §4.2 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf).
+
+Algoritam ne ovisi o sinkroniji za sigurnost; za živost traži da kašnjenje poruka ne raste neograničeno (isto, §3). To je upravo podjela iz prvog dijela predavanja. Detalje faza ne učimo napamet; važno je da priprema i potvrda traže kvorum 2f + 1.
+
+![Shema BFT protokola, npr. PBFT (Castro i Liskov, 1999)](assets/bft-phases.hr.pdf){width=95% fig-alt="Prijedlog: vođa predlaže tx1 v7; Priprema: 2f + 1 prihvaća prijedlog; Potvrda: 2f + 1 zna da su drugi prihvatili; Izvrši: tx1 v8 konačan. Vođa šuti ili laže: ostali biraju novog vođu. Shema BFT protokola, npr. PBFT"}
+
+**Nastavni rad (78–81 min):** Pitajte gdje se u ovim fazama koristi istek roka. Samo za zamjenu vođe.
+
+## Cijena BFT-a
+
+U fazama pripreme i potvrde svaki član šalje poruku svakom drugom. Uz n članova to je n(n − 1) poruka po fazi: 12 za n = 4, 56 za n = 8, 9.900 za n = 100. Castro i Liskov također navode da dodatne replike smanjuju performanse jer se razmjenjuje više i većih poruka (§4). Zato se klasični BFT koristi u manjim skupinama poznatih članova, npr. nekoliko organizacija koje vode zajednički sustav.
+
+![Svaki član šalje svakome: broj poruka raste s n²](assets/bft-cost.hr.pdf){width=95% fig-alt="Potpun graf s 4 člana: 12 poruka po koraku; potpun graf s 8 članova: 56 poruka po koraku. Svaki član šalje svakome: broj poruka raste s n²"}
+
+**Nastavni rad (81–83 min):** Izračunajte zajedno broj poruka za n = 10.
+
+## Prešutna pretpostavka: znamo tko su članovi
+
+Sve što smo dosad izveli koristi pretpostavku iz predavanja 01: A, B, C i D unaprijed su poznate organizacije. Broj n je broj tih organizacija, a f broj onih koje smiju odstupati. Glas je vezan uz člana, ne uz poruku: deset poruka od A i dalje je jedan glas. To je dobra pretpostavka za konzorcij organizacija koje su se ugovorom dogovorile tko sudjeluje.
+
+![Sve dosad: n i f brojimo po poznatim organizacijama](assets/known-membership.hr.pdf){width=95% fig-alt="A, B, C i D, svi na popisu; popis članova dogovoren je unaprijed. Sve dosad: n i f brojimo po poznatim organizacijama"}
+
+**Nastavni rad (83–85 min):** Povežite sa slajdom „Tko uopće ima pravo glasa?” iz predavanja 01.
+
+## Otvorena mreža
+
+Sada mijenjamo pretpostavku. U otvorenoj mreži (*permissionless*) pridružiti se može bilo tko, bez popisa i bez odobrenja. Mreža ne vidi osobe ni organizacije, nego samo identitete: imena ili adrese čvorova. Iza četiri identiteta mogu biti četiri organizacije, ali i jedna osoba s četiri računala. Douceur to opisuje ovako: lokalni čvor koji nema izravno fizičko znanje o udaljenima vidi ih samo kao informacijske apstrakcije, identitete. [Douceur, 2002, §1](https://courses.csail.mit.edu/6.895/fall02/papers/Douceur/iptps02-douceur.pdf).
+
+![Otvorena mreža vidi identitete, ne osobe ni organizacije](assets/open-identities.hr.pdf){width=95% fig-alt="Četiri čvora s oznakama 3f9a, 71c2, b04e i e5d8; za svaki: tko je iza? Pridružiti se može bilo tko, bez popisa. Otvorena mreža vidi identitete, ne osobe ni organizacije"}
+
+**Nastavni rad (85–87 min):** Pitajte kako bi B mogao znati da su dva identiteta zapravo ista strana. U općem slučaju ne može.
+
+## Sybil napad
+
+Kad jedna strana predstavi više identiteta, to je Sybil napad (*Sybil attack*). Douceur pokazuje da su bez logički centraliziranog autoriteta Sybil napadi uvijek mogući, osim uz krajnje i nerealne pretpostavke o jednakosti resursa i koordinaciji među sudionicima. [Douceur, 2002, sažetak](https://courses.csail.mit.edu/6.895/fall02/papers/Douceur/iptps02-douceur.pdf).
+
+Na našem budžetu: uz četiri organizacije dodaje se strana M s tri identiteta, M1, M2 i M3. Mreža broji sedam identiteta i zaključuje da podnosi f = 2, uz kvorum pet. Ali M sam drži tri glasa, više od f. Pretpostavka „najviše f neispravnih” više nije istinita, a sva jamstva iz prvog dijela izvedena su upravo iz nje.
+
+![Douceur (2002): Sybil napad](assets/sybil.hr.pdf){width=95% fig-alt="Četiri organizacije A, B, C, D i jedna strana M s tri identiteta M1, M2, M3; 7 identiteta, mreža misli f = 2, ali M drži 3 glasa od 7. Douceur (2002): Sybil napad"}
+
+**Nastavni rad (87–91 min):** Neka studenti izračunaju koliko identiteta M mora stvoriti da sruši prag uz četiri poštene organizacije. Već dva: uz šest identiteta prag 3f + 1 dopušta samo f = 1, a M drži dva glasa.
+
+## Brojimo identitete, a trebamo neovisne strane
+
+Prag 3f + 1 govori o broju neovisnih članova. Glasanje u otvorenoj mreži broji identitete. Dokle god jedna strana može stvoriti identitet besplatno, ne postoji broj f koji bi mogli unaprijed jamčiti: napadač ga uvijek može premašiti. Zato dodavanje čvorova u otvorenoj mreži ne povećava otpornost, nego je može smanjiti. Klasični BFT ostaje ispravan, ali njegova pretpostavka o članstvu nije ispunjena.
+
+**Nastavni rad (91–93 min):** Pitajte koja je pretpostavka iz tablice modela ovdje prekršena. Članstvo.
+
+## Kako ograničiti identitete?
+
+Postoje dva smjera. Prvi je središnji upis: netko odobrava identitete, npr. tijelo koje izdaje članstvo. Time se vraćamo koordinatoru iz predavanja 01, barem za odluku o tome tko glasa. To može biti prihvatljivo u konzorciju, ali nije otvorena mreža. Drugi smjer je cijena po identitetu: svaki glas troši resurs koji se ne može besplatno umnožiti, pa sto identiteta stoji sto puta više od jednog. Tada se ne broje identiteti, nego udio tog resursa. Kako to izgleda u stvarnom sustavu, vidimo u predavanju 04.
+
+Douceurov rezultat upozorava da ni drugi smjer nije besplatan: pretpostavlja da nijedna strana nema nesrazmjerno više resursa od ostalih.
+
+![Dva smjera; nijedan ne dolazi besplatno](assets/limit-identities.hr.pdf){width=95% fig-alt="Središnji upis identiteta: netko odobrava članove, opet koordinator (lekcija 01). Cijena po identitetu: svaki glas troši teško umnoživ resurs, predavanje 04. Dva smjera; nijedan ne dolazi besplatno"}
+
+**Nastavni rad (93–96 min):** Pitajte koji resurs studenti mogu zamisliti kao cijenu identiteta i koji je od njih lako umnožiti.
+
+## Klasični BFT nasuprot otvorenoj mreži
+
+| | Klasični BFT | Otvorena mreža |
+|:---|:---|:---|
+| Članstvo | poznato unaprijed | bilo tko se pridruži |
+| Što glas broji | jednog člana | jedan identitet |
+| Prag | $n \geq 3f + 1$ članova | treba ograničiti identitete |
+| Poruke | n² po fazi, mali n | velik n, ne smije svatko svakome |
+| Primjer | konzorcij organizacija | javna mreža (predavanje 04) |
+
+Klasični konsenzus nije pogrešan; rješava drukčiji problem. Otvorena mreža traži i otpornost na Sybil napad i način komunikacije koji radi s mnogo nepoznatih sudionika.
+
+**Nastavni rad (96–98 min):** Za naš budžet od tri organizacije pitajte koji stupac odgovara. Lijevi: članovi su poznati.
+
+## Ponavljanje: što ne štima u ovom prijedlogu protokola?
+
+Naš budžet: fond F ima 100, B predlaže $\mathrm{tx}_{1}$ (80 iz F na račun X), C predlaže $\mathrm{tx}_{2}$ (60 iz F na račun Y). Netko predlaže:
+
+> „Imamo četiri organizacije, **pa sustav podnosi jednog lažljivca**. Svatko može pokrenuti dodatni čvor. Isplata je **konačna čim tri čvora glasaju za nju**. Ako vođa ne odgovori za dvije sekunde, **vođa je pao**, pa njegov prijedlog odbacujemo i prihvaćamo drugi.”
+
+Za svaki istaknuti zaključak nađite izvođenje u kojem ne vrijedi.
+
+**Nastavni rad (98–102 min):** Tri minute u parovima, zatim po jedan protuprimjer od svakog para.
+
+## Tri zaključka, tri protuprimjera
+
+Prvi zaključak vrijedi samo uz poznato članstvo. Ako svatko može pokrenuti čvor, M doda tri identiteta, pa od sedam glasova drži tri, više od f = 2. Drugi zaključak koristi apsolutan broj tri: kad mreža ima sedam čvorova, dva skupa od tri ne moraju se ni preklapati, pa mogu proći i $\mathrm{tx}_{1}$ i $\mathrm{tx}_{2}$. Kvorum mora biti 2f + 1 u odnosu na stvaran n. Treći zaključak tretira istek roka kao dokaz pada: vođa je možda samo spor, a ostali su njegov prijedlog $\mathrm{tx}_{1}$ možda već potvrdili. Prihvaćanje $\mathrm{tx}_{2}$ tada krši dogovor. Istek roka smije pokrenuti zamjenu vođe, ali novi vođa mora poštovati ono što je možda već odlučeno.
+
+![Popravak: poznato članstvo, kvorum po modelu, istek roka samo za živost](assets/counter.hr.pdf){width=95% fig-alt="„podnosi lažljivca”: M doda 3 čvora, od 7 glasova drži 3 > f (Sybil napad). „konačna kad 3 glasa”: od 7 čvorova dva skupa od 3 ne moraju se ni preklapati (kvorum 2f + 1). „vođa je pao”: vođa samo kasni, ostali su tx1 već potvrdili („FLP”: spor ili stao?)."}
+
+**Nastavni rad (102–105 min):** Za svaki protuprimjer pitajte koji je slajd ranije pokazao isti problem.
+
+## Sažetak
+
+Konsenzus je zadatak s tri svojstva: dogovor i valjanost su sigurnost, a okončanje živost. Koliko članova treba, ovisi o modelu: uz padove i djelomičnu sinkroniju $n \geq 2f + 1$, a uz bizantske članove $n \geq 3f + 1$, jer dva kvoruma moraju dijeliti poštenog člana. Sve to broji neovisne članove. U otvorenoj mreži glasanje broji identitete, pa Sybil napad ruši pretpostavku na kojoj prag počiva.
+
+![Svaki prag vrijedi samo uz izričit model vremena, kvarova i članstva](assets/recap.hr.pdf){width=95% fig-alt="Konsenzus: dogovor + valjanost (sigurnost) i okončanje (živost). Prag: pad n ≥ 2f + 1, bizantski n ≥ 3f + 1. Članstvo: f broji neovisne članove, ne identitete. Svaki prag vrijedi samo uz izričit model vremena, kvarova i članstva"}
+
+**Nastavni rad (105–107 min):** Neka svaki student zapiše jednu rečenicu koju bi rekao kolegi koji je propustio predavanje.
+
+## Otvoreno pitanje za predavanje 03
+
+U ovom predavanju dvaput smo prešutno pretpostavili nešto što još ne znamo ostvariti. Prvo, da B zna da je poruka „DA za $\mathrm{tx}_{1}$” stvarno od D, a ne od nekoga tko se predstavlja kao D. Drugo, da član koji je glasao za $S_{7}$ ne može kasnije tvrditi da je glasao drukčije. Predavanje 03 uvodi alate za oboje: potpise i povezane zapise kojima se naknadna izmjena može otkriti. Pitanje otvorene mreže bez popisa članova vraća se u predavanju 04.
+
+![Prvo alati za provjeru, zatim otvorena mreža bez popisa članova (predavanje 04)](assets/next-question.hr.pdf){width=95% fig-alt="Tko je poslao poruku? Provjerljiv potpis, predavanje 03. Je li zapis naknadno mijenjan? Povezani zapisi, predavanje 03. Prvo alati za provjeru, zatim otvorena mreža bez popisa članova (predavanje 04)"}
+
+**Nastavni rad (107–109 min):** Ostavite pitanja otvorena; ne uvodite hash funkcije ni Bitcoin.
+
+## Literatura za produbljivanje
+
+- [Lamport, Shostak, Pease: The Byzantine Generals Problem](https://lamport.azurewebsites.net/pubs/byz.pdf), ACM TOPLAS 4(3), 1982, §1–4.
+- [Fischer, Lynch, Paterson: Impossibility of Distributed Consensus with One Faulty Process](https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf), JACM 32(2), 1985, sažetak i §1.
+- [Dwork, Lynch, Stockmeyer: Consensus in the Presence of Partial Synchrony](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf), JACM 35(2), 1988, §1 i Tablica I.
+- [Castro, Liskov: Practical Byzantine Fault Tolerance](https://pmg.csail.mit.edu/papers/osdi99.pdf), OSDI 1999, §3–4.
+- [Douceur: The Sybil Attack](https://courses.csail.mit.edu/6.895/fall02/papers/Douceur/iptps02-douceur.pdf), IPTPS 2002.

@@ -1,0 +1,12 @@
+{
+  "number": 4,
+  "title_en": "Bitcoin and Proof of Work",
+  "title_hr": "Bitcoin i dokaz rada",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

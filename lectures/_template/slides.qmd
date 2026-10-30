@@ -1,0 +1,63 @@
+---
+title: "[Lecture title]"
+lang: en
+author: "assoc. prof. Nikola Tankovic, PhD"
+subtitle: "Faculty of Informatics, Juraj Dobrila University of Pula"
+---
+
+
+## The request we follow
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Outcomes and prerequisites
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Problem and initial implementation
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Execution and failure
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Reason and improved design
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Check for understanding
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Recap and references
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::

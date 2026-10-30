@@ -1,0 +1,12 @@
+{
+  "number": 5,
+  "title_en": "Ethereum and Programmable Blockchains",
+  "title_hr": "Ethereum i programabilni blockchain",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

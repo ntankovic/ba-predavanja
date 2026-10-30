@@ -1,0 +1,82 @@
+---
+title: "Decentralized Storage and IPFS"
+subtitle: "Blockchain Applications · 10"
+lang: en
+format:
+  revealjs:
+    css: assets/lecture.css
+    width: 1120
+    height: 700
+    center: false
+---
+
+## Learning outcomes
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Problem and prerequisites
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Concepts and assumptions
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+Why blockchain is poor storage; content addressing; CIDs; DAGs/Merkle DAGs; IPFS nodes; pinning; availability vs permanence; IPFS + Ethereum; metadata and NFTs as a practical example
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Scenario and state trace
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Failure and improved design
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Discussion and checks
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Recap and references
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+

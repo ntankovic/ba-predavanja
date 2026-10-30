@@ -1,0 +1,57 @@
+---
+title: "Course introduction"
+subtitle: "Blockchain Applications"
+lang: en
+format:
+  revealjs:
+    css: assets/lecture.css
+---
+
+## Plan / Planning
+
+**Orientation scaffold — administrative details pending lecturer confirmation.**
+
+::: {.notes}
+Planned 20-minute orientation; not a completed deck.
+:::
+
+## 1–3
+
+- **01** From Distributed to Decentralized Systems
+- **02** Consensus and the Byzantine Generals Problem
+- **03** Blockchain Foundations
+
+::: {.notes}
+Explain the conceptual progression; no administrative policy inferred.
+:::
+
+## 4–6
+
+- **04** Bitcoin and Proof of Work
+- **05** Ethereum and Programmable Blockchains
+- **06** Proof of Stake and Modern Ethereum
+
+::: {.notes}
+Explain the conceptual progression; no administrative policy inferred.
+:::
+
+## 7–9
+
+- **07** Smart Contracts with Solidity
+- **08** Smart Contract Design and Security
+- **09** Web3 Application Development
+
+::: {.notes}
+Explain the conceptual progression; no administrative policy inferred.
+:::
+
+## 10–12
+
+- **10** Decentralized Storage and IPFS
+- **11** Blockchain Application Architectures
+- **12** Scaling, Limitations and When to Use Blockchain
+
+::: {.notes}
+Explain the conceptual progression; no administrative policy inferred.
+:::
+

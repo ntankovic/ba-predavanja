@@ -1,0 +1,51 @@
+---
+title: "Dizajn i sigurnost pametnih ugovora"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Prepoznati granice povjerenja
+- Napisati test neuspjelog pristupa i promjene stanja
+- Obrazložiti sigurnosnu doradu ugovora
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Što se događa kada nepouzdan poziv utječe na zajedničko stanje?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+Checks-effects-interactions; reentrancy; access control; integer/economic errors; oracle problem; front-running/MEV; upgradeability; testing; why immutable code changes software engineering
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Testirati dozvole registra; odvojeno pokazati namjerno ranjiv primjer ponovnog ulaska.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

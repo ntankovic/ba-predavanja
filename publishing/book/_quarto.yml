@@ -1,0 +1,38 @@
+project:
+  type: book
+
+book:
+  title: Blockchain Applications
+  author: assoc. prof. Nikola Tankovic, PhD
+  subtitle: Faculty of Informatics, Juraj Dobrila University of Pula
+  output-file: blockchain-applications
+  chapters:
+    - index.qmd
+    - lectures/01-decentralized-systems/chapter.qmd
+    - lectures/02-byzantine-consensus/chapter.qmd
+    - lectures/03-blockchain-foundations/chapter.qmd
+    - lectures/04-bitcoin-pow/chapter.qmd
+    - lectures/05-ethereum-execution/chapter.qmd
+    - lectures/06-ethereum-pos/chapter.qmd
+    - lectures/07-solidity/chapter.qmd
+    - lectures/08-contract-security/chapter.qmd
+    - lectures/09-web3/chapter.qmd
+    - lectures/10-ipfs/chapter.qmd
+    - lectures/11-application-architectures/chapter.qmd
+    - lectures/12-scaling-and-fit/chapter.qmd
+
+format:
+  pdf:
+    documentclass: scrreprt
+    pdf-engine: xelatex
+    papersize: a4
+    toc: true
+    colorlinks: true
+    keep-tex: false
+    include-in-header:
+      text: |
+        \usepackage{needspace}
+        \titlehead{\centering\includegraphics[width=25mm]{assets/shared/fipu-logo.pdf}}
+
+execute:
+  enabled: false

@@ -1,0 +1,96 @@
+---
+title: "Ethereum i programabilni blockchain"
+subtitle: "Blockchain aplikacije · 05"
+lang: hr
+format:
+  revealjs:
+    css: assets/lecture.css
+    width: 1120
+    height: 700
+    center: false
+---
+
+## Evidencija prisutnosti {#attendance .attendance-slide}
+
+::: {.attendance-content}
+[![](assets/attendance-ba.png){width=455 height=455 fig-alt="QR kod za evidenciju prisutnosti na kolegiju Blockchain aplikacije."}](https://bit.ly/bc-tu-sam)
+
+[bit.ly/bc-tu-sam](https://bit.ly/bc-tu-sam)
+:::
+
+::: {.notes}
+Ostavite pola minute za evidenciju putem QR koda ili poveznice. Isti QR kod kao u predavanju 00 (https://bit.ly/bc-tu-sam).
+:::
+
+## Ishodi učenja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+- Usporediti račune i UTXO
+- Pratiti promjenu stanja kroz izvršavanje
+- Objasniti svrhu gasa i događaja
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Problem i predznanje
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Što se mijenja kada transakcija izvršava program?
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Pojmovi i pretpostavke
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+From Bitcoin to Ethereum; account model vs UTXO; EVM; world state; transactions; gas; smart contracts; blocks; events; Ethereum execution model
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Primjer i tijek stanja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Poziv jednostavnog ugovora mijenja stanje; usporediti uspjeh i prekinuto izvršavanje.
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Ispad i poboljšani dizajn
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Rasprava i provjera razumijevanja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Sažetak i literatura
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+

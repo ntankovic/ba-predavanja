@@ -1,0 +1,12 @@
+{
+  "number": 8,
+  "title_en": "Smart Contract Design and Security",
+  "title_hr": "Dizajn i sigurnost pametnih ugovora",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

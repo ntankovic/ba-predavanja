@@ -1,0 +1,96 @@
+---
+title: "Decentralizirana pohrana i IPFS"
+subtitle: "Blockchain aplikacije · 10"
+lang: hr
+format:
+  revealjs:
+    css: assets/lecture.css
+    width: 1120
+    height: 700
+    center: false
+---
+
+## Evidencija prisutnosti {#attendance .attendance-slide}
+
+::: {.attendance-content}
+[![](assets/attendance-ba.png){width=455 height=455 fig-alt="QR kod za evidenciju prisutnosti na kolegiju Blockchain aplikacije."}](https://bit.ly/bc-tu-sam)
+
+[bit.ly/bc-tu-sam](https://bit.ly/bc-tu-sam)
+:::
+
+::: {.notes}
+Ostavite pola minute za evidenciju putem QR koda ili poveznice. Isti QR kod kao u predavanju 00 (https://bit.ly/bc-tu-sam).
+:::
+
+## Ishodi učenja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+- Objasniti adresiranje sadržajem
+- Razlikovati identitet sadržaja i dostupnost
+- Povezati metapodatke/datoteku s ugovorom
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Problem i predznanje
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Gdje čuvamo datoteke i velike podatke aplikacije?
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Pojmovi i pretpostavke
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Why blockchain is poor storage; content addressing; CIDs; DAGs/Merkle DAGs; IPFS nodes; pinning; availability vs permanence; IPFS + Ethereum; metadata and NFTs as a practical example
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Primjer i tijek stanja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Dodati sliku i metapodatke rada na IPFS, a referencu u registar; provjeriti dostupnost.
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Ispad i poboljšani dizajn
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Rasprava i provjera razumijevanja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Sažetak i literatura
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+

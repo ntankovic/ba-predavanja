@@ -1,0 +1,50 @@
+---
+title: "[Naslov predavanja]"
+lang: hr
+---
+
+<!-- Author the complete Croatian script first; translate after review. Target: 90–120 minutes. -->
+
+## Ishodi učenja
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Predznanje i poveznica s prethodnim tjednom
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Povjerenje i početno stanje sustava
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Problem i naivna implementacija
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Izvršavanje korak po korak i ispad
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Temeljni razlog i poboljšani dizajn
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Pretpostavke, jamstva i kompromisi
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Česte zablude i pregled AI-generiranog koda
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Pitanja, zadaci i rasprava
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Sažetak i prijelaz na idući tjedan
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->
+
+## Literatura
+
+<!-- Develop the full explanation, lecturer cues, examples and citations here. -->

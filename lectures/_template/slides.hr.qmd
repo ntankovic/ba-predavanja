@@ -1,0 +1,75 @@
+---
+title: "[Naslov predavanja]"
+lang: hr
+author: "izv. prof. dr. sc. Nikola Tanković"
+subtitle: "Fakultet informatike, Sveučilište Jurja Dobrile u Puli"
+---
+
+
+## Evidencija prisutnosti {#attendance .attendance-slide}
+
+::: {.attendance-content}
+[![](assets/attendance-ba.png){width=455 height=455 fig-alt="QR kod za evidenciju prisutnosti na kolegiju Blockchain aplikacije."}](https://bit.ly/bc-tu-sam)
+
+[bit.ly/bc-tu-sam](https://bit.ly/bc-tu-sam)
+:::
+
+::: {.notes}
+Ostavite pola minute za evidenciju putem QR koda ili poveznice. Isti QR kod kao u predavanju 00 (https://bit.ly/bc-tu-sam).
+:::
+
+## Problem povjerenja koji pratimo
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Ishodi i predznanje
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Problem i početna implementacija
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Izvršavanje i ispad
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Razlog i poboljšani dizajn
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Provjera razumijevanja
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Sažetak i literatura
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::

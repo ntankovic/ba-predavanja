@@ -1,0 +1,15 @@
+# Project-local tool distributions and caches
+.tools/
+**/.quarto/
+**/__pycache__/
+**/node_modules/
+.DS_Store
+
+# Publish final outputs (slides HTML, PDFs) via GitHub Pages; keep QA artifacts local.
+output/**
+!output/**/
+!output/**/.gitkeep
+!output/**/*.html
+!output/**/*.pdf
+output/qa/
+output/hr/qa/

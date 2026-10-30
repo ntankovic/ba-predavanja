@@ -1,0 +1,51 @@
+---
+title: "Razvoj Web3 aplikacija"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Povezati sučelje i novčanik
+- Razlikovati čitanje od slanja transakcije
+- Prikazati čekanje, odbijanje i potvrdu
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Kako korisnikov klik postaje potpisana transakcija?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+dApp architecture; wallets; signing; RPC; JSON-RPC; ABI; ethers/web3 libraries; reading blockchain state; submitting transactions; events; connecting frontend ↔ wallet ↔ smart contract
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Frontend registra čita zapise; korisnik potpisuje dodavanje rada i prati ishod.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

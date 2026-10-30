@@ -1,0 +1,54 @@
+# Serve the committed Croatian slide decks (output/hr/slides/) as the GitHub Pages site root.
+name: Publish slides
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "output/hr/slides/**"
+      - "output/hr/lectures/**"
+      - "lectures/*/slides.hr.qmd"
+      - "lectures/*/lecture.json"
+      - "lectures/*/timing.json"
+      - "scripts/build_pages_index.py"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      # Serve each deck under its full name and a short alias, e.g. 01-decentralized-systems.html and 01.html.
+      - name: Stage decks
+        run: |
+          mkdir _site
+          mkdir _site/pdf
+          for f in output/hr/slides/*.html; do
+            name=$(basename "$f" .html)
+            # Build-sample decks (lecture.json status "planned") stay unpublished.
+            jq -e '.status != "planned"' "lectures/$name/lecture.json" > /dev/null || continue
+            cp "$f" "_site/$name.html"
+            cp "$f" "_site/${name%%-*}.html"
+            if [ -f "output/hr/lectures/$name.pdf" ]; then cp "output/hr/lectures/$name.pdf" _site/pdf/; fi
+          done
+          cp assets/shared/fipu-logo.svg _site/
+          python3 scripts/build_pages_index.py _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

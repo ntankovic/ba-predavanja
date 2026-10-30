@@ -1,0 +1,12 @@
+{
+  "number": 11,
+  "title_en": "Blockchain Application Architectures",
+  "title_hr": "Arhitekture blockchain aplikacija",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

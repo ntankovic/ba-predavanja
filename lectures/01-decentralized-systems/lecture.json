@@ -1,0 +1,20 @@
+{
+  "number": 1,
+  "title_en": "From Distributed to Decentralized Systems",
+  "title_hr": "Od raspodijeljenih do decentraliziranih sustava",
+  "status": "draft",
+  "scaffold": false,
+  "duration_minutes": 120,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "authoring_language": "hr",
+  "review_hr": "pending",
+  "translation_en": "not_started",
+  "language_status": {
+    "hr": "draft",
+    "en": "planned"
+  },
+  "slides_version": "1.54"
+}

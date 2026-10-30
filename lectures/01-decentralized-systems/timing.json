@@ -1,0 +1,345 @@
+[
+  {
+    "slide": 1,
+    "title": "Od raspodijeljenih do decentraliziranih sustava",
+    "start": 0,
+    "end": 0.5,
+    "minutes": 0.5
+  },
+  {
+    "slide": 2,
+    "title": "Evidencija prisutnosti",
+    "start": 0.5,
+    "end": 1,
+    "minutes": 0.5
+  },
+  {
+    "slide": 3,
+    "title": "Što je ledger?",
+    "start": 1,
+    "end": 3,
+    "minutes": 2
+  },
+  {
+    "slide": 4,
+    "title": "Ledger banke: sva knjiženja na jednom mjestu",
+    "start": 3,
+    "end": 5,
+    "minutes": 2
+  },
+  {
+    "slide": 5,
+    "title": "Kako surađuju banke s odvojenim evidencijama?",
+    "start": 5,
+    "end": 7,
+    "minutes": 2
+  },
+  {
+    "slide": 6,
+    "title": "Pravni put postoji, ali koliko traje i košta?",
+    "start": 7,
+    "end": 9,
+    "minutes": 2
+  },
+  {
+    "slide": 7,
+    "title": "Možemo li dio sporova spriječiti unaprijed?",
+    "start": 9,
+    "end": 11,
+    "minutes": 2
+  },
+  {
+    "slide": 8,
+    "title": "Ishodi i predznanje",
+    "start": 11,
+    "end": 12,
+    "minutes": 1
+  },
+  {
+    "slide": 9,
+    "title": "Kako prikazujemo stanje i transakcije",
+    "start": 12,
+    "end": 14,
+    "minutes": 2
+  },
+  {
+    "slide": 10,
+    "title": "Tri organizacije, jedan digitalni budžet",
+    "start": 14,
+    "end": 17,
+    "minutes": 3
+  },
+  {
+    "slide": 11,
+    "title": "Stanje zapisujemo izričito",
+    "start": 17,
+    "end": 19,
+    "minutes": 2
+  },
+  {
+    "slide": 12,
+    "title": "Pravilo koje mora ostati istinito",
+    "start": 19,
+    "end": 22,
+    "minutes": 3
+  },
+  {
+    "slide": 13,
+    "title": "Prvo rješenje: zajednički koordinator",
+    "start": 22,
+    "end": 25,
+    "minutes": 3
+  },
+  {
+    "slide": 14,
+    "title": "Dva zahtjeva, jedan redoslijed",
+    "start": 25,
+    "end": 28,
+    "minutes": 3
+  },
+  {
+    "slide": 15,
+    "title": "Koordinator s dvije dretve: obje provjere prije promjene",
+    "start": 28,
+    "end": 31,
+    "minutes": 3
+  },
+  {
+    "slide": 16,
+    "title": "Jedna baza: atomarnost i izolacija",
+    "start": 31,
+    "end": 34,
+    "minutes": 3
+  },
+  {
+    "slide": 17,
+    "title": "Raspodijeljenost: rad preko više procesa",
+    "start": 34,
+    "end": 36,
+    "minutes": 2
+  },
+  {
+    "slide": 18,
+    "title": "Zašto dodajemo replike?",
+    "start": 36,
+    "end": 39,
+    "minutes": 3
+  },
+  {
+    "slide": 19,
+    "title": "Kopije nisu trenutačno jednake",
+    "start": 39,
+    "end": 41,
+    "minutes": 2
+  },
+  {
+    "slide": 20,
+    "title": "Korisnik ne vidi vlastitu isplatu",
+    "start": 41,
+    "end": 43,
+    "minutes": 2
+  },
+  {
+    "slide": 21,
+    "title": "Zahtjev je izvršen, potvrda nije stigla",
+    "start": 43,
+    "end": 46,
+    "minutes": 3
+  },
+  {
+    "slide": 22,
+    "title": "Ponovljeni pokušaj treba isti identitet",
+    "start": 46,
+    "end": 49,
+    "minutes": 3
+  },
+  {
+    "slide": 23,
+    "title": "Što znači djelomičan ispad?",
+    "start": 49,
+    "end": 51,
+    "minutes": 2
+  },
+  {
+    "slide": 24,
+    "title": "Uz koji model tvrdimo da pravilo vrijedi?",
+    "start": 51,
+    "end": 54,
+    "minutes": 3
+  },
+  {
+    "slide": 25,
+    "title": "Spor čvor i zaustavljen čvor mogu izgledati isto",
+    "start": 54,
+    "end": 57,
+    "minutes": 3
+  },
+  {
+    "slide": 26,
+    "title": "Mreža se razdvojila",
+    "start": 57,
+    "end": 60,
+    "minutes": 3
+  },
+  {
+    "slide": 27,
+    "title": "Dvije strane ne smiju obećati suprotno",
+    "start": 60,
+    "end": 63,
+    "minutes": 3
+  },
+  {
+    "slide": 28,
+    "title": "Tri različita pitanja o arhitekturi",
+    "start": 63,
+    "end": 66,
+    "minutes": 3
+  },
+  {
+    "slide": 29,
+    "title": "Sto poslužitelja, jedan administrator",
+    "start": 66,
+    "end": 69,
+    "minutes": 3
+  },
+  {
+    "slide": 30,
+    "title": "P2P opisuje razmjenu, ne jamči dogovor",
+    "start": 69,
+    "end": 71,
+    "minutes": 2
+  },
+  {
+    "slide": 31,
+    "title": "Raspodijeljen, decentraliziran ili P2P?",
+    "start": 71,
+    "end": 74,
+    "minutes": 3
+  },
+  {
+    "slide": 32,
+    "title": "Nova pretpostavka: nema zajedničkog operatora",
+    "start": 74,
+    "end": 77,
+    "minutes": 3
+  },
+  {
+    "slide": 33,
+    "title": "Povjerenje rastavljamo na konkretne ovlasti",
+    "start": 77,
+    "end": 80,
+    "minutes": 3
+  },
+  {
+    "slide": 34,
+    "title": "Isti pošiljatelj govori dvije stvari",
+    "start": 80,
+    "end": 83,
+    "minutes": 3
+  },
+  {
+    "slide": 35,
+    "title": "Pad i proizvoljno ponašanje nisu isti kvar",
+    "start": 83,
+    "end": 86,
+    "minutes": 3
+  },
+  {
+    "slide": 36,
+    "title": "Kašnjenje ili proturječje?",
+    "start": 86,
+    "end": 89,
+    "minutes": 3
+  },
+  {
+    "slide": 37,
+    "title": "Identitet ne zamjenjuje pravilo prihvaćanja",
+    "start": 89,
+    "end": 91,
+    "minutes": 2
+  },
+  {
+    "slide": 38,
+    "title": "„Uzmimo dva od tri” još nije protokol",
+    "start": 91,
+    "end": 95,
+    "minutes": 4
+  },
+  {
+    "slide": 39,
+    "title": "Tko uopće ima pravo glasa?",
+    "start": 95,
+    "end": 97,
+    "minutes": 2
+  },
+  {
+    "slide": 40,
+    "title": "Studija slučaja (1/3): pošten koordinator",
+    "start": 97,
+    "end": 99,
+    "minutes": 2
+  },
+  {
+    "slide": 41,
+    "title": "Studija slučaja (2/3): izgubljena potvrda",
+    "start": 99,
+    "end": 101,
+    "minutes": 2
+  },
+  {
+    "slide": 42,
+    "title": "Studija slučaja (3/3): pravilo „dva od tri”",
+    "start": 101,
+    "end": 103,
+    "minutes": 2
+  },
+  {
+    "slide": 43,
+    "title": "Analiza: gdje je pravilo o saldu prekršeno?",
+    "start": 103,
+    "end": 107,
+    "minutes": 4
+  },
+  {
+    "slide": 44,
+    "title": "Odaberite arhitekturu prema problemu",
+    "start": 107,
+    "end": 110,
+    "minutes": 3
+  },
+  {
+    "slide": 45,
+    "title": "Ponavljanje: što ne štima u ovom prijedlogu protokola?",
+    "start": 110,
+    "end": 112,
+    "minutes": 2
+  },
+  {
+    "slide": 46,
+    "title": "Tri zaključka, tri protuprimjera",
+    "start": 112,
+    "end": 114,
+    "minutes": 2
+  },
+  {
+    "slide": 47,
+    "title": "Sažetak: tri pojma koja ne smijemo izjednačiti",
+    "start": 114,
+    "end": 116,
+    "minutes": 2
+  },
+  {
+    "slide": 48,
+    "title": "Otvoreno pitanje za predavanje 02",
+    "start": 116,
+    "end": 119,
+    "minutes": 3
+  },
+  {
+    "slide": 49,
+    "title": "Literatura za produbljivanje",
+    "start": 119,
+    "end": 120,
+    "minutes": 1
+  }
+]

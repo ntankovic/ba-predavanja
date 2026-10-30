@@ -1,0 +1,20 @@
+{
+  "number": 2,
+  "title_en": "Consensus and the Byzantine Generals Problem",
+  "title_hr": "Konsenzus i problem bizantskih generala",
+  "status": "draft",
+  "scaffold": false,
+  "duration_minutes": 110,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "authoring_language": "hr",
+  "review_hr": "pending",
+  "translation_en": "not_started",
+  "language_status": {
+    "hr": "draft",
+    "en": "planned"
+  },
+  "slides_version": "1.14"
+}

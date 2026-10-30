@@ -1,0 +1,82 @@
+---
+title: "Consensus and the Byzantine Generals Problem"
+subtitle: "Blockchain Applications · 02"
+lang: en
+format:
+  revealjs:
+    css: assets/lecture.css
+    width: 1120
+    height: 700
+    center: false
+---
+
+## Learning outcomes
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Problem and prerequisites
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Concepts and assumptions
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+Agreement, validity, termination; Byzantine Generals; FLP intuition; quorum; BFT; Sybil attacks; why classical distributed consensus is not enough for permissionless networks
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Scenario and state trace
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Failure and improved design
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Discussion and checks
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Recap and references
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+

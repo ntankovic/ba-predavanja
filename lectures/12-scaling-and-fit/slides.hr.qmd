@@ -1,0 +1,96 @@
+---
+title: "Skaliranje, ograničenja i kada koristiti blockchain"
+subtitle: "Blockchain aplikacije · 12"
+lang: hr
+format:
+  revealjs:
+    css: assets/lecture.css
+    width: 1120
+    height: 700
+    center: false
+---
+
+## Evidencija prisutnosti {#attendance .attendance-slide}
+
+::: {.attendance-content}
+[![](assets/attendance-ba.png){width=455 height=455 fig-alt="QR kod za evidenciju prisutnosti na kolegiju Blockchain aplikacije."}](https://bit.ly/bc-tu-sam)
+
+[bit.ly/bc-tu-sam](https://bit.ly/bc-tu-sam)
+:::
+
+::: {.notes}
+Ostavite pola minute za evidenciju putem QR koda ili poveznice. Isti QR kod kao u predavanju 00 (https://bit.ly/bc-tu-sam).
+:::
+
+## Ishodi učenja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+- Usporediti L1, L2 i centraliziranu izvedbu
+- Procijeniti pretpostavke mostova i privatnosti
+- Obraniti izbor ili odbacivanje blockchaina
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Problem i predznanje
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Treba li ovoj aplikaciji blockchain i koju cijenu zbog toga plaćamo?
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Pojmovi i pretpostavke
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+L2s and rollups; bridges; interoperability; privacy; performance/cost trade-offs; decentralization–scalability–security trade-offs; permissioned blockchains; evaluating whether an application actually needs blockchain
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Primjer i tijek stanja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+Usporediti isti registar na L1, L2 i običnoj bazi; obrazložiti trošak, povjerenje i dostupnost.
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Ispad i poboljšani dizajn
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Rasprava i provjera razumijevanja
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Sažetak i literatura
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+

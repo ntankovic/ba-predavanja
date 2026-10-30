@@ -1,0 +1,163 @@
+.reveal { font-size: 32px; }
+.reveal h1, .reveal h2 { color: #18344b; text-transform: none; }
+.reveal h2 { font-size: 1.55em; line-height: 1.15; margin-bottom: 0.6em; }
+.reveal #title-slide h1 { font-size: 2.0em; line-height: 1.1; max-width: 950px; }
+.reveal #title-slide .subtitle { color: #1585b4; margin-top: 0.9em; }
+.reveal #title-slide .quarto-title-author-name { font-size: 0.8em; }
+.reveal #title-slide .institute { font-size: 0.7em; }
+.reveal table { font-size: 0.86em; width: 100%; }
+.reveal table th, .reveal table td { padding: 0.45em; border-bottom: 1px solid #c5d5df; }
+.reveal img { object-fit: contain; }
+.reveal strong { color: #105d80; }
+
+
+.reveal pre { font-size: 0.65em; line-height: 1.25; }
+.reveal .slide > p:has(img) { text-align: center; margin: 0.25em 0; }
+.reveal .slide > p > img { margin: 0; max-height: 340px; }
+.reveal .example-slide > h2::before,
+.reveal .exercise-slide > h2::before {
+  display: table;
+  padding: 0.25em 0.7em;
+  margin-bottom: 0.6em;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+.reveal .example-slide > h2::before { content: "💡 Primjer"; background: #e7f3fb; color: #184d70; }
+.reveal .exercise-slide > h2::before { content: "✏️ Vježba"; background: #f0ebfa; color: #594079; }
+.reveal .references-slide { font-size: 0.78em; }
+.reveal .references-slide li { margin-bottom:0.45em; }
+
+/* Answer chips for classroom discussion. */
+.reveal .answer-chips p { display: flex; flex-wrap: wrap; gap: 0.65em; align-items: center; }
+.reveal .answer-chip { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.35em 0.75em; border-radius: 999px; border: 2px solid; font-size: 0.9em; }
+.reveal .answer-chip strong { color: inherit; }
+.reveal .answer-a { background: #e7f3fb; border-color: #8cbad7; color: #184d70; }
+.reveal .answer-b { background: #f0ebfa; border-color: #b5a0d4; color: #594079; }
+.reveal .answer-c { background: #fff2df; border-color: #d5ad70; color: #795219; }
+
+/* Three consistent cards; week badges separate sequence from explanation. */
+.reveal .course-plan-slide h2 { font-size: 1.4em; margin-bottom: 24px; }
+.reveal .course-plan-slide .plan-entry {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 142px;
+  margin: 0 0 14px;
+  padding: 18px 24px 18px 110px;
+  background: #f3f8fb;
+  border: 1px solid #d4e3ec;
+  border-radius: 16px;
+  text-align: left;
+}
+.reveal .course-plan-slide .plan-entry::before {
+  content: attr(data-week);
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #dfedf5;
+  color: #2d6688;
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.reveal .course-plan-slide .plan-entry p {
+  font-size: 24px;
+  line-height: 1.35;
+  margin: 0;
+  color: #435568;
+}
+.reveal .course-plan-slide .plan-entry p:first-child {
+  font-size: 27px;
+  line-height: 1.2;
+  margin-bottom: 9px;
+}
+.reveal .course-plan-slide .plan-entry strong { color: #20384d; }
+
+
+/* Lecture 01: one visual trace per slide, with space for the teaching question. */
+.reveal .illustrated-slide > p { font-size: 29px; line-height: 1.25; margin: 12px 0; }
+.reveal .illustrated-slide > p > img { max-height: 340px; width: 100%; }
+.reveal h2 { font-size: 1.4em; }
+.reveal pre { font-size: 0.7em; }
+.reveal table { font-size: 0.78em; }
+.reveal #title-slide h1 { font-size: 1.8em; }
+
+/* Version chips: state versions read as labels, not prose. */
+.reveal .ver { display: inline-block; padding: 0.02em 0.45em; border-radius: 999px; font-size: 0.82em; font-weight: 600; line-height: 1.25; border: 1.5px solid; vertical-align: 0.06em; }
+.reveal .ver.v7 { background: #edf1f5; border-color: #a9b9c6; color: #3d5568; }
+.reveal .ver.v8 { background: #e3f4ea; border-color: #86c3a0; color: #1f6b43; }
+
+/* Ledger slide: two account statements side by side (lecturer, 2026-10-28). */
+.reveal .statements { display: flex; gap: 22px; margin: 14px 0 10px; }
+.reveal .statement { flex: 1; border: 1.5px solid #c6d5df; border-radius: 10px; padding: 10px 14px 6px; background: #fbfdfe; box-shadow: 0 2px 6px rgba(24, 52, 75, .06); font-size: 0.6em; }
+.reveal .statement .st-head { display: flex; justify-content: space-between; font-weight: 700; color: #18344b; border-bottom: 2px solid #18344b; padding-bottom: 4px; }
+.reveal .statement .st-meta { color: #5b6f7d; margin: 5px 0 4px; }
+.reveal .statement .st-meta b { color: #18344b; }
+.reveal .statement table { width: 100%; font-size: 1em; margin: 0; font-variant-numeric: tabular-nums; }
+.reveal .statement th, .reveal .statement td { padding: 0.28em 0.3em; border-bottom: 1px solid #e1e9ee; }
+.reveal .statement th { color: #5b6f7d; font-weight: 600; }
+.reveal .statement .num { text-align: right; white-space: nowrap; }
+.reveal .statement .debit { color: #b63842; font-weight: 600; }
+.reveal .statement .credit { color: #1f6b43; font-weight: 600; }
+.reveal .statement.ledger { font-size: 0.56em; margin: 10px 0; }
+.reveal .statement tr.hl td { background: #e7f3fb; }
+.reveal .statement tr.sum td { font-weight: 700; border-top: 2px solid #18344b; color: #18344b; }
+.reveal .statement tbody tr td { background: transparent; }
+.reveal .statement tbody tr:nth-child(odd) td, .reveal .statement tbody tr:nth-child(even) td { background: transparent; }
+.reveal .statement tbody tr.hl td { background: #e7f3fb; }
+.reveal .statement table tbody tr, .reveal .statement table tbody tr:nth-child(odd), .reveal .statement table tbody tr:nth-child(even) { background: transparent !important; }
+.reveal .statement table tbody tr.hl, .reveal .statement table tbody tr.hl td { background: #e7f3fb !important; }
+
+/* Outcomes slide copied from WA 01 (lecturer, 2026-10-28). */
+/* Outcomes slide: numbered cards with highlighted verb, prerequisites strip. */
+.reveal .outcomes-slide > p:first-of-type { font-size:24px; color:#536b7b; margin:0 0 14px; }
+.reveal .outcomes-slide ol { list-style:none; counter-reset:outcome; margin:0; padding:0; display:grid; gap:10px; }
+.reveal .outcomes-slide ol li { counter-increment:outcome; display:flex; align-items:center; gap:18px; margin:0; padding:10px 18px; font-size:26px; line-height:1.25; background:#f3f8fb; border:1px solid #d4e3ec; border-radius:14px; }
+.reveal .outcomes-slide ol li::before { content:counter(outcome); flex:0 0 38px; height:38px; border-radius:50%; background:#3886ad; color:#fff; font-weight:700; font-size:21px; display:flex; align-items:center; justify-content:center; }
+.reveal .outcomes-slide ol li strong { color:#105d80; }
+.reveal .outcomes-slide .prereq { margin-top:22px; padding:12px 18px; background:#fff8ec; border-left:5px solid #d5ad70; border-radius:10px; }
+.reveal .outcomes-slide .prereq p { margin:0; font-size:23px; line-height:1.35; }
+.reveal .outcomes-slide .prereq-label { display:inline-block; margin-right:10px; padding:2px 10px; border-radius:999px; background:#d5ad70; color:#fff; font-size:18px; font-weight:700; vertical-align:2px; }
+
+/* Bloom level badge on outcome cards (revised taxonomy). */
+.reveal .outcomes-slide .bloom { margin-left:auto; flex:0 0 auto; padding:3px 12px; border-radius:999px; font-size:17px; font-weight:600; border:1.5px solid; white-space:nowrap; }
+.reveal .outcomes-slide .b2 { background:#e7f3fb; border-color:#8cbad7; color:#184d70; }
+.reveal .outcomes-slide .b3 { background:#e6f4ee; border-color:#86c2a6; color:#1f6447; }
+.reveal .outcomes-slide .b4 { background:#f0ebfa; border-color:#b5a0d4; color:#594079; }
+.reveal .outcomes-slide .b5 { background:#fff2df; border-color:#d5ad70; color:#795219; }
+
+/* Outcomes: fixed layout (number left, Bloom badge right) so inline code does not split the text. */
+.reveal .outcomes-slide ol li { display:block; position:relative; padding:12px 175px 12px 74px; }
+.reveal .outcomes-slide ol li::before { position:absolute; left:18px; top:50%; transform:translateY(-50%); width:38px; display:flex; }
+.reveal .outcomes-slide .bloom { position:absolute; right:16px; top:50%; transform:translateY(-50%); margin:0; }
+.reveal .outcomes-slide ol li code { font-size:0.85em; }
+
+/* Variables and expressions (n, f, n ≥ 3f + 1) read as mathematics, not prose (lecturer, 2026-10-27). */
+.reveal .expr { font-family: "STIX Two Math", "STIX Two Text", "Cambria Math", "Times New Roman", serif; font-style: italic; font-size: 1.05em; color: #4a3a78; background: #f3effa; padding: 0 0.22em; border-radius: 0.25em; white-space: nowrap; }
+.reveal h2 .expr { color: inherit; background: none; padding: 0; }
+
+/* Attendance QR after the title slide, same as lecture 00 (lecturer, 2026-10-28). */
+.reveal .attendance-slide { text-align: center; }
+.reveal .attendance-slide .attendance-content { margin: 24px auto 0; width: 100%; }
+.reveal .attendance-slide .attendance-content p { margin: 0; }
+.reveal .attendance-slide .attendance-content p + p { margin-top: 0.35em; }
+.reveal .attendance-slide img { margin: 0; width: 455.4px; height: 455.4px; }
+.reveal .attendance-slide > h2::after { margin-left:auto; margin-right:auto; }
+
+/* Visible bridge to the next slide and step tags along the system we build (lecturer, 2026-10-28). */
+.reveal .bridge { display:block; margin-top:6px; font-size:24px; font-weight:600; color:#a0621c; }
+.reveal .bridge::before { content:"→ "; }
+.reveal .step-tag { display:inline-block; padding:2px 12px; border-radius:999px; background:#eef6fa; border:1.5px solid #9cc4da; color:#105d80; font-size:18px; font-weight:700; letter-spacing:.02em; }
+.reveal p:has(> .step-tag:only-child) { margin: 0 0 4px; line-height: 1; }
+
+/* Transactions are amber chips tx with a subscript, like the TRANSAKCIJA pills in diagrams (lecturer, 2026-10-29). */
+.reveal .tx { display: inline-block; padding: 0.02em 0.45em; border-radius: 999px; font-size: 0.82em; font-weight: 600; line-height: 1.25; border: 1.5px solid #ebcf9f; background: #fff6ea; color: #8a5a1c; vertical-align: 0.06em; }

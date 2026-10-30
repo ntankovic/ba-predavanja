@@ -1,0 +1,12 @@
+{
+  "number": 3,
+  "title_en": "Blockchain Foundations",
+  "title_hr": "Temelji blockchaina",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

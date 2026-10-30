@@ -1,0 +1,7 @@
+# Blockchain Applications {.unnumbered}
+
+**Planning foundation — not a completed textbook.**
+
+Trust and decentralization → consensus → cryptography → Bitcoin → Ethereum → Solidity → Web3 → IPFS → complete applications.
+
+Authoring proceeds in Croatian first. All 12 chapters are planned scaffolds.

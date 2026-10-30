@@ -1,0 +1,92 @@
+.reveal { font-size: 32px; }
+.reveal h1, .reveal h2 { color: #18344b; text-transform: none; }
+.reveal h2 { font-size: 1.55em; line-height: 1.15; margin-bottom: 0.6em; }
+.reveal #title-slide h1 { font-size: 2.0em; line-height: 1.1; max-width: 950px; }
+.reveal #title-slide .subtitle { color: #1585b4; margin-top: 0.9em; }
+.reveal #title-slide .quarto-title-author-name { font-size: 0.8em; }
+.reveal #title-slide .institute { font-size: 0.7em; }
+.reveal table { font-size: 0.86em; width: 100%; }
+.reveal table th, .reveal table td { padding: 0.45em; border-bottom: 1px solid #c5d5df; }
+.reveal img { object-fit: contain; }
+.reveal strong { color: #105d80; }
+
+
+.reveal pre { font-size: 0.65em; line-height: 1.25; }
+.reveal .slide > p:has(img) { text-align: center; margin: 0.25em 0; }
+.reveal .slide > p > img { margin: 0; max-height: 340px; }
+.reveal .example-slide > h2::before,
+.reveal .exercise-slide > h2::before {
+  display: table;
+  padding: 0.25em 0.7em;
+  margin-bottom: 0.6em;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+.reveal .example-slide > h2::before { content: "💡 Primjer"; background: #e7f3fb; color: #184d70; }
+.reveal .exercise-slide > h2::before { content: "✏️ Vježba"; background: #f0ebfa; color: #594079; }
+.reveal .references-slide { font-size: 0.78em; }
+.reveal .references-slide li { margin-bottom:0.45em; }
+
+/* Answer chips for classroom discussion. */
+.reveal .answer-chips p { display: flex; flex-wrap: wrap; gap: 0.65em; align-items: center; }
+.reveal .answer-chip { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.35em 0.75em; border-radius: 999px; border: 2px solid; font-size: 0.9em; }
+.reveal .answer-chip strong { color: inherit; }
+.reveal .answer-a { background: #e7f3fb; border-color: #8cbad7; color: #184d70; }
+.reveal .answer-b { background: #f0ebfa; border-color: #b5a0d4; color: #594079; }
+.reveal .answer-c { background: #fff2df; border-color: #d5ad70; color: #795219; }
+
+/* Three consistent cards; week badges separate sequence from explanation. */
+.reveal .course-plan-slide h2 { font-size: 1.4em; margin-bottom: 24px; }
+.reveal .course-plan-slide .plan-entry {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 142px;
+  margin: 0 0 14px;
+  padding: 18px 24px 18px 110px;
+  background: #f3f8fb;
+  border: 1px solid #d4e3ec;
+  border-radius: 16px;
+  text-align: left;
+}
+.reveal .course-plan-slide .plan-entry::before {
+  content: attr(data-week);
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #dfedf5;
+  color: #2d6688;
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.reveal .course-plan-slide .plan-entry p {
+  font-size: 24px;
+  line-height: 1.35;
+  margin: 0;
+  color: #435568;
+}
+.reveal .course-plan-slide .plan-entry p:first-child {
+  font-size: 27px;
+  line-height: 1.2;
+  margin-bottom: 9px;
+}
+.reveal .course-plan-slide .plan-entry strong { color: #20384d; }
+
+
+/* Attendance QR after the title slide, same as lecture 00 (lecturer, 2026-10-28). */
+.reveal .attendance-slide { text-align: center; }
+.reveal .attendance-slide .attendance-content { margin: 24px auto 0; width: 100%; }
+.reveal .attendance-slide .attendance-content p { margin: 0; }
+.reveal .attendance-slide .attendance-content p + p { margin-top: 0.35em; }
+.reveal .attendance-slide img { margin: 0; width: 455.4px; height: 455.4px; }
+.reveal .attendance-slide > h2::after { margin-left:auto; margin-right:auto; }

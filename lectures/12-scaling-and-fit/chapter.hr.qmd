@@ -1,0 +1,51 @@
+---
+title: "Skaliranje, ograničenja i kada koristiti blockchain"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Usporediti L1, L2 i centraliziranu izvedbu
+- Procijeniti pretpostavke mostova i privatnosti
+- Obraniti izbor ili odbacivanje blockchaina
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Treba li ovoj aplikaciji blockchain i koju cijenu zbog toga plaćamo?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+L2s and rollups; bridges; interoperability; privacy; performance/cost trade-offs; decentralization–scalability–security trade-offs; permissioned blockchains; evaluating whether an application actually needs blockchain
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Usporediti isti registar na L1, L2 i običnoj bazi; obrazložiti trošak, povjerenje i dostupnost.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

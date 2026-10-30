@@ -1,0 +1,49 @@
+---
+title: "Blockchain Foundations"
+lang: en
+---
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+## Learning outcomes
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem and prerequisites
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Concepts and assumptions
+
+Hash functions; hash pointers; Merkle trees; digital signatures; public/private keys; transactions; blocks; append-only ledgers; immutability; blockchain as replicated state
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Scenario and state trace
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Failure and improved design
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Discussion and checks
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Recap and references
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

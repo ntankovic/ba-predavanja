@@ -1,0 +1,51 @@
+---
+title: "Arhitekture blockchain aplikacija"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Raspodijeliti odgovornosti on-chain/off-chain
+- Identificirati preostalo povjerenje u usluge
+- Obrazložiti cjelovitu arhitekturu
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Koji dio aplikacije treba zajednički konsenzus, a koji ne?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+On-chain vs off-chain computation/storage; oracles; indexers; IPFS; backend services; identity; tokens; NFTs; DAOs; supply chain; provenance; DeFi; hybrid architectures
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Dodati pretragu/indexer i prikaz izvora podataka; usporediti scenarije provenijencije, DAO-a i DeFi-ja.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

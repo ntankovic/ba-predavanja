@@ -1,0 +1,51 @@
+---
+title: "Bitcoin i dokaz rada"
+lang: hr
+---
+
+**PLAN — sadržaj još nije razrađen ni pregledan.**
+
+## Ishodi učenja
+
+- Pratiti trošenje UTXO-a
+- Objasniti ulogu rada u izboru lanca
+- Analizirati račvanje i rizik dvostrukog trošenja
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem i predznanje
+
+Kako otvorena mreža bira povijest bez glasovanja po identitetu?
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Pojmovi i pretpostavke
+
+Bitcoin architecture; UTXO model; transactions; mining; PoW; difficulty; longest/heaviest-chain rule; forks; confirmations; double spending; incentives; 51% attacks
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Primjer i tijek stanja
+
+Dvije transakcije pokušavaju potrošiti isti izlaz; pratiti privremene grane i potvrde.
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Ispad i poboljšani dizajn
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Rasprava i provjera razumijevanja
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Sažetak i literatura
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

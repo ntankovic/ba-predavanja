@@ -1,0 +1,7 @@
+# Blockchain aplikacije {.unnumbered}
+
+**Plan materijala — nije dovršen udžbenik.**
+
+Povjerenje i decentralizacija → konsenzus → kriptografija → Bitcoin → Ethereum → Solidity → Web3 → IPFS → cjelovite aplikacije.
+
+Materijali se prvo razvijaju na hrvatskom. Svih 12 poglavlja zasad su planirani nacrti.

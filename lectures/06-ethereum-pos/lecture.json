@@ -1,0 +1,12 @@
+{
+  "number": 6,
+  "title_en": "Proof of Stake and Modern Ethereum",
+  "title_hr": "Dokaz uloga i moderni Ethereum",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

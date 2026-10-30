@@ -1,0 +1,12 @@
+{
+  "number": 7,
+  "title_en": "Smart Contracts with Solidity",
+  "title_hr": "Pametni ugovori u Solidityju",
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  }
+}

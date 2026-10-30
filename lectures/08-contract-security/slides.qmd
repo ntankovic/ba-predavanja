@@ -1,0 +1,82 @@
+---
+title: "Smart Contract Design and Security"
+subtitle: "Blockchain Applications · 08"
+lang: en
+format:
+  revealjs:
+    css: assets/lecture.css
+    width: 1120
+    height: 700
+    center: false
+---
+
+## Learning outcomes
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Problem and prerequisites
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Concepts and assumptions
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+Checks-effects-interactions; reentrancy; access control; integer/economic errors; oracle problem; front-running/MEV; upgradeability; testing; why immutable code changes software engineering
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Scenario and state trace
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Failure and improved design
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Discussion and checks
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+
+## Recap and references
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+
+
+::: {.notes}
+Planning only: use README.md allocation; replace with teaching notes after authoring.
+:::
+

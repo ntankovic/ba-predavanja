@@ -1,0 +1,49 @@
+---
+title: "Web3 Application Development"
+lang: en
+---
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+## Learning outcomes
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem and prerequisites
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Concepts and assumptions
+
+dApp architecture; wallets; signing; RPC; JSON-RPC; ABI; ethers/web3 libraries; reading blockchain state; submitting transactions; events; connecting frontend ↔ wallet ↔ smart contract
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Scenario and state trace
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Failure and improved design
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Discussion and checks
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Recap and references
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+

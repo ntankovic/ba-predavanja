@@ -1,0 +1,49 @@
+---
+title: "From Distributed to Decentralized Systems"
+lang: en
+---
+
+**PLANNING SCAFFOLD — not authored or reviewed teaching material.**
+
+## Learning outcomes
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Problem and prerequisites
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Concepts and assumptions
+
+Distributed vs decentralized vs peer-to-peer; trusted coordinator; replication; fault models; partial failures; Byzantine faults; why decentralization changes the problem
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Scenario and state trace
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Failure and improved design
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Discussion and checks
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
+## Recap and references
+
+
+
+<!-- Develop from the brief; verify claims and sources before review. -->
+
