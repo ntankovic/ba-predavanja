@@ -201,3 +201,5 @@ Confirm teaching staff, prerequisites, credits, assessment, project teams, deadl
 Use asynchronous Google Chat as the primary channel for course questions and project discussion. The lecturer strongly prefers it over consultations and email. Do not promote email or consultation appointments as the normal first contact. The Google Chat group is **FIPU BA** (lecturer confirmed 2026-10-12); exam-defence booking is a separate administrative step.
 
 Uvod u 01 motivira decentralizaciju isključivom administratorskom ovlašću jedne organizacije nad zajedničkim budžetom. Sukob isplata 80/60 služi tek kasnije za analizu stanja i konkurentnosti; sam po sebi ne opravdava decentralizaciju.
+
+- Lecturer decision 2026-11-02: Lecture 00 also has a Croatian student chapter (`chapter.hr.qmd`), built as a standalone PDF and published on the course site; it stays out of the book, and there is no English chapter yet.

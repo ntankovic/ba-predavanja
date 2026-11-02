@@ -108,3 +108,10 @@ Otvoreno za nastavnika:
 - 2026-10-20 (v1.3): stablo „Trebate li *blockchain*?” preuređeno je prema nastavniku: dijeljenje → međusobno povjerenje → jedan dionik od povjerenja → poznati dionici (privatni ili javni *blockchain*). Zaključne rečenice i bilješke su usklađene. Verzija slajdova prikazuje se u podnožju (`slides_version` u lecture.json).
 - 2026-10-20 (v1.4): slajd 17 „Još neki razlozi…” spominje GDPR (pravo na brisanje); u bilješkama su čl. 16 i 17.
 - 2026-10-20 (v1.9): verzija postavljena na 1.9 po nastavnikovoj uputi.
+
+## Hrvatsko poglavlje (PDF skripta), 2026-11-02
+
+Na nastavnikov zahtjev dodan je `chapter.hr.qmd`, pisani pratitelj uvoda izveden iz hrvatskog deka (v1.9); nema novih pravila, a napomene „treba potvrditi” iz bilješki deka i dalje vrijede za isti tekst. Poglavlje nije u knjizi; `lecture.json` i dalje označava format samo sa slajdovima za knjigu i `verify_builds.py`. Engleskog poglavlja nema. `scripts/build.py all` sada gradi samo jezik koji ima izvor.
+
+- Build: `just lecture 00-course-introduction` → `output/hr/lectures/00-course-introduction.pdf` (15 stranica); sve stranice vizualno pregledane.
+- [ ] Nastavnikov pregled teksta poglavlja.

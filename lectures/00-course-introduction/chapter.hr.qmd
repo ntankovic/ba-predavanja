@@ -1,0 +1,352 @@
+---
+title: "Uvod u kolegij"
+lang: hr
+language:
+  crossref-fig-title: "Slika"
+  crossref-fig-prefix: "slika"
+  crossref-tbl-title: "Tablica"
+  crossref-tbl-prefix: "tablica"
+---
+
+## Čemu služi ovaj tekst
+
+Ovo je pisani pratitelj uvodnog predavanja. Opisuje kako je kolegij organiziran, gdje pronaći materijale i pomoć, kako odabrati i izraditi projekt te kako se određuje ocjena. Tehnički sadržaj počinje u predavanju 01.
+
+Pročitajte ga na početku semestra i vratite mu se kada birate temu projekta i prije predaje. Ako se neko pravilo ovdje i na službenim mjestima kolegija razlikuje, vrijedi ono što nastavnik objavi na Moodleu i javnom webu kolegija.
+
+## Kolegij ukratko
+
+### Čime se kolegij bavi
+
+Središnje pitanje kolegija glasi: **tko provjerava i prihvaća promjene zajedničkog stanja?** Korisnik predlaže radnju, pametni ugovor provjerava pravila, a mreža se usuglašava o prihvaćenom stanju (Slika [-@fig-intro-focus]). Put kroz kolegij vodi od povjerenja i konsenzusa do pametnog ugovora i korisničkog sučelja.
+
+![Korisnik predlaže radnju, pametni ugovor provjerava pravila, a mreža se usuglašava o prihvaćenom stanju.](assets/course-focus.hr.pdf){#fig-intro-focus width=100% fig-pos="H" fig-alt="Korisnik predlaže radnju, pametni ugovor provjerava pravila, mreža se usuglašava o prihvaćenom stanju."}
+
+Nakon kolegija trebali biste moći:
+
+1. objasniti zašto je povjerenje važno pri usuglašavanju stanja;
+2. izraditi i testirati pametni ugovor te povezati korisničko sučelje;
+3. odlučiti što pripada *blockchainu*, a što drugim dijelovima aplikacije;
+4. obrazložiti treba li odabranoj aplikaciji *blockchain*.
+
+### Tko odlučuje koji zapis vrijedi?
+
+Zamislite tri organizacije koje upravljaju zajedničkim digitalnim budžetom (Slika [-@fig-intro-shared]). Svaka ima vlastite zapise, a sve trebaju zajednički prihvaćenu povijest isplata. Mogu koristiti ugovor, posrednika i pravnu zaštitu. Pitanje kolegija je drugo: **možemo li provjeravati odluke bez isključive kontrole jednog operatora?** Ovo je nastavni primjer, a ne obvezna projektna tema.
+
+![Organizacije A, B i C imaju vlastite zapise i trebaju zajednički prihvaćenu povijest isplata.](assets/shared-record.hr.pdf){#fig-intro-shared width=100% fig-pos="H" fig-alt="Organizacije A, B i C imaju vlastite zapise i trebaju zajednički prihvaćenu povijest isplata."}
+
+### Nastavnici i komunikacija
+
+| Dio nastave | Nastavnik |
+|:---|:---|
+| Predavanja | izv. prof. dr. sc. Nikola Tanković |
+| Vježbe | Luka Sever, mag. comp. |
+
+- **Google Chat, grupa „FIPU BA”:** primarni kanal za pitanja o kolegiju i dogovor projekta. Pišite **asinkrono** i ne očekujte trenutačan odgovor.
+- **Moodle (e-učenje):** [e-ucenje.unipu.hr](https://e-ucenje.unipu.hr)
+- **Javni web kolegija:** [ntankovic.unipu.hr/ba](https://ntankovic.unipu.hr/ba)
+
+Za projekt pošaljite kratak opis problema i predloženog opsega. Za tehničko pitanje navedite očekivani i stvarni rezultat te mali primjer koji ponavlja problem.
+
+### Plan nastave
+
+Puna tehnička predavanja traju 90–120 minuta, s raspravom i ponavljanjem.
+
+| Tjedan | Tema | Pitanje ili cilj |
+|:--|:----------|:------------------|
+| 01 | Od raspodijeljenih do decentraliziranih sustava | Polazimo od zajedničkih podataka i granica povjerenja. |
+| 02 | Konsenzus i problem bizantskih generala | Kako postići dogovor ako sudionici mogu slati proturječne poruke? |
+| 03 | Temelji *blockchaina* | Povezujemo transakcije i provjerljive zapise u *blockchain*. |
+| 04 | Bitcoin i dokaz rada | Kako otvorena mreža bira zajedničku povijest? |
+| 05 | Ethereum i programabilni *blockchain* | Kako transakcija može izvršiti program i promijeniti stanje? |
+| 06 | Dokaz uloga i moderni Ethereum | Odvajamo izvršavanje programa od dogovora o blokovima. |
+| 07 | Pametni ugovori u Solidityju | Pišemo prvi ugovor i pratimo promjene njegova stanja. |
+| 08 | Dizajn i sigurnost pametnih ugovora | Provjeravamo ovlasti, testiramo i analiziramo pogreške. |
+| 09 | Razvoj Web3 aplikacija | Povezujemo sučelje, novčanik i pametni ugovor. |
+| 10 | Decentralizirana pohrana i IPFS | Rješavamo pohranu datoteka izvan *blockchaina*. |
+| 11 | Arhitekture *blockchain* aplikacija | Povezujemo ugovor, pohranu i ostale usluge u aplikaciju. |
+| 12 | Skaliranje, ograničenja i kada koristiti *blockchain* | Uspoređujemo rješenja i obrazlažemo izbor arhitekture. |
+
+## Predavanja i sudjelovanje
+
+**Dolazak na predavanja i vježbe nije obvezan.** Ako dolazite, evidentirajte prisutnost QR kodom ili poveznicom [bit.ly/bc-tu-sam](https://bit.ly/bc-tu-sam) i aktivno sudjelujte: postavljajte pitanja, predvidite rezultat i objasnite svoje odluke. Evidencija ne predstavlja bodovni prag.
+
+AI dobro objašnjava pojmove, a materijali su vam dostupni i bez dolaska. Ako na predavanju samo slušate, to vam je često dovoljno. Uživo dobivate nešto drugo:
+
+- **odgovor na vlastito pitanje**, dok zabuna nastaje i na vašem primjeru;
+- **prioritete**: što je bitno za projekt i obranu, a što je samo zanimljivo;
+- **razmišljanje naglas**: kako se rješava problem bez gotovog odgovora, s kompromisima i greškama;
+- **raspravu s kolegama**: isti problem ima više obranjivih rješenja, a obrana traži upravo to;
+- **stakeholdera vašeg projekta**: nastavnik glumi naručitelja koji ima svoje interese, mijenja zahtjeve i odlučuje je li rješenje prihvatljivo. To AI ne može vjerodostojno odglumiti.
+
+| Ako ste… | Predavanje vam daje… |
+|:---|:---|
+| samouki, s AI-jem i materijalima | provjeru razumijete li zaista; dođite barem kad zapnete |
+| netko kome treba ritam | strukturu tjedna i manje gradiva za kraj semestra |
+| tihi, ne volite pitati naglas | slušanje bez pritiska; pitanja možete postaviti u Google Chatu „FIPU BA” |
+| zaposleni ili s obvezama | materijale i pitanja u Chatu; dođite kad možete |
+| usmjereni na ocjenu | način razmišljanja koji se traži na obrani |
+
+Dođite kad vam to nešto daje. Ako dođete, sudjelujte.
+
+## Trebate li *blockchain*?
+
+### Od ideje do aplikacije
+
+Projekt počinje problemom i korisnicima, a ne tehnologijom. Iz problema slijede odluke o podacima i pravilima, zatim implementacija i provjera ponašanja; rezultati provjere vode doradi (Slika [-@fig-intro-path]).
+
+![Od problema i korisnika do provjerenog ponašanja.](assets/project-path.hr.pdf){#fig-intro-path width=100% fig-pos="H" fig-alt="Problem i korisnici vode odluci o podacima i pravilima, zatim implementaciji i naposljetku provjeri ponašanja. Rezultati provjere služe doradi."}
+
+**Svaki izbor treba razlog.** Za svoj projekt odgovorite:
+
+- Što postiže *blockchain* u vašem primjeru? Kako biste isti problem riješili običnom bazom?
+- Koje su **prednosti i nedostaci** u odnosu na običnu bazu? Prednost je zajednička provjera pravila i povijesti bez jednog administratora. Nedostaci su trošak i sporost zapisa, javnost podataka i teška izmjena već postavljenog ugovora.
+- Može li, i treba li, rješenje biti **hibridno**? To je uobičajeno: na *blockchainu* ostaju pravila i stanje kojima sudionici moraju zajednički vjerovati, a datoteke, pretraživanje i osobni podaci ostaju izvan njega.
+
+### Stablo odluke
+
+Stablo na slikama [-@fig-intro-tree1] i [-@fig-intro-tree2] vodi kroz četiri pitanja: dijeli li se stanje, vjeruju li si dionici međusobno, postoji li dionik kojemu svi vjeruju i poznaju li se dionici.[^tree]
+
+[^tree]: Stablo je nastavnikovo, inspirirano radom K. Wüst i A. Gervais, „Do you need a Blockchain?”, IEEE CVCBT 2018, slika 1, <https://eprint.iacr.org/2017/375>.
+
+![Ako stanje služi samo jednom dioniku, dovoljni su datoteka ili mala baza. Ako si dionici koji dijele stanje međusobno vjeruju, dovoljna je obična baza.](assets/need-blockchain-1.hr.pdf){#fig-intro-tree1 width=100% fig-pos="H" fig-alt="Prvi dio stabla odluke: dijeli li se stanje i vjeruju li si dionici međusobno."}
+
+![Ako svi vjeruju barem jednom dioniku, baza je kod njega. Inače: privatni blockchain s dozvolama ako se dionici poznaju, javni ako se ne poznaju.](assets/need-blockchain-2.hr.pdf){#fig-intro-tree2 width=100% fig-pos="H" fig-alt="Drugi dio stabla odluke: postoji li dionik kojemu svi vjeruju i poznaju li se dionici."}
+
+***Blockchain* ima smisla tek kad dionici dijele stanje, a nema nikoga kome svi vjeruju.** Provucite svoju ideju kroz stablo: gdje izlazi?
+
+### Još neki razlozi protiv
+
+| Razlog | Objašnjenje | Primjer |
+|:-----|:----------|:----------|
+| Stanje se mijenja, povijest ne | Ako zapise morate brisati ili prepravljati, *blockchain* nije dobar izbor. | Web-trgovina u kojoj kupac traži brisanje računa i svojih podataka. |
+| Osobni podaci ne idu na *blockchain* | GDPR jamči pravo na brisanje, a zapis se ne može obrisati. Šifra s vremenom može pasti, a goli sažetak (*hash*) često se može pogoditi. | Zdravstveni karton ostaje u bolnici; na *blockchainu* najviše dokaz da zapis postoji. |
+| Nepromjenjiv zapis nije isto što i *blockchain* | Potpisani javni dnevnik s revizorima često je dovoljan. | Certificate Transparency, javni dnevnici TLS certifikata, bez *blockchaina*. |
+| Povjerenje ima cijenu | Svaki zapis plaća naknadu i čeka potvrdu. Baza je brža. | Bitcoin cilja jedan blok svakih 10 min (oko 7 transakcija/s); kartične mreže obrađuju tisuće u sekundi. |
+
+**Za svoj projekt napišite zašto vam treba *blockchain*, a zašto ne bi bila dovoljna baza.**
+
+## Projekt
+
+### Projektni zadatak
+
+Predložite temu i dogovorite opseg s nastavnikom. Moguće su tri vrste projekta:
+
+| Vrsta projekta | Uvjet |
+|:---|:---|
+| Aplikacija nad *blockchainom* | samostalno ili u timu od 2–3 studenta |
+| Pametni ugovor | moguć za samostalan rad |
+| Jednostavni *blockchain* | alternativa, uz odobrenje teme |
+
+**Obrana projekta je individualna.**
+
+U aplikaciji objasnite **vezu između njezinih dijelova**:
+
+| Dio aplikacije | Pitanje za vaš projekt |
+|:---|:---|
+| Pametni ugovor | Koja pravila i stanje trebaju zajedničku provjeru? |
+| Korisničko sučelje | Kako korisnik traži promjenu i prati ishod? |
+| Pohrana i ostale usluge | Gdje su datoteke i podaci za pretraživanje? |
+
+### Ideje za projekte
+
+**Svaka tema treba razlog za zajedničku provjeru.** Sljedeće ideje polaze od više sudionika koji ne žele kontrolu jednog administratora:
+
+- **01 · Zajednički budžet.** Trošenje odobrava više neovisnih potpisnika. Ugovor vodi ovlasti, prijedloge isplate i potvrde.
+- **02 · Prikupljanje sredstava.** Ugovor čuva uplate i provodi uvjete isplate ili povrata. Vodi cilj, rok i ishod prikupljanja.
+- **03 · Glasovanje o fondu.** Poznati članovi odlučuju o zajedničkim sredstvima. Ugovor vodi članstvo, glasove i provedbu odluke.
+- **04 · Registar potvrda.** Fakulteti izdaju i opozivaju diplome, a poslodavac ih provjerava. Ugovor vodi ovlasti izdavatelja, izdavanje i opoziv te dokaz bez osobnih podataka.
+
+Financijske primjere izvodite samo sa simuliranim sredstvima na testnoj mreži.
+
+**Misao vodilja: zajednička pravila bez upravitelja.** Za financijsku i drugu imovinu, potvrde ili glasovanje pravila su zapisana u ugovoru, a nitko ih ne može sam zaobići:
+
+- **pravila unaprijed:** uvjete, rokove, isplatu ili povrat ugovor provodi sam;
+- **više vlasnika:** višepotpisni novčanik isplaćuje tek uz potvrdu dogovorenog broja vlasnika;
+- **transparentnost:** javni proračun, zalog ili izdane potvrde, s poviješću koju svatko može provjeriti;
+- **ključevi i sigurnost:** kako zaštititi sredstva i oporaviti pristup bez jednog administratora?
+
+Glasovanje koristite uz oprez: prikladno je za manje odluke poznatih članova, a ne za izbore.
+
+**Još područja za projekte:**
+
+| Područje | Primjeri |
+|:---|:---|
+| Financije | štednja, zajednički novčanik, kvadratno financiranje javnih dobara |
+| Igre | na sreću ili spretnost; problem nasumičnosti na *blockchainu* |
+| Upravljanje | udruga, zajednička imovina, glasovanje i odluke članova |
+| Stvaratelji sadržaja | financiranje i prikupljanje sredstava bez platforme posrednika |
+| Potvrde i identitet | provjerljive potvrde, bez osobnih podataka na *blockchainu* |
+| Istraživanje | BFT algoritmi, simulacije, ZK dokazi, skaliranje; dobro za RITR i diplomski rad |
+
+Svaka tema prolazi stablo „Trebate li *blockchain*?”.
+
+### Prijedlog teme: četiri pitanja
+
+1. **Tko su korisnici** i što žele postići?
+2. **Zašto im treba zajedničko stanje** i kome vjeruju?
+3. **Što ćete implementirati**, a što ostaje izvan opsega?
+4. **Kako ćete pokazati da radi**, uključujući neuspješan pokušaj?
+
+Prijedlog teme odobrava nastavnik.
+
+### Nadogradnja ranije aplikacije
+
+Možete zatražiti da projekt bude **nadogradnja aplikacije s prethodnog kolegija**, ako je ta aplikacija ocijenjena ocjenom **vrlo dobar (4) ili izvrstan (5)**. U zahtjevu nastavniku predstavite postojeću aplikaciju i predložite što biste nadogradili. To nije automatski prijenos stare ocjene; ostala pravila projekta i odobravanja tehnologija i dalje vrijede.
+
+### Nadogradnja aplikacije za diplomski rad
+
+Uz odobrenje nastavnika aplikaciju možete po želji nadograđivati za **RITR** (5. godina) i **diplomski rad** (kraj studija). Isti rad ne vrednuje se dvaput: procjenjuje se samo dodani dio, pa on mora biti jasno razgraničen.
+
+| Rad | ECTS | Približan opseg dodanog rada |
+|:---|:---|:---|
+| RITR | 6 | ≈ 180 sati |
+| Diplomski rad | 30 | ≈ 900 sati |
+
+Sati slijede iz zakonske definicije: jedan ECTS bod predstavlja 30 sati prosječnog studentskog rada.[^ects] Svaki rad ima **vlastiti repozitorij**. U README-u navedite što je napravljeno prije, što kasnije i za koji kolegij ili rad.
+
+[^ects]: Zakon o visokom obrazovanju i znanstvenoj djelatnosti, NN 119/22, čl. 67. st. 2., <https://narodne-novine.nn.hr/clanci/sluzbeni/2022_10_119_1834.html>.
+
+## Predznanje i tehnologije
+
+### Predznanje i priprema
+
+Za praktični dio obnovite znanja koja već koristite u programiranju:
+
+- **funkcije i podaci:** strukture podataka, uvjeti i pogreške;
+- **JavaScript:** osnove jezika i korisničkog sučelja;
+- **asinkroni rad:** pozivi i razmjena podataka;
+- **Git i testovi:** pokretanje projekta i provjera rezultata.
+
+To su preporuke za pripremu, a ne formalni uvjeti upisa. **Solidity i pojmove *blockchaina* uvodimo postupno.**
+
+### Tehnologije u primjerima
+
+| Dio | Tehnologija | Namjena |
+|:---|:---|:---|
+| Pametni ugovori | Solidity | jezik pametnih ugovora |
+| | Foundry | testovi i lokalni *blockchain* |
+| | OpenZeppelin | provjereni gotovi ugovori |
+| Korisničko sučelje | Vue 3 | korisničko sučelje |
+| | Vite | razvojni poslužitelj i izgradnja |
+| | Pinia | stanje aplikacije |
+| | viem | veza s *blockchainom* i novčanikom |
+| Pohrana i pozadina | IPFS | datoteke i metapodaci |
+| | web3.py | ako je pozadina u Pythonu |
+
+**Za druge projektne tehnologije zatražite prethodno izričito odobrenje nastavnika.**
+
+## AI i provjera razumijevanja
+
+**AI je dopušten.** Koristite ga za tehnologije obrađene na predavanjima ili odobrene od profesora. Izbor AI alata ne mijenja pravilo o odobrenju projektnih tehnologija.
+
+Podjela uloga prikazana je na slici [-@fig-intro-ai]: vi određujete zahtjeve i arhitekturu, AI predlaže kod, a vi ga provjeravate, testirate i obrazlažete odluke.
+
+![Vi vodite rad, AI predlaže. Odgovornost za kod i odluke ostaje na vama.](assets/ai-responsibility.hr.pdf){#fig-intro-ai width=100% fig-pos="H" fig-alt="Vi određujete zahtjeve i arhitekturu; AI predlaže kod; vi provjeravate, testirate i obrazlažete odluke."}
+
+Razumijte **svaku liniju koda**. Obrazložite svaki izbor, alternative i kompromise.
+
+> **Arhitektura je skup informiranih odluka. Dokažite svoje.**
+
+**Primjer.** Skriven gumb u sučelju ne sprječava izravan poziv ugovora. Kako biste drugim računom provjerili da ugovor doista provjerava ovlasti?
+
+**Zapise razgovora s AI-jem ne predajete.** Dovoljni su commitovi i obrana. Po želji u README-u projekta možete dodati odjeljak „Uporaba AI-ja”: koje ste alate koristili, za što i kako ste provjerili rezultat.
+
+**Preporučeni alati.** Za rad na kodu projekta, objašnjenja i provjere preporučuje se [Claude Code](https://code.claude.com/docs/en/overview); za ideje za sučelje i interaktivne prototipove [Claude Design](https://claude.com/product/design); za razumijevanje promjena i pregled koda [Codex](https://learn.chatgpt.com/docs/code-review). Za istraživanje su dostupni i otvoreni modeli, na primjer [Qwen3-Coder](https://github.com/QwenLM/Qwen3-Coder) i [DeepSeek-Coder-V2](https://github.com/deepseek-ai/DeepSeek-Coder-V2). Njihove su težine dostupne za preuzimanje, ali za pokretanje trebaju odgovarajući alat i računalo, a licence ovise o modelu.
+
+## Commitovi i individualni doprinos
+
+Na projektu radite **kontinuirano**: **nekoliko commitova tjedno** kroz najmanje **2–3 tjedna**. Autentičnost commitova se provjerava, a u timskom projektu prati se rad svakog člana. Projekt izrađen u nekoliko dana ili s jednim commitom ne zadovoljava traženi način rada.
+
+![Izmišljeni primjer povijesti commitova. Uz svaki commit vidljivi su autor, opis promjene i datum.](assets/github-history.hr.pdf){#fig-intro-commits width=100% fig-pos="H" fig-alt="Izmišljeni primjer šest commitova od 3. do 20. studenoga, nekoliko tjedno: Ana tri, Marko dva, Iva jedan. Uz svaki commit vidljivi su autor, opis promjene i datum."}
+
+Broj commitova sam po sebi ne pokazuje kvalitetu doprinosa; pregledava se sadržaj promjena. Timski rezultat ne zamjenjuje individualno razumijevanje: budite spremni objasniti vlastite promjene.
+
+## Kako položiti kolegij
+
+### Tijek polaganja
+
+Slika [-@fig-intro-flow] prikazuje izvorni nastavnikov BPMN hodogram polaganja. Projekt i vježbe odvijaju se paralelno, a nakon negativnog ishoda slijedi ponovna prijava.
+
+![Izvorni hodogram polaganja kolegija. Na slici su povijesne napomene; vrijede aktualna pravila: predaja najmanje 3 **radna** dana prije obrane (pravilo od 7 dana više ne vrijedi), nekoliko commitova tjedno kroz najmanje 2–3 tjedna te oslobođenje uz pozitivnu ocjenu iz vježbi i odluku nastavnika.](assets/assessment-flow.original.png){#fig-intro-flow width=100% fig-pos="H" fig-alt="Izvorni nastavnikov BPMN hodogram prolaska kolegija. Povijesni rokovi i uvjeti na slici pojašnjeni su u opisu slike i u tekstu."}
+
+**Oslobođenje od usmenog ispita** omogućuju pozitivna ocjena iz vježbi i projekt bez spornih dijelova, uz odluku nastavnika; nije automatsko pravo. Oslobođenje vrijedi do kraja akademske godine. Nastavnik zadržava pravo pozvati bilo kojeg studenta na usmeni ispit.
+
+### Predaja i obrana: brojite radne dane
+
+**Gotov projekt uvjet je za pristup ispitu.** Projekt predajete najmanje **3 radna dana prije obrane**, a obrana je najkasnije na dan ispitnog roka. Prijavite ispitni rok i naznačite ako ste oslobođeni usmenog.
+
+Termin obrane rezervirate na [ntankovic.unipu.hr/termin](https://ntankovic.unipu.hr/termin). Termini se otvaraju 10 dana unaprijed, pa rezervirajte čim znate datum predaje.
+
+Tri radna dana nisu tri kalendarska dana. Za obranu u srijedu predaja je najkasnije prethodni petak, jer se subota i nedjelja ne broje (Slika [-@fig-intro-calendar]). Blagdani se također ne broje kao radni dani.
+
+![Primjer brojanja radnih dana, bez blagdana.](assets/submission-calendar.hr.pdf){#fig-intro-calendar width=100% fig-pos="H" fig-alt="Primjer bez blagdana: za obranu u srijedu predaja je najkasnije prethodni petak."}
+
+### Kako se određuje ocjena
+
+**Konačna ocjena temelji se na prosjeku ocjena iz predavanja i vježbi.** Prosjek se zaokružuje na cijelu ocjenu, a polovica se zaokružuje naviše.
+
+**Primjer.** Projekt iz predavanja ocijenjen je ocjenom 5, a vježbe ocjenom 2. Prosjek je 3,5, pa je konačna ocjena 4.
+
+Ako ocjena iz vježbi **nedostaje ili je 1**, slijedi **usmeni ispit**, a **ocjena usmenog tada je konačna ocjena**. Ne računa se prosjek usmenog i projekta.
+
+### Ako projekt ne obranite ove godine
+
+Akademska godina završava **30. rujna**. Godišnji odmor nastavnika traje od 20. srpnja do 25. kolovoza (Slika [-@fig-intro-year]). Taj datum nije zajamčeni ispitni termin, a godišnji odmor nije službena promjena rasporeda ispitnih rokova.
+
+![Kraj akademske godine i godišnji odmor nastavnika.](assets/academic-year.hr.pdf){#fig-intro-year width=100% fig-pos="H" fig-alt="Godišnji odmor nastavnika: od 20. srpnja do 25. kolovoza. Akademska godina završava 30. rujna."}
+
+Neuspješan pojedinačni izlazak na ispit ne znači odmah novu temu. Ali ako projekt ne obranite do završetka akademske godine:
+
+- ponovno prijavljujete projekt,
+- izrađujete **novi projekt samostalno** i branite ga.
+
+Prijedlog novog projekta odobrava nastavnik.
+
+### Znanje za usmeni ispit
+
+**Povežite pojmove s odlukama u vlastitom projektu.** Usmeni ispit obuhvaća:
+
+- povjerenje, raspodijeljenost, decentralizaciju i konsenzus;
+- transakcije, stanje i osnove *blockchaina*;
+- pametne ugovore, ovlasti, testiranje i sigurnost;
+- Web3, pohranu i arhitekturu aplikacije.
+
+Budite spremni objasniti korišteni kod, biblioteke i njihove pretpostavke.
+
+## Kako se pripremiti za obranu
+
+### Pokažite razumijevanje projekta
+
+Na obrani ne pokazujete samo da projekt radi, nego i da razumijete zašto radi. Slika [-@fig-intro-evidence] prikazuje tri koraka: predvidite rezultat, pratite radnju kroz sučelje i ugovor te objasnite promjenu stanja.
+
+![Tri koraka objašnjenja projekta.](assets/ba-evidence.hr.pdf){#fig-intro-evidence width=100% fig-pos="H" fig-alt="Predvidite rezultat, pratite radnju kroz sučelje i ugovor, objasnite promjenu stanja."}
+
+Pratite **korisničku radnju, poziv ugovora i promjenu stanja**. Pokažite uspješan pokušaj i pokušaj koji mora biti odbijen. Koristite lokalno okruženje i testne podatke.
+
+### Dorada projekta: objasnite izmjenu
+
+Umjesto izmjene koda uživo objašnjavate doradu na vlastitom projektu (Slika [-@fig-intro-change]): gdje bi izmjena išla u ugovoru, sučelju i pohrani, kako biste je proveli i koje su posljedice za stanje, ovlasti i testiranje. Nastavnik zatim postavlja potpitanja. Manju izmjenu po potrebi možete pokazati u kodu, bez AI alata, lokalno i na testnim podacima.
+
+![Tri koraka objašnjenja izmjene na vlastitom projektu.](assets/design-change.hr.pdf){#fig-intro-change width=100% fig-pos="H" fig-alt="Tri koraka: gdje bi išla izmjena u ugovoru, sučelju i pohrani; kako biste je proveli; koje su posljedice za stanje, ovlasti i testiranje."}
+
+Primjeri pitanja (pitanja se biraju prema projektu, pa ih ne dobiva svaki student):
+
+- Kako biste dodali **rok** nakon kojeg ugovor odbija nove uplate ili glasove?
+- Gdje biste dodali **novu ulogu** i tko je smije dodijeliti?
+- Što se događa ako se **ista transakcija** pošalje dvaput?
+- Što se događa sa stanjem već postavljenog ugovora i kako biste testom pokazali i uspješan i odbijeni slučaj?
+
+## Kontrolni popis
+
+Prije prvog tehničkog predavanja trebali biste znati:
+
+- [ ] gdje postaviti pitanja (Google Chat, „FIPU BA”) i gdje su materijali (Moodle, javni web kolegija);
+- [ ] kako predložiti temu projekta i što u njoj mora riješiti *blockchain*;
+- [ ] da je AI dopušten, ali da odgovarate za svaku liniju koda i svaku odluku;
+- [ ] da na projektu radite kontinuirano, s nekoliko commitova tjedno kroz najmanje 2–3 tjedna;
+- [ ] da projekt predajete najmanje 3 radna dana prije obrane;
+- [ ] kako se određuje ocjena i kada slijedi usmeni ispit;
+- [ ] što se događa ako projekt ne obranite do 30. rujna.
+
+Sljedeće predavanje: **Od raspodijeljenih do decentraliziranih sustava**. Tri organizacije upravljaju zajedničkim digitalnim budžetom. **Što dobivamo zajedničkim poslužiteljem, a kome time dajemo kontrolu?**
