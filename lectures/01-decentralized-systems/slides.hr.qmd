@@ -670,13 +670,15 @@ Za budžet sastavljamo malu matricu: tko podnosi zahtjev, tko provjerava lokalne
 
 ## Isti pošiljatelj govori dvije stvari {.illustrated-slide}
 
+[Novi problem · proturječne poruke]{.step-tag .problem-tag}
+
 Koordinatora više nema: svaka organizacija sama odobrava ili odbija prijedloge. Što ako A tu ovlast zloupotrijebi?
 
 B predlaže [tx~1~]{.tx}, C predlaže [tx~2~]{.tx}. A javlja B-u „odobravam [tx~1~]{.tx}”, a C-u „odobravam [tx~2~]{.tx}”.
 
 Pretpostavimo da nitko ne može krivotvoriti poruku u ime A. Ipak, oba odobrenja troše isti saldo (F:100 [S~7~]{.ver .v7}).
 
-![](assets/figure-29.hr.svg){width=1040 fig-alt="Čvor A, jedan od tri člana; A → B: „Odobravam tx1” · 80 · S7; A → C: „Odobravam tx2” · 60 · S7. Poruka je stvarno od A, ali to ne čini odluku ispravnom"}
+![](assets/figure-29.hr.svg){width=880 fig-alt="Čvor A, jedan od tri člana; A → B: „Odobravam tx1” · 80 · S7; A → C: „Odobravam tx2” · 60 · S7. Poruka je stvarno od A, ali to ne čini odluku ispravnom"}
 
 ::: {.notes}
 Vrijeme: 80–83 min (3 min).

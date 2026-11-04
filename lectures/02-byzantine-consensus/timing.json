@@ -176,107 +176,156 @@
   },
   {
     "slide": 26,
-    "title": "Prag ovisi o modelu",
+    "title": "Kvorumi korak po korak (1/6): uz padove",
     "start": 73,
-    "end": 75,
-    "minutes": 2
+    "end": 74,
+    "minutes": 1
   },
   {
     "slide": 27,
-    "title": "Što model vremena mijenja u algoritmu",
-    "start": 75,
-    "end": 78,
-    "minutes": 3
+    "title": "Kvorumi korak po korak (2/6): pošten član u presjeku",
+    "start": 74,
+    "end": 75,
+    "minutes": 1
   },
   {
     "slide": 28,
-    "title": "Kako izgleda BFT protokol",
-    "start": 78,
-    "end": 81,
-    "minutes": 3
+    "title": "Kvorumi korak po korak (3/6): lažljivac uz n = 3",
+    "start": 75,
+    "end": 76,
+    "minutes": 1
   },
   {
     "slide": 29,
-    "title": "Cijena BFT-a",
-    "start": 81,
-    "end": 83,
-    "minutes": 2
+    "title": "Kvorumi korak po korak (4/6): n = 3f + 1",
+    "start": 76,
+    "end": 77,
+    "minutes": 1
   },
   {
     "slide": 30,
-    "title": "Prešutna pretpostavka: znamo tko su članovi",
-    "start": 83,
-    "end": 85,
-    "minutes": 2
+    "title": "Kvorumi korak po korak (5/6): bizantski član šuti",
+    "start": 77,
+    "end": 78,
+    "minutes": 1
   },
   {
     "slide": 31,
-    "title": "Otvorena mreža",
-    "start": 85,
-    "end": 87,
-    "minutes": 2
+    "title": "Kvorumi korak po korak (6/6): f je prekoračen",
+    "start": 78,
+    "end": 79,
+    "minutes": 1
   },
   {
     "slide": 32,
-    "title": "Sybil napad",
-    "start": 87,
-    "end": 91,
-    "minutes": 4
+    "title": "Kvorumi: slobodno istraživanje",
+    "start": 79,
+    "end": 80,
+    "minutes": 1
   },
   {
     "slide": 33,
-    "title": "Brojimo identitete, a trebamo neovisne strane",
-    "start": 91,
-    "end": 93,
+    "title": "Prag ovisi o modelu",
+    "start": 80,
+    "end": 82,
     "minutes": 2
   },
   {
     "slide": 34,
-    "title": "Kako ograničiti identitete?",
-    "start": 93,
-    "end": 96,
+    "title": "Što model vremena mijenja u algoritmu",
+    "start": 82,
+    "end": 85,
     "minutes": 3
   },
   {
     "slide": 35,
-    "title": "Klasični BFT nasuprot otvorenoj mreži",
-    "start": 96,
-    "end": 98,
-    "minutes": 2
-  },
-  {
-    "slide": 36,
-    "title": "Ponavljanje: što ne štima u ovom prijedlogu protokola?",
-    "start": 98,
-    "end": 102,
-    "minutes": 4
-  },
-  {
-    "slide": 37,
-    "title": "Tri zaključka, tri protuprimjera",
-    "start": 102,
-    "end": 105,
+    "title": "Kako izgleda BFT protokol",
+    "start": 85,
+    "end": 88,
     "minutes": 3
   },
   {
+    "slide": 36,
+    "title": "Cijena BFT-a",
+    "start": 88,
+    "end": 90,
+    "minutes": 2
+  },
+  {
+    "slide": 37,
+    "title": "Prešutna pretpostavka: znamo tko su članovi",
+    "start": 90,
+    "end": 92,
+    "minutes": 2
+  },
+  {
     "slide": 38,
-    "title": "Sažetak",
-    "start": 105,
-    "end": 107,
+    "title": "Otvorena mreža",
+    "start": 92,
+    "end": 94,
     "minutes": 2
   },
   {
     "slide": 39,
-    "title": "Otvoreno pitanje za predavanje 03",
-    "start": 107,
-    "end": 109,
-    "minutes": 2
+    "title": "Sybil napad",
+    "start": 94,
+    "end": 98,
+    "minutes": 4
   },
   {
     "slide": 40,
-    "title": "Literatura za produbljivanje",
+    "title": "Brojimo identitete, a trebamo neovisne strane",
+    "start": 98,
+    "end": 100,
+    "minutes": 2
+  },
+  {
+    "slide": 41,
+    "title": "Kako ograničiti identitete?",
+    "start": 100,
+    "end": 103,
+    "minutes": 3
+  },
+  {
+    "slide": 42,
+    "title": "Klasični BFT nasuprot otvorenoj mreži",
+    "start": 103,
+    "end": 105,
+    "minutes": 2
+  },
+  {
+    "slide": 43,
+    "title": "Ponavljanje: što ne štima u ovom prijedlogu protokola?",
+    "start": 105,
+    "end": 109,
+    "minutes": 4
+  },
+  {
+    "slide": 44,
+    "title": "Tri zaključka, tri protuprimjera",
     "start": 109,
-    "end": 110,
+    "end": 112,
+    "minutes": 3
+  },
+  {
+    "slide": 45,
+    "title": "Sažetak",
+    "start": 112,
+    "end": 114,
+    "minutes": 2
+  },
+  {
+    "slide": 46,
+    "title": "Otvoreno pitanje za predavanje 03",
+    "start": 114,
+    "end": 116,
+    "minutes": 2
+  },
+  {
+    "slide": 47,
+    "title": "Dodatna literatura",
+    "start": 116,
+    "end": 117,
     "minutes": 1
   }
 ]

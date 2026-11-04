@@ -286,10 +286,10 @@ Kvorum mora biti dostupan: i kad f članova ne odgovara, ostali moraju moći sku
 
 ## Uz padove: [n ≥ 2f + 1]{.expr} {.illustrated-slide}
 
-Ne znamo **koji** će članovi pasti, nego samo **koliko** ih najviše može pasti: [f]{.expr}. Zato [n]{.expr} i kvorum biramo tako da uvjet vrijedi za svaki mogući raspored kvarova.
+Toleriramo **padove**, ali svi su članovi **pošteni**. Ne znamo koji će pasti, nego samo koliko najviše: [f]{.expr}. Zato [n]{.expr} i kvorum biramo tako da uvjet vrijedi za svaki raspored kvarova.
 
 1. **Živost:** čekamo najviše [n − f]{.expr} glasova, jer [f]{.expr} članova možda nikad ne odgovori.
-2. **Sigurnost:** dva kvoruma [n − f]{.expr} dijele barem [n − 2f]{.expr} članova. Uz padove nitko ne laže, pa je dovoljan jedan: **[n ≥ 2f + 1]{.expr}**.
+2. **Sigurnost:** dva kvoruma [n − f]{.expr} dijele barem [n − 2f]{.expr} članova. Kako nitko ne laže, dovoljan je jedan zajednički: **[n ≥ 2f + 1]{.expr}**.
 
 ![](assets/crash-threshold.hr.svg){width=740 fig-alt="n = 3, f = 1: A i B rade, C je pao, kvorum 2 = n − f. n = 5, f = 2: A, B i C rade, D i E su pali, kvorum 3 = n − f. Uz padove: n ≥ 2f + 1, kvorum je većina"}
 
@@ -335,16 +335,18 @@ Preklapanje u bilo kojem članu nije dovoljno: treba preklapanje u poštenom čl
 
 ## Problem bizantskih generala {.illustrated-slide}
 
-**IC1:** svi odani poručnici izvrše istu zapovijed → **dogovor**.
+Lamport, Shostak i Pease traže dva uvjeta, u radu nazvana IC1 i IC2 (*interactive consistency*):
 
-**IC2:** ako je zapovjednik odan, izvrše njegovu zapovijed → **valjanost**.
+**Uvjet 1:** svi odani poručnici izvrše istu zapovijed → **dogovor**.
+
+**Uvjet 2:** ako je zapovjednik odan, izvrše njegovu zapovijed → **valjanost**.
 
 ![](assets/generals.hr.svg){width=860 fig-alt="Zapovjednik šalje zapovijed „napad” poručniku 1 i poručniku 2; poručnici prepričavaju jedan drugome što su čuli. Lamport, Shostak i Pease (1982): izdajica može biti i zapovjednik"}
 
 ::: {.notes}
 Vrijeme: 55–59 min (4 min).
 
-Na ploči spojite IC1 s dogovorom i IC2 s valjanošću.
+Na ploči spojite uvjet 1 (IC1) s dogovorom i uvjet 2 (IC2) s valjanošću. IC je kratica za *interactive consistency* (interaktivna konzistentnost), naziv koji rad daje ovim dvama uvjetima.
 
 Lamport, Shostak i Pease opisali su 1982. isti problem kao priču o generalima bizantske vojske koji komuniciraju samo glasnicima ([LSP 1982, §1](https://lamport.azurewebsites.net/pubs/byz.pdf)). Zapovjednik je naš član koji predlaže isplatu, poručnici su ostali članovi. Model je sinkron: rad pretpostavlja da se izostanak poruke može otkriti (pretpostavka A3, §3).
 :::
@@ -416,6 +418,93 @@ Presjek kvoruma sadrži poštenog člana (dogovor), a pošteni članovi sami či
 Primjer za drugu rečenicu: A laže, a pošteni B padne. C i D imaju samo dva glasa; ako A šuti, kvorum od tri se ne skupi i sustav stane (gubi se živost). Dva kvoruma od tri među četiri člana i dalje dijele dva člana, od kojih najviše jedan laže, pa proturječnih odluka nema (sigurnost ostaje). To vrijedi dok je lažljivaca najviše f. Napomena: pošten član koji se ponovno pokrene mora pamtiti svoj glas, pa ga BFT protokoli trajno zapisuju prije slanja. Član koji zaboravi glas mogao bi glasati drukčije i za protokol se ponaša bizantski.
 :::
 
+## Kvorumi korak po korak (1/6): uz padove {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="0"></div>
+<script src="assets/quorum-anim.js"></script>
+```
+
+::: {.notes}
+Vrijeme: 73–74 min (1 min).
+
+Prvi slajd animacije. Svaka strelica naprijed izvodi jedan korak: prijedloge, zatim glas po glas, na kraju ishod. Animacija stane nakon svakog koraka, a tekst kaže što slijedi. Nema središnje kutije s glasovima: svaki član svima šalje glas i sam broji primljene glasove (brojač ispod čvora), a odlučuje kad vidi kvorum. Dok scena miruje, pitajte što će odlučiti svaki član.
+
+Ovdje: model padova, n = 3, f = 1, kvorum 2. C je pao; A i B odlučuju bez njega.
+:::
+
+## Kvorumi korak po korak (2/6): pošten član u presjeku {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="1"></div>
+```
+
+::: {.notes}
+Vrijeme: 74–75 min (1 min).
+
+Svi su pošteni. B svima šalje isti glas za tx~1~, pa svaki član vidi dva glasa za tx~1~ i jedan za tx~2~. I C, koji je predložio tx~2~, odlučuje tx~1~: konsenzus. Pitajte: zašto je dovoljno da je zajednički član B pošten?
+:::
+
+## Kvorumi korak po korak (3/6): lažljivac uz n = 3 {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="2"></div>
+```
+
+::: {.notes}
+Vrijeme: 75–76 min (1 min).
+
+Isti prag uz lažljivca. A je dvoličan (*equivocation*): B-u šalje glas za tx~1~, a C-u za tx~2~. B i C lokalno vide kvorum za različite prijedloge: 140 iz 100, kao u predavanju 01. Zaustavite se nakon A-ova glasa i pitajte što sada vidi B, a što C.
+:::
+
+## Kvorumi korak po korak (4/6): n = 3f + 1 {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="3"></div>
+```
+
+::: {.notes}
+Vrijeme: 76–77 min (1 min).
+
+n = 3f + 1 = 4, kvorum 3. A je opet dvoličan, ali B i D vide tri glasa za tx~1~, a C samo po dva i čeka. Proturječne odluke nema. U stvarnom protokolu (PBFT) C kasnije sustigne ostale; animacija prikazuje jedan krug glasanja.
+:::
+
+## Kvorumi korak po korak (5/6): bizantski član šuti {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="4"></div>
+```
+
+::: {.notes}
+Vrijeme: 77–78 min (1 min).
+
+A šuti. B, C i D razmijene glasove i svaki vidi kvorum od tri: prag čuva i okončanje. Pitajte zašto kvorum ne smije biti četiri.
+:::
+
+## Kvorumi korak po korak (6/6): f je prekoračen {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="5"></div>
+```
+
+::: {.notes}
+Vrijeme: 78–79 min (1 min).
+
+A laže, a pošteni D je pao: neispravna su dva, više od f. B i C vide samo po dva glasa i nitko ne odlučuje. Sustav staje, ali ne donosi proturječne odluke.
+:::
+
+## Kvorumi: slobodno istraživanje {.quorum-anim-slide}
+
+```{=html}
+<div class="qa" data-scene="sandbox"></div>
+```
+
+::: {.notes}
+Vrijeme: 79–80 min (1 min).
+
+Slobodni način: klik na člana mijenja njegovo stanje (ispravan → pao → laže → šuti), klizači mijenjaju n i f. Zadatak: pronađite najmanji n uz koji dva lažljivca ne mogu izazvati proturječne odluke (n = 7, f = 2). Pravila animacije: pošten predlagatelj glasa za svoj prijedlog, ostali pošteni za prvi prijedlog; lažljivac svakom primatelju šalje glas za ono za što je taj primatelj glasao; pali i šutljivi ne šalju ništa.
+:::
+
 ## Prag ovisi o modelu
 
 | Kvarovi | Sinkrono | Djelomično sinkrono | Asinkrono |
@@ -429,7 +518,7 @@ Dwork, Lynch i Stockmeyer (1988), Tablica I, pojednostavljeno; asinkrono = deter
 **Potpisi ne uklanjaju prag [3f + 1]{.expr} u djelomično sinkronoj mreži.**
 
 ::: {.notes}
-Vrijeme: 73–75 min (2 min).
+Vrijeme: 80–82 min (2 min).
 
 Neka studenti pronađu redak i stupac za naš budžet: bizantski, djelomično sinkrono, bez potpisa.
 
@@ -443,7 +532,7 @@ Isto opažanje: B nema glas od C. Razlika je u tome **smije li istek roka utjeca
 ![](assets/timing-algorithms.hr.svg){width=1000 fig-alt="Isto opažanje, B nema glas od C, dva algoritma. Sinkroni: zna rok Δ, nakon Δ zaključi da je C pao, odluči bez C; ispravno samo ako je Δ stvarna granica. Djelomično sinkroni: ne zna rok Δ, na isteku roka pokreće novi krug s duljim rokom, odlučuje tek s 2f + 1 glasova; istek roka nikad ne mijenja odluku. Vrijeme smije ubrzati odluku, ali je ne smije učiniti pogrešnom"}
 
 ::: {.notes}
-Vrijeme: 75–78 min (3 min).
+Vrijeme: 82–85 min (3 min).
 
 Pitajte: što bi na budžetu značilo pravilo „ako C ne odgovori za 3 s, C je pao, odluči bez njega”? Ako je C samo spor, možda je već sudjelovao u drugoj odluci: dvije isplate.
 
@@ -457,7 +546,7 @@ Algoritam GST ne vidi i ne obrađuje; GST postoji samo u analizi. Razlika je u k
 ![](assets/bft-phases.hr.svg){width=1040 fig-alt="Prijedlog: vođa predlaže tx1 v7; Priprema: 2f + 1 prihvaća prijedlog; Potvrda: 2f + 1 zna da su drugi prihvatili; Izvrši: tx1 v8 konačan. Vođa šuti ili laže: ostali biraju novog vođu. Shema BFT protokola, npr. PBFT"}
 
 ::: {.notes}
-Vrijeme: 78–81 min (3 min).
+Vrijeme: 85–88 min (3 min).
 
 Pitajte gdje se u ovim fazama koristi istek roka. Samo za zamjenu vođe.
 
@@ -471,7 +560,7 @@ U pripremi i potvrdi svaki član šalje poruku svakom drugom: **[n(n − 1)]{.ex
 ![](assets/bft-cost.hr.svg){width=900 fig-alt="Potpun graf s 4 člana: 12 poruka po koraku; potpun graf s 8 članova: 56 poruka po koraku. Svaki član šalje svakome: broj poruka raste s n²"}
 
 ::: {.notes}
-Vrijeme: 81–83 min (2 min).
+Vrijeme: 88–90 min (2 min).
 
 Izračunajte zajedno broj poruka za n = 10 (90) i n = 100 (9.900).
 
@@ -485,7 +574,7 @@ Castro i Liskov navode da dodatne replike smanjuju performanse jer se razmjenjuj
 ![](assets/known-membership.hr.svg){width=1040 fig-alt="A, B, C i D, svi na popisu; popis članova dogovoren je unaprijed. Sve dosad: n i f brojimo po poznatim organizacijama"}
 
 ::: {.notes}
-Vrijeme: 83–85 min (2 min).
+Vrijeme: 90–92 min (2 min).
 
 Povežite sa slajdom „Tko uopće ima pravo glasa?” iz predavanja 01.
 
@@ -499,7 +588,7 @@ Pridružiti se može bilo tko, bez popisa (*permissionless*). Mreža vidi samo *
 ![](assets/open-identities.hr.svg){width=1040 fig-alt="Četiri čvora s oznakama 3f9a, 71c2, b04e i e5d8; za svaki: tko je iza? Pridružiti se može bilo tko, bez popisa. Otvorena mreža vidi identitete, ne osobe ni organizacije"}
 
 ::: {.notes}
-Vrijeme: 85–87 min (2 min).
+Vrijeme: 92–94 min (2 min).
 
 Pitajte kako bi B mogao znati da su dva identiteta zapravo ista strana. U općem slučaju ne može.
 
@@ -513,7 +602,7 @@ Iza četiri identiteta mogu biti četiri organizacije ili jedna osoba s četiri 
 ![](assets/sybil.hr.svg){width=1000 fig-alt="Četiri organizacije A, B, C, D i jedna strana M s tri identiteta M1, M2, M3; 7 identiteta, mreža misli f = 2, ali M drži 3 glasa od 7. Douceur (2002): Sybil napad"}
 
 ::: {.notes}
-Vrijeme: 87–91 min (4 min).
+Vrijeme: 94–98 min (4 min).
 
 Neka studenti izračunaju koliko identiteta M mora stvoriti da sruši prag uz četiri poštene organizacije. Već dva: uz šest identiteta prag 3f + 1 dopušta samo f = 1, a M drži dva glasa.
 
@@ -529,7 +618,7 @@ Ako je identitet besplatan, napadač uvijek može premašiti svaki [f]{.expr}.
 **Klasični BFT ostaje ispravan, ali njegova pretpostavka o članstvu nije ispunjena.**
 
 ::: {.notes}
-Vrijeme: 91–93 min (2 min).
+Vrijeme: 98–100 min (2 min).
 
 Pitajte koja je pretpostavka iz tablice „Model je dio zadatka” ovdje prekršena. Članstvo.
 
@@ -543,7 +632,7 @@ Središnji upis vraća koordinatora; cijena po identitetu broji resurs, a ne ide
 ![](assets/limit-identities.hr.svg){width=1040 fig-alt="Središnji upis identiteta: netko odobrava članove, opet koordinator (lekcija 01). Cijena po identitetu: svaki glas troši teško umnoživ resurs, predavanje 04. Dva smjera; nijedan ne dolazi besplatno"}
 
 ::: {.notes}
-Vrijeme: 93–96 min (3 min).
+Vrijeme: 100–103 min (3 min).
 
 Pitajte koji resurs studenti mogu zamisliti kao cijenu identiteta i koji je od njih lako umnožiti. Ne imenujte Bitcoin; najavite samo predavanje 04.
 
@@ -563,7 +652,7 @@ Središnji upis može biti prihvatljiv u konzorciju, ali nije otvorena mreža. K
 **Klasični konsenzus nije pogrešan; rješava drukčiji problem.**
 
 ::: {.notes}
-Vrijeme: 96–98 min (2 min).
+Vrijeme: 103–105 min (2 min).
 
 Za naš budžet od tri organizacije pitajte koji stupac odgovara. Lijevi: članovi su poznati.
 
@@ -579,7 +668,7 @@ Naš budžet: fond **F ima 100**, B predlaže **[tx~1~]{.tx}** (80 iz F na raču
 **Za svaki istaknuti zaključak nađite izvođenje u kojem ne vrijedi.**
 
 ::: {.notes}
-Vrijeme: 98–102 min (4 min).
+Vrijeme: 105–109 min (4 min).
 
 Tri minute u parovima, zatim po jedan protuprimjer od svakog para.
 :::
@@ -589,7 +678,7 @@ Tri minute u parovima, zatim po jedan protuprimjer od svakog para.
 ![](assets/counter.hr.svg){width=1040 fig-alt="„podnosi lažljivca”: M doda 3 čvora, od 7 glasova drži 3 > f (Sybil napad). „konačna kad 3 glasa”: od 7 čvorova dva skupa od 3 ne moraju se ni preklapati (kvorum 2f + 1). „vođa je pao”: vođa samo kasni, ostali su tx1 već potvrdili („FLP”: spor ili stao?)."}
 
 ::: {.notes}
-Vrijeme: 102–105 min (3 min).
+Vrijeme: 109–112 min (3 min).
 
 Za svaki protuprimjer pitajte koji je slajd ranije pokazao isti problem.
 
@@ -601,7 +690,7 @@ Prvi zaključak vrijedi samo uz poznato članstvo. Drugi koristi apsolutan broj 
 ![](assets/recap.hr.svg){width=1040 fig-alt="Konsenzus: dogovor + valjanost (sigurnost) i okončanje (živost). Prag: pad n ≥ 2f + 1, bizantski n ≥ 3f + 1. Članstvo: f broji neovisne članove, ne identitete. Svaki prag vrijedi samo uz izričit model vremena, kvarova i članstva"}
 
 ::: {.notes}
-Vrijeme: 105–107 min (2 min).
+Vrijeme: 112–114 min (2 min).
 
 Neka svaki student zapiše jednu rečenicu koju bi rekao kolegi koji je propustio predavanje.
 
@@ -615,12 +704,12 @@ Dvaput smo prešutno pretpostavili: B zna da je „DA za [tx~1~]{.tx}” stvarno
 ![](assets/next-question.hr.svg){width=1040 fig-alt="Tko je poslao poruku? Provjerljiv potpis, predavanje 03. Je li zapis naknadno mijenjan? Povezani zapisi, predavanje 03. Prvo alati za provjeru, zatim otvorena mreža bez popisa članova (predavanje 04)"}
 
 ::: {.notes}
-Vrijeme: 107–109 min (2 min).
+Vrijeme: 114–116 min (2 min).
 
 Ostavite pitanja otvorena; ne uvodite hash funkcije ni Bitcoin. Predavanje 03 uvodi potpise i povezane zapise; pitanje otvorene mreže bez popisa članova vraća se u predavanju 04.
 :::
 
-## Literatura za produbljivanje {.references-slide}
+## Dodatna literatura {.references-slide}
 
 - [Lamport, Shostak, Pease: The Byzantine Generals Problem](https://lamport.azurewebsites.net/pubs/byz.pdf), TOPLAS 1982, §1–4.
 - [Fischer, Lynch, Paterson: Impossibility of Distributed Consensus with One Faulty Process](https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf), JACM 1985.
@@ -629,7 +718,7 @@ Ostavite pitanja otvorena; ne uvodite hash funkcije ni Bitcoin. Predavanje 03 uv
 - [Douceur: The Sybil Attack](https://courses.csail.mit.edu/6.895/fall02/papers/Douceur/iptps02-douceur.pdf), IPTPS 2002.
 
 ::: {.notes}
-Vrijeme: 109–110 min (1 min).
+Vrijeme: 116–117 min (1 min).
 
 Za čitanje prije predavanja 03 preporučite uvod i §2 rada Lamporta, Shostaka i Peasea.
 :::

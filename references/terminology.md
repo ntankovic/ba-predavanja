@@ -28,6 +28,7 @@ Lecturer-confirmed course titles (2026-10-08): **Blockchain aplikacije** / **Blo
 | živost | liveness | provisional (02) |
 | kvorum | quorum | provisional (02) |
 | ispravan član | correct process/member | provisional (02) |
+| interaktivna konzistentnost (uvjeti IC1, IC2) | interactive consistency (IC1, IC2) | provisional (02) |
 | dodatna literatura (naslov slajda) | further reading | approved 2026-11-03 (umjesto „literatura za produbljivanje”) |
 | sinkrono / asinkrono / djelomično sinkrono (model) | synchronous / asynchronous / partially synchronous (model); partial synchrony = djelomično sinkroni model | approved 2026-11-03: ne „sinkronija” (nije hrvatska riječ) |
 | tolerancija bizantskih kvarova (BFT) | Byzantine fault tolerance | provisional (02) |

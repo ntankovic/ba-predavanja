@@ -4,7 +4,7 @@
   "title_hr": "Konsenzus i problem bizantskih generala",
   "status": "draft",
   "scaffold": false,
-  "duration_minutes": 110,
+  "duration_minutes": 117,
   "target_substantive_slides": {
     "min": 30,
     "max": 40
@@ -16,5 +16,5 @@
     "hr": "draft",
     "en": "planned"
   },
-  "slides_version": "1.19"
+  "slides_version": "1.27"
 }

@@ -1,6 +1,7 @@
 """Original editable BA 01 illustrations, exported to SVG and vector PDF."""
 from pathlib import Path
 import sys,json,subprocess,re
+from html import escape
 sys.path.insert(0,str(Path(__file__).resolve().parents[3]/'scripts'))
 from diagram_style import box,state_box,cut,pill,panel,text,arrow,markers,BLUE,RED,INK
 from version_chips import chips,measure
@@ -11,6 +12,9 @@ def line(x,y,x2,y2,color=BLUE,dash=False):
 def wraptext(x,y,value,size=22,width=28,color='#20384d'):
  import textwrap
  return ''.join(text(x,y+i*(size+7),v,size,color) for i,v in enumerate(textwrap.wrap(value,width=width,break_long_words=False)))
+def figcaption(x,y,value,width=100):
+ # Figure captions read as a quiet note under the figure, not a second heading (lecturer, 2026-11-04).
+ return wraptext(x,y,value,19,width,'#5d7282').replace('<text ','<text font-style="italic" ')
 def card(x,y,w,h,node):
  title,sub=node.split('|',1)
  result=box(x,y,w,h,title,sub)
@@ -197,8 +201,13 @@ for fig in json.loads((P/'figures.json').read_text()):
   height=340;s=''
   for x,node,col in [(30,n[0],BLUE),(550,n[1],RED if fig.get('danger') else BLUE)]:
    tt,ts=node.split('|',1);s+=panel(x,20,460,165,tt,ts,col)
+  # Both cases lead into one conclusion box (lecturer, 2026-11-04).
   title,sub=n[2].split('|',1)
-  s+=text(520,225,title,23,weight=600)+wraptext(520,260,sub,23,60)
+  s+=f'<path d="M260,190 L260,206 L330,206" stroke="#9fb3c2" stroke-width="2" fill="none"/>'
+  s+=f'<path d="M780,190 L780,206 L710,206" stroke="#9fb3c2" stroke-width="2" fill="none"/>'
+  s+='<rect x="190" y="204" width="660" height="58" rx="29" fill="#f2f6f9" stroke="#b9cbd7" stroke-width="1.5"/>'
+  s+=(f'<text x="520" y="241" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="{INK}">'
+      f'<tspan font-weight="700">{escape(title)}:</tspan> {escape(sub)}</text>')
  elif mode=='votes':
   height=345
   s=f'<ellipse cx="385" cy="145" rx="185" ry="105" fill="#e7f3fb" stroke="{BLUE}" stroke-width="2"/><ellipse cx="655" cy="145" rx="185" ry="105" fill="#fff2df" fill-opacity=".75" stroke="{RED}" stroke-width="2"/>'
@@ -239,7 +248,7 @@ for fig in json.loads((P/'figures.json').read_text()):
   elif mode=='claims':s+=text(520,235,'?',42,RED,600)
   elif mode=='activity':s+=text(520,235,'Zapisujte poruke, lokalno stanje i potvrde.',22)
   elif mode=='roles' and fig['name']=='figure-04':s+=text(520,235,'Članovi predlažu; o prihvaćanju odlučuje protokol: zajednička pravila koja svi moraju poštovati.',22)
- s+=wraptext(520,height-25,fig['caption'],22,90)
+ s+=figcaption(520,height-22,fig['caption'])
  svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="{height}" viewBox="0 0 1040 {height}">'+markers()+f'<rect width="1040" height="{height}" fill="white"/>'+s+'</svg>'
  # Request IDs such as K42 are identifiers: monospace, as on the slides (lecturer, 2026-10-28). rsvg cannot see Menlo, so use Courier New.
  svg=re.sub(r'\bK42\b','<tspan font-family="Courier New, monospace">K42</tspan>',svg)
@@ -277,7 +286,7 @@ def seq(name,heads,msgs,ends,caption):
  for k,(label,bad) in ends.items():
   x=LANE[k];fill,stroke,col=('#fbeaec','#e3a5ad',RED) if bad else ('#eef6fa','#9cc4da','#20384d')
   s+=f'<rect x="{x-140}" y="322" width="280" height="50" rx="12" fill="{fill}" stroke="{stroke}"/>'+text(x,354,label,19,col,600)
- s+=wraptext(520,410,caption,21,90)
+ s+=figcaption(520,410,caption)
  h=425
  svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="{h}" viewBox="0 0 1040 {h}">'+markers()+f'<rect width="1040" height="{h}" fill="white"/>'+s+'</svg>'
  path=P/(name+'.hr.svg');path.write_text(chips(svg))

@@ -116,7 +116,8 @@ def seq(lanes, msgs, ends, y0=100, step=44):
 
 def export(name, height, body, caption=''):
     if caption:
-        body += text(520, height - 22, caption, 22)
+        # Quiet italic note under the figure (lecturer, 2026-11-04).
+        body += text(520, height - 22, caption, 19, '#5d7282').replace('<text ', '<text font-style="italic" ', 1)
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="{height}" viewBox="0 0 1040 {height}">'
            + markers() + f'<rect width="1040" height="{height}" fill="white"/>' + body + '</svg>')
     path = P / f'{name}.hr.svg'
