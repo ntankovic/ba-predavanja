@@ -38,7 +38,7 @@ Model vremena, kvarova, broja neispravnih, članstva i potpisa naveden je prije 
 Status ostaje `draft` do nastavnikova pregleda hrvatskog sadržaja. Provjereno: izgradnja HTML slajdova i PDF poglavlja; svih 37 slajdova vizualno u headless Chromeu (bez prelijevanja); svih 22 stranice PDF-a; nema nedostajućih znakova u PDF-u (≥ je u poglavlju zapisan kao matematika). `just browser-check` nije pokrenut jer `.tools/qa-venv` ne postoji.
 
 Otvoreno za nastavnika:
-- Pojmovi u `references/terminology.md` dodani su kao *provisional* (dogovor, valjanost, okončanje, sigurnost, živost, kvorum, djelomična sinkronija, Sybil napad, BFT, ispravan član, otvorena mreža).
+- Pojmovi u `references/terminology.md` dodani su kao *provisional* (dogovor, valjanost, okončanje, sigurnost, živost, kvorum, djelomično sinkroni model, Sybil napad, BFT, ispravan član, otvorena mreža).
 - Randomizirani protokoli (okončanje s vjerojatnošću 1) spomenuti su bez izvora; ako ostaje, dodati Ben-Or (1983).
 - Valjanost je definirana aplikacijski („valjan prijedlog nekog člana”); DLS koristi jaku jednoglasnost — razlika je navedena u skripti.
 
@@ -59,3 +59,8 @@ Otvoreno za nastavnika:
 - 2026-10-28 (v1.12): novi slajd „GST: pretpostavka za dokaz, ne postavka mreže” (growing-timeouts) i „Što model vremena mijenja u algoritmu” (timing-algorithms): sinkroni algoritam istek roka koristi kao dokaz pada, djelomično sinkroni samo za novi krug, a odlučuje kvorumom 2f + 1. Ukupno 39 slajdova, 110 min.
 - 2026-10-28 (v1.13): slajd 2 „Evidencija prisutnosti” s QR kodom iz predavanja 00 (bit.ly/bc-tu-sam); naslov i QR dijele prvu minutu (0,5 + 0,5 min).
 - 2026-10-29 (v1.14): transakcije tx₁/tx₂ umjesto T1/T2 na slajdovima, u poglavlju i na slikama (čip `.tx`; `version_chips.py` preuzet iz 01).
+- 2026-11-03 (v1.15): „sinkronija” nije hrvatska riječ (nastavnik). Zamijenjena je s „djelomično sinkroni model” (*partial synchrony*), a gdje je riječ o vremenu, s „vremenske pretpostavke” (slajdovi, poglavlje).
+- 2026-11-03 (v1.16): „Kvorum: dovoljno glasova za odluku”: umjesto apstraktnog „Dva kvoruma moraju dijeliti poštenog člana” slajd navodi „Uvjet sigurnosti: svaka dva moguća kvoruma dijele poštenog člana”, upućuje na kvorume {A, B} i {B, C} sa slike (zajednički je B) te ih suprotstavlja predavanju 01 (ondje je zajednički član A glasao dvaput). Slika je smanjena na 680 px, a poglavlje je usklađeno.
+- 2026-11-03 (v1.17): slika quorum-majority više ne sugerira da je B glasao za oba prijedloga. Sada prikazuje ishod: B glasa samo za tx₁, pa je kvorum za tx₁ (A + B) skupljen, a za tx₂ ostaje samo C i kvorum je nepotpun. Potpis glasi „Dvije većine od tri dijele člana; pošten član omogućuje samo jednu odluku”.
+- 2026-11-03 (v1.18): kako znamo da kvorumi dijele poštenog člana. „Uz padove” sada kaže da ne znamo koji članovi padaju, nego samo koliko ih najviše može pasti (f), te bira n i kvorum u dva koraka (živost: čekamo n − f; sigurnost: presjek n − 2f). „Zašto većina ne pomaže uz lažljivca” se nadovezuje na to („uz padove je bio dovoljan jedan zajednički član”), a „Uz bizantske članove” ponavlja ista dva koraka uz stroži uvjet presjeka. Slajd „Kvorum” nije mijenjan, a crash-threshold je smanjen na 740 px. Poglavlje je usklađeno.
+- 2026-11-03 (v1.19): „Kad bizantski član šuti”: dodana je rečenica da f broji sve neispravne članove (pad poštenog člana troši isti f kao laž) i da sustav, kad su neispravna dva, staje, ali ne donosi proturječne odluke. Primjer (A laže, B padne) i napomena o trajnom zapisu glasa nalaze se u bilješkama i poglavlju.

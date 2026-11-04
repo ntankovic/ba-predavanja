@@ -39,9 +39,9 @@ Izmjenjivi izvori: `assets/figures.json` i `assets/build_diagrams.py`, uz zajedn
 | figure-32.hr | Dva lokalna skupa glasova, dva različita zaključka |
 | figure-33.hr | Više procesa ne daje više odobrenih glasova |
 | figure-34.hr | Poruka → lokalna odluka → izričita potvrda |
-| figure-35.hr | Odgovor mora pokazati konkretan korak izvođenja |
+| figure-35.hr | Odgovor mora pokazati konkretan korak izvođenja (ne koristi se od 2026-11-03, slajd uklonjen) |
 | figure-37.hr | Tražite trag koji pobija tvrdnju, pa precizniju specifikaciju |
-| figure-38.hr | Svako jamstvo ima pretpostavke i komponentu koja ga pruža |
+| figure-38.hr | Svako jamstvo ima pretpostavke i komponentu koja ga pruža (ne koristi se od 2026-11-03, sažetak je tekstualni popis) |
 | figure-39.hr | Dobra specifikacija prethodi izboru protokola |
 
 ## Provjera
@@ -54,4 +54,4 @@ Svi PDF dijagrami pregledani su kroz rasterizirane kontaktne listove. Provjeren 
 
 2026-10-19: figure-20.hr prikazuje saldo F:100 · v7 na obje strane particije; figure-21.hr: oznake „A i B potvrđuju” / „C potvrđuje” i „140 isplaćeno iz fonda od 100”.
 
-2026-10-19: radionica (figure-34.hr) zamijenjena je studijom slučaja: case-1.hr, case-2.hr i case-3.hr (SVG i PDF) su dijagrami slijeda poruka za tri izvođenja (pošten koordinator, izgubljena potvrda, pravilo „dva od tri”). Izvor: build_diagrams.py, funkcija seq. figure-34.hr se više ne koristi.
+2026-10-19: radionica (figure-34.hr) zamijenjena je studijom slučaja: case-1.hr, case-2.hr i case-3.hr (SVG i PDF) su dijagrami slijeda poruka (model 1: pošten koordinator; model 1 uz izgubljenu potvrdu; model 2: pravilo „dva od tri”, preimenovano 2026-11-03). Izvor: build_diagrams.py, funkcija seq. figure-34.hr se više ne koristi.

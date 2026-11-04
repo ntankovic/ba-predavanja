@@ -80,6 +80,8 @@ def _render(match):
         return w + (2 * (PAD + MARGIN) if kind in ('state', 'tx') else 0)
 
     total = sum(width(p) for p in pieces)
+    global _last_total
+    _last_total = total
     anchor = _attr(attrs, 'text-anchor', 'start')
     cursor = x - total / 2 if anchor == 'middle' else x - total if anchor == 'end' else x
     rects, spans = '', ''
@@ -107,6 +109,17 @@ def _render(match):
         cursor += w
     attrs = re.sub(r'\btext-anchor="[^"]*"', '', attrs) + ' text-anchor="start"'
     return f'{rects}<text {attrs}>{spans}</text>'
+
+
+def measure(content, size=20, bold=False, family='Arial'):
+    """Rendered width of a label after chip rewriting, so boxes can be sized to fit it."""
+    m = TEXT.match(f'<text x="0" y="0" font-family="{family}" font-size="{size}" '
+                   f'font-weight="{700 if bold else 400}">{html.escape(content, quote=False)}</text>')
+    if _render(m) == m.group(0):
+        return _width(content, family, bold, size)
+    return _last_total
+
+_last_total = 0
 
 
 def chips(svg):

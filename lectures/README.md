@@ -1,6 +1,6 @@
 # Lecture registry
 
-Lectures 00 (slides), 01 (chapter and slides, 120 minutes) and 02 (chapter and slides, 110 minutes) are Croatian drafts awaiting review; lectures 03–12 remain planned scaffolds. Croatian first.
+Lectures 00 (slides), 01 (chapter and slides, 116 minutes) and 02 (chapter and slides, 110 minutes) are Croatian drafts awaiting review; lectures 03–12 remain planned scaffolds. Croatian first.
 
 | Week | Title | Directory | Owner | Status |
 |---|---|---|---|---|

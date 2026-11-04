@@ -78,12 +78,12 @@ def line(x, y, x2, y2, colour='#9fb3c2', dash=True):
     return f'<path d="M{x},{y} L{x2},{y2}" stroke="{colour}" stroke-width="2" fill="none"' + (' stroke-dasharray="6 6"' if dash else '') + '/>'
 
 
-def venn(left, mid, right, cap_l, cap_r, mid_state='good', top=''):
+def venn(left, mid, right, cap_l, cap_r, mid_state='good', top='', cap_cols=(INK, INK)):
     mc = RED if mid_state == 'bad' else GREEN
     s = (f'<ellipse cx="385" cy="150" rx="185" ry="105" fill="#e7f3fb" stroke="{BLUE}" stroke-width="2"/>'
          f'<ellipse cx="655" cy="150" rx="185" ry="105" fill="#fff2df" fill-opacity=".75" stroke="{AMBER}" stroke-width="2"/>')
     s += text(300, 158, left, 32, BLUE, 700) + text(520, 158, mid, 32, mc, 700) + text(740, 158, right, 32, AMBER, 700)
-    s += text(265, 285, cap_l, 22) + text(775, 285, cap_r, 22)
+    s += text(265, 285, cap_l, 22, cap_cols[0]) + text(775, 285, cap_r, 22, cap_cols[1])
     if top:
         s += text(520, 30, top, 22, mc, 600)
     return s
@@ -247,8 +247,10 @@ def flp_dilemma():
 
 @fig
 def quorum_majority():
-    return 345, venn('A', 'B', 'C', 'kvorum za tx1: A + B', 'kvorum za tx2: B + C', 'good', 'B je pošten: glasa samo jednom'), \
-        'Dvije većine od tri uvijek dijele barem jednog člana'
+    # Show the outcome, not two formed quorums: honest B votes once, so only one quorum completes (lecturer, 2026-11-03).
+    return 345, venn('A', 'B', 'C', 'tx1: A + B → kvorum skupljen', 'tx2: samo C → kvorum nepotpun', 'good',
+                     'B je pošten: glasa samo za tx1', (GREEN, RED)), \
+        'Dvije većine od tri dijele člana; pošten član omogućuje samo jednu odluku'
 
 
 @fig

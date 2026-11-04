@@ -3,7 +3,7 @@ from pathlib import Path
 import sys,json,subprocess,re
 sys.path.insert(0,str(Path(__file__).resolve().parents[3]/'scripts'))
 from diagram_style import box,state_box,cut,pill,panel,text,arrow,markers,BLUE,RED,INK
-from version_chips import chips
+from version_chips import chips,measure
 P=Path(__file__).parent
 
 def line(x,y,x2,y2,color=BLUE,dash=False):
@@ -262,7 +262,8 @@ def seq(name,heads,msgs,ends,caption):
   if m[0]=='note':
    for k,label in zip(m[1::2],m[2::2]):
     x=LANE[k]
-    s+=f'<rect x="{x-150}" y="{y-24}" width="300" height="36" rx="8" fill="#fff7ed" stroke="#e8c39e"/>'+text(x,y,label,16,'#7c3a0e',600)
+    w=max(300,measure(label,16,True)+32)  # chips widen the label, so size the note to its rendered width
+    s+=f'<rect x="{x-w/2:.1f}" y="{y-24}" width="{w:.1f}" height="36" rx="8" fill="#fff7ed" stroke="#e8c39e"/>'+text(x,y,label,16,'#7c3a0e',600)
   else:
    a,b,label,color,lost=m;x1,x2=LANE[a],LANE[b];d=1 if x2>x1 else -1
    if lost:
@@ -283,15 +284,15 @@ def seq(name,heads,msgs,ends,caption):
  subprocess.run(['rsvg-convert','-f','pdf','-o',str(path.with_suffix('.pdf')),str(path)],check=True)
 H={'A':'A · koordinator','B':'B · predlaže tx1','C':'C · predlaže tx2'}
 seq('case-1',H,[('B','A','tx1: 80 → X · v7',BLUE,False),('C','A','tx2: 60 → Y · v7',BLUE,False),
- ('note','A','prihvaća tx1, odbija tx2 (v7 zastario)'),('A','B','tx1 prihvaćen · v8',BLUE,False),('A','C','tx2 odbijen; prihvaćen tx1, F:20 · v8',BLUE,False)],
+ ('note','A','prihvaća tx1, odbija tx2'),('A','B','tx1 prihvaćen · v8',BLUE,False),('A','C','tx2 odbijen; prihvaćen tx1, F:20 · v8',BLUE,False)],
  {'A':('F:20 · v8',False),'B':('F:20 · v8',False),'C':('F:20 · v8',False)},
- 'Izvođenje 1: jedan koordinator, jedna prihvaćena isplata')
+ 'Model 1: jedan koordinator, jedna prihvaćena isplata')
 seq('case-2',H,[('B','A','tx1: 80 → X · v7',BLUE,False),('C','A','tx2: 60 → Y · v7',BLUE,False),
- ('note','A','prihvaća tx1, odbija tx2 (v7 zastario)'),('A','B','tx1 prihvaćen · v8',RED,True),('A','C','tx2 odbijen; prihvaćen tx1, F:20 · v8',BLUE,False)],
+ ('note','A','prihvaća tx1, odbija tx2'),('A','B','tx1 prihvaćen · v8',RED,True),('A','C','tx2 odbijen; prihvaćen tx1, F:20 · v8',BLUE,False)],
  {'A':('F:20 · v8',False),'B':('F:100 · v7 · čeka?',True),'C':('F:20 · v8',False)},
- 'Izvođenje 2: stanje je ispravno, ali B to ne zna')
+ 'Model 1 uz izgubljenu potvrdu: stanje je ispravno, ali B to ne zna')
 H3={'A':('A · bizantski',True),'B':'B · predlaže tx1','C':'C · predlaže tx2'}
 seq('case-3',H3,[('B','A','glasaj za tx1 · v7',BLUE,False),('C','A','glasaj za tx2 · v7',BLUE,False),
  ('A','B','DA za tx1',BLUE,False),('A','C','DA za tx2',RED,False),('note','B','B + A = 2 glasa → tx1 konačan','C','C + A = 2 glasa → tx2 konačan')],
  {'A':('rekao DA obojici',True),'B':('F:20 · tx1 konačan',True),'C':('F:40 · tx2 konačan',True)},
- 'Izvođenje 3: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100')
+ 'Model 2: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100')

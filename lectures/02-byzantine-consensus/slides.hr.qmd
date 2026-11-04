@@ -213,7 +213,7 @@ Vrijeme: 30–34 min (4 min).
 
 Pitajte koji je model u tablici iz predavanja 01 (redak Vrijeme: „nemamo poznat konačan rok dostave”). Asinkroni.
 
-U sinkronom modelu (*synchronous*) postoji poznat rok Δ, pa je izostanak odgovora nakon roka dokaz pada. U asinkronom (*asynchronous*) roka nema. Djelomičnu sinkroniju uveli su Dwork, Lynch i Stockmeyer: rok postoji, ali ga ne znamo, ili vrijedi tek od nepoznatog trenutka GST (*global stabilization time*) ([DLS 1988, sažetak i §1](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf)). GST nije sat ni događaj koji možemo izmjeriti: to je trenutak od kojeg se mreža smirila, npr. nakon zagušenja ili popravka veze. Protokol ga ne zna i ne smije ga čekati, ali smije računati da će nastupiti. To dobro opisuje stvarnu mrežu: većinu vremena poruke stižu brzo, ali povremeno kasne. Protokol mora čuvati sigurnost i u tim razdobljima, a odlučiti smije kad se mreža smiri.
+U sinkronom modelu (*synchronous*) postoji poznat rok Δ, pa je izostanak odgovora nakon roka dokaz pada. U asinkronom (*asynchronous*) roka nema. Djelomično sinkroni model (*partial synchrony*) uveli su Dwork, Lynch i Stockmeyer: rok postoji, ali ga ne znamo, ili vrijedi tek od nepoznatog trenutka GST (*global stabilization time*) ([DLS 1988, sažetak i §1](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf)). GST nije sat ni događaj koji možemo izmjeriti: to je trenutak od kojeg se mreža smirila, npr. nakon zagušenja ili popravka veze. Protokol ga ne zna i ne smije ga čekati, ali smije računati da će nastupiti. To dobro opisuje stvarnu mrežu: većinu vremena poruke stižu brzo, ali povremeno kasne. Protokol mora čuvati sigurnost i u tim razdobljima, a odlučiti smije kad se mreža smiri.
 :::
 
 ## „FLP”: spor ili zaustavljen, opet {.illustrated-slide}
@@ -234,7 +234,7 @@ Dokaz se oslanja na ono što smo vidjeli u predavanju 01: proces ne može razlik
 
 „FLP” **ne** kaže da je konsenzus nemoguć. Stvarni sustavi:
 
-- čuvaju sigurnost uvijek, a okončanje jamče kad se mreža smiri (djelomična sinkronija);
+- čuvaju sigurnost uvijek, a okončanje jamče kad se mreža smiri (djelomično sinkroni model);
 - istek roka (*timeout*) koriste samo za živost, npr. za zamjenu vođe;
 - ili koriste slučajnost i završavaju s vjerojatnošću 1.
 
@@ -272,9 +272,9 @@ Protokol ne mora znati ni GST ni Δ: istek roka povećava nakon svakog neuspjelo
 **Kvorum (*quorum*)**: skup članova čiji su glasovi za isti prijedlog dovoljni za odluku.
 :::
 
-Dva kvoruma moraju dijeliti **poštenog** člana, a pošten član glasa samo jednom po stanju.
+**Uvjet sigurnosti:** svaka dva moguća kvoruma dijele **poštenog** člana. Na slici je to B, koji glasa samo za jedan prijedlog; u predavanju 01 bio je to A, koji je glasao dvaput.
 
-![](assets/quorum-majority.hr.svg){width=760 fig-alt="Kvorum za tx1: A i B; kvorum za tx2: B i C; presjek je B, koji je pošten i glasa samo jednom. Dvije većine od tri uvijek dijele barem jednog člana"}
+![](assets/quorum-majority.hr.svg){width=680 fig-alt="Mogući kvorumi {A, B} za tx1 i {B, C} za tx2 dijele B. B je pošten i glasa samo za tx1: kvorum za tx1 je skupljen, a za tx2 ima samo C i ostaje nepotpun. Dvije većine od tri dijele člana; pošten član omogućuje samo jednu odluku"}
 
 ::: {.notes}
 Vrijeme: 43–45 min (2 min).
@@ -286,18 +286,19 @@ Kvorum mora biti dostupan: i kad f članova ne odgovara, ostali moraju moći sku
 
 ## Uz padove: [n ≥ 2f + 1]{.expr} {.illustrated-slide}
 
-Čekamo najviše **[n − f]{.expr}** glasova, jer [f]{.expr} članova možda nikad ne odgovori.
+Ne znamo **koji** će članovi pasti, nego samo **koliko** ih najviše može pasti: [f]{.expr}. Zato [n]{.expr} i kvorum biramo tako da uvjet vrijedi za svaki mogući raspored kvarova.
 
-Dva kvoruma [n − f]{.expr} moraju se preklapati: [2(n − f) > n]{.expr}, tj. **[n ≥ 2f + 1]{.expr}**.
+1. **Živost:** čekamo najviše [n − f]{.expr} glasova, jer [f]{.expr} članova možda nikad ne odgovori.
+2. **Sigurnost:** dva kvoruma [n − f]{.expr} dijele barem [n − 2f]{.expr} članova. Uz padove nitko ne laže, pa je dovoljan jedan: **[n ≥ 2f + 1]{.expr}**.
 
-![](assets/crash-threshold.hr.svg){width=860 fig-alt="n = 3, f = 1: A i B rade, C je pao, kvorum 2 = n − f. n = 5, f = 2: A, B i C rade, D i E su pali, kvorum 3 = n − f. Uz padove: n ≥ 2f + 1, kvorum je većina"}
+![](assets/crash-threshold.hr.svg){width=740 fig-alt="n = 3, f = 1: A i B rade, C je pao, kvorum 2 = n − f. n = 5, f = 2: A, B i C rade, D i E su pali, kvorum 3 = n − f. Uz padove: n ≥ 2f + 1, kvorum je većina"}
 
 ::: {.notes}
 Vrijeme: 45–49 min (4 min).
 
 Izvedite nejednakost na ploči zajedno sa studentima, korak po korak.
 
-Neka do f članova može stati, a nijedan ne laže. Dva kvoruma veličine n − f preklapaju se ako zajedno imaju više od n članova. Najmanji takav n je 2f + 1, a kvorum je većina, f + 1. Uz djelomičnu sinkroniju i padove upravo je to granica ([DLS 1988, Tablica I](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf)).
+Neka do f članova može stati, a nijedan ne laže. Dva kvoruma veličine n − f preklapaju se ako zajedno imaju više od n članova. Najmanji takav n je 2f + 1, a kvorum je većina, f + 1. U djelomično sinkronom modelu uz padove upravo je to granica ([DLS 1988, Tablica I](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf)).
 :::
 
 ## Vježba: koliko padova podnosimo?
@@ -318,9 +319,9 @@ Prvo n = 5, zatim n = 7, a n = 4 kao pitanje za brže studente. Za n = 4 dobivam
 
 ## Zašto većina ne pomaže uz lažljivca {.illustrated-slide}
 
-Kvorumi {A, B} i {A, C} se preklapaju, ali u presjeku je samo bizantski A.
+Uz padove je bio dovoljan jedan zajednički član. Kvorumi {A, B} i {A, C} se preklapaju, ali u presjeku je samo bizantski A.
 
-**Uz [f]{.expr} lažljivaca presjek mora imati barem [f + 1]{.expr} člana.**
+**Uz [f]{.expr} lažljivaca presjek mora imati barem [f + 1]{.expr} člana: tada barem jedan od njih nije lažljivac.**
 
 ![](assets/byz-overlap.hr.svg){width=760 fig-alt="Kvorum za tx1: A i B; kvorum za tx2: A i C; u presjeku je A, koji je bizantski i glasa za oba. Presjek postoji, ali je u njemu samo član koji laže"}
 
@@ -364,7 +365,10 @@ U slučaju a vrijedi IC2, pa poručnik 1 mora napasti. Slučaj b izgleda mu jedn
 
 ## Uz bizantske članove: [n ≥ 3f + 1]{.expr} {.illustrated-slide}
 
-Dva kvoruma [n − f]{.expr} dijele [n − 2f]{.expr} članova; treba više od [f]{.expr}: **[n ≥ 3f + 1]{.expr}**, kvorum **[2f + 1]{.expr}**.
+Ista dva koraka kao uz padove, uz stroži uvjet presjeka:
+
+1. **Živost:** i dalje čekamo najviše [n − f]{.expr} glasova.
+2. **Sigurnost:** presjek [n − 2f]{.expr} mora biti veći od [f]{.expr}, pa je barem jedan zajednički član pošten: **[n ≥ 3f + 1]{.expr}**, kvorum **[2f + 1]{.expr}**.
 
 ![](assets/byz-threshold.hr.svg){width=900 fig-alt="n = 4, f = 1: kvorum za tx1 je B, A, C; kvorum za tx2 je A, C, D; presjek je A i C (f + 1 = 2), barem jedan pošten. Uz bizantske članove: n ≥ 3f + 1, kvorum 2f + 1"}
 
@@ -398,6 +402,8 @@ A ne mora lagati: može i šutjeti da odluka zapne.
 
 **B, C i D sami čine kvorum: prag [3f + 1]{.expr} čuva i dogovor i okončanje.**
 
+[f]{.expr} broji **sve** neispravne članove: pad poštenog člana troši isti [f]{.expr} kao laž. Ako su neispravna dva (jedan laže, drugi je pao), sustav staje, ali ne donosi proturječne odluke.
+
 ![](assets/silent-member.hr.svg){width=900 fig-alt="A šuti; B, C i D zajedno čine 3 = 2f + 1 glasa i donose odluku. n − f = 3 poštenih dovoljno je za kvorum i bez A"}
 
 ::: {.notes}
@@ -406,6 +412,8 @@ Vrijeme: 71–73 min (2 min).
 Pitajte zašto kvorum ne smije biti sva četiri člana. Jedan šutljiv član tada bi zaustavio sve.
 
 Presjek kvoruma sadrži poštenog člana (dogovor), a pošteni članovi sami čine kvorum (okončanje).
+
+Primjer za drugu rečenicu: A laže, a pošteni B padne. C i D imaju samo dva glasa; ako A šuti, kvorum od tri se ne skupi i sustav stane (gubi se živost). Dva kvoruma od tri među četiri člana i dalje dijele dva člana, od kojih najviše jedan laže, pa proturječnih odluka nema (sigurnost ostaje). To vrijedi dok je lažljivaca najviše f. Napomena: pošten član koji se ponovno pokrene mora pamtiti svoj glas, pa ga BFT protokoli trajno zapisuju prije slanja. Član koji zaboravi glas mogao bi glasati drukčije i za protokol se ponaša bizantski.
 :::
 
 ## Prag ovisi o modelu
@@ -439,7 +447,7 @@ Vrijeme: 75–78 min (3 min).
 
 Pitajte: što bi na budžetu značilo pravilo „ako C ne odgovori za 3 s, C je pao, odluči bez njega”? Ako je C samo spor, možda je već sudjelovao u drugoj odluci: dvije isplate.
 
-Algoritam GST ne vidi i ne obrađuje; GST postoji samo u analizi. Razlika je u kodu. Sinkroni algoritam zna Δ i izostanak poruke nakon Δ tretira kao dokaz pada, kao pretpostavka A3 u [LSP 1982, §3](https://lamport.azurewebsites.net/pubs/byz.pdf). Djelomično sinkroni algoritam istek roka koristi samo za napredak: novi krug ili novi vođa, s duljim rokom, a odluku donosi samo kvorumom 2f + 1, čiji presjek štiti dogovor bez obzira na vrijeme. Takav je PBFT: sigurnost ne ovisi o sinkroniji, a zamjena vođe pokreće se istekom roka ([PBFT 1999, §3 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf)). Cijena je u broju članova (prethodni slajd): kad šutnja ne dokazuje ništa, treba više poštenih.
+Algoritam GST ne vidi i ne obrađuje; GST postoji samo u analizi. Razlika je u kodu. Sinkroni algoritam zna Δ i izostanak poruke nakon Δ tretira kao dokaz pada, kao pretpostavka A3 u [LSP 1982, §3](https://lamport.azurewebsites.net/pubs/byz.pdf). Djelomično sinkroni algoritam istek roka koristi samo za napredak: novi krug ili novi vođa, s duljim rokom, a odluku donosi samo kvorumom 2f + 1, čiji presjek štiti dogovor bez obzira na vrijeme. Takav je PBFT: sigurnost ne ovisi o vremenskim pretpostavkama, a zamjena vođe pokreće se istekom roka ([PBFT 1999, §3 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf)). Cijena je u broju članova (prethodni slajd): kad šutnja ne dokazuje ništa, treba više poštenih.
 :::
 
 ## Kako izgleda BFT protokol {.illustrated-slide}
@@ -453,7 +461,7 @@ Vrijeme: 78–81 min (3 min).
 
 Pitajte gdje se u ovim fazama koristi istek roka. Samo za zamjenu vođe.
 
-Faze normalnog rada su *pre-prepare*, *prepare* i *commit*; priprema i potvrda čekaju kvorum. Ako vođa šuti ili šalje proturječne prijedloge, ostali biraju novog vođu ([PBFT 1999, §4.2 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf)). Algoritam ne ovisi o sinkroniji za sigurnost; za živost traži da kašnjenje ne raste neograničeno (§3). To je podjela iz prvog dijela predavanja. Detalje faza ne učimo napamet.
+Faze normalnog rada su *pre-prepare*, *prepare* i *commit*; priprema i potvrda čekaju kvorum. Ako vođa šuti ili šalje proturječne prijedloge, ostali biraju novog vođu ([PBFT 1999, §4.2 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf)). Sigurnost algoritma ne ovisi o vremenskim pretpostavkama; za živost traži da kašnjenje ne raste neograničeno (§3). To je podjela iz prvog dijela predavanja. Detalje faza ne učimo napamet.
 :::
 
 ## Cijena BFT-a {.illustrated-slide}
@@ -597,7 +605,7 @@ Vrijeme: 105–107 min (2 min).
 
 Neka svaki student zapiše jednu rečenicu koju bi rekao kolegi koji je propustio predavanje.
 
-Koliko članova treba, ovisi o modelu: uz padove i djelomičnu sinkroniju n ≥ 2f + 1, a uz bizantske članove n ≥ 3f + 1, jer dva kvoruma moraju dijeliti poštenog člana. Sve to broji neovisne članove; u otvorenoj mreži Sybil napad ruši tu pretpostavku.
+Koliko članova treba, ovisi o modelu: u djelomično sinkronom modelu uz padove n ≥ 2f + 1, a uz bizantske članove n ≥ 3f + 1, jer dva kvoruma moraju dijeliti poštenog člana. Sve to broji neovisne članove; u otvorenoj mreži Sybil napad ruši tu pretpostavku.
 :::
 
 ## Otvoreno pitanje za predavanje 03 {.illustrated-slide}

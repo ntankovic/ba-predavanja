@@ -133,7 +133,7 @@ Isti protokol može biti ispravan u jednom modelu i neispravan u drugom. Zato tv
 
 U sinkronom modelu (*synchronous*) postoji poznat rok Δ unutar kojeg svaka poruka stiže, a brzine procesa su ograničene. Izostanak odgovora nakon roka tada je dokaz pada. U asinkronom modelu (*asynchronous*) takvog roka nema: poruka može kasniti proizvoljno dugo. U djelomično sinkronom modelu (*partial synchrony*) rok postoji, ali ga ne znamo, ili vrijedi tek od nekog nepoznatog trenutka koji se označava GST (*global stabilization time*). GST nije određeni sat ni događaj koji bismo mogli izmjeriti: to je trenutak od kojeg se mreža smirila, npr. nakon što prođe zagušenje ili popravi pokvarena veza. Protokol ne zna kada će GST nastupiti i ne smije ga čekati, ali smije računati da će jednom nastupiti. Taj model uveli su Dwork, Lynch i Stockmeyer. [Dwork, Lynch i Stockmeyer, 1988, sažetak i §1](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf).
 
-Djelomična sinkronija dobro opisuje stvarnu mrežu: većinu vremena poruke stižu brzo, ali povremeno postoje razdoblja kad kasne. Protokol mora sačuvati sigurnost i u tim razdobljima, a odluku smije donijeti kad se mreža smiri.
+Djelomično sinkroni model dobro opisuje stvarnu mrežu: većinu vremena poruke stižu brzo, ali povremeno postoje razdoblja kad kasne. Protokol mora sačuvati sigurnost i u tim razdobljima, a odluku smije donijeti kad se mreža smiri.
 
 ![Gornja traka šalje, donja prima; vrijeme teče slijeva nadesno](assets/timing-models.hr.pdf){width=95% fig-alt="Prostorno-vremenski dijagram, B šalje, C prima. Sinkrono: poruka stiže unutar poznatog roka Δ. Asinkrono: poruka stiže kad stigne, bez gornje granice. Djelomično sinkrono: prije GST poruka kasni proizvoljno; od GST, kad se mreža smirila, stiže unutar roka Δ."}
 
@@ -151,7 +151,7 @@ Intuicija na našem primjeru: B čeka glas od C. Ako čeka dalje, a C je stao, �
 
 ## Što „FLP” ne kaže
 
-„FLP” ne kaže da je konsenzus nemoguć. Kaže da u potpuno asinkronom modelu deterministički protokol ne može jamčiti i sigurnost i okončanje u svakom izvođenju. Stvarni sustavi izlaze iz tog okvira na nekoliko načina. Prvo, djelomična sinkronija: sigurnost se čuva uvijek, a okončanje se jamči kad poruke počnu stizati na vrijeme. Drugo, istek vremena (*timeout*) koriste samo za živost: kad vođa ne odgovori, pokreće se zamjena vođe, ali istek nikad nije razlog da se prekrši dogovor. Treće, slučajnost: randomizirani protokoli završavaju s vjerojatnošću 1.
+„FLP” ne kaže da je konsenzus nemoguć. Kaže da u potpuno asinkronom modelu deterministički protokol ne može jamčiti i sigurnost i okončanje u svakom izvođenju. Stvarni sustavi izlaze iz tog okvira na nekoliko načina. Prvo, djelomično sinkroni model: sigurnost se čuva uvijek, a okončanje se jamči kad poruke počnu stizati na vrijeme. Drugo, istek vremena (*timeout*) koriste samo za živost: kad vođa ne odgovori, pokreće se zamjena vođe, ali istek nikad nije razlog da se prekrši dogovor. Treće, slučajnost: randomizirani protokoli završavaju s vjerojatnošću 1.
 
 Za naš budžet zaključak je praktičan: ako mreža dugo ne radi, isplata može čekati. To je cijena sigurnosti i treba je pokazati korisniku kao stanje „na čekanju”, kao u predavanju 01.
 
@@ -175,19 +175,19 @@ Pravilo „dva od tri” bilo je pravilo kvoruma.
 **Kvorum (*quorum*)**: skup članova čiji su glasovi za isti prijedlog dovoljni da ga protokol smatra odlučenim.
 :::
 
-Kvorum mora imati dva svojstva. Mora biti dostupan: i kad f članova ne odgovara, ostali moraju moći skupiti kvorum, inače se krši okončanje. I dva kvoruma moraju se preklapati u poštenom članu, inače se krši dogovor. Kad pošten član glasa samo za jedan prijedlog po stanju, njegov glas ne može ući u oba kvoruma.
+Kvorum mora imati dva svojstva. Mora biti dostupan: i kad f članova ne odgovara, ostali moraju moći skupiti kvorum, inače se krši okončanje. I svaka dva moguća kvoruma moraju se preklapati u poštenom članu, inače se krši dogovor. U budžetu je kvorum bilo koja dva od tri člana: za $\mathrm{tx}_{1}$ glasaju A i B, a za $\mathrm{tx}_{2}$ B i C, pa oba skupa sadrže B. U predavanju 01 zajednički je član bio A, koji je glasao za oba prijedloga; zato pravilo „dva od tri” ondje nije čuvalo saldo. Kad pošten član glasa samo za jedan prijedlog po stanju, njegov glas ne može ući u oba kvoruma.
 
 U modelu bez bizantskih članova to je jednostavno. Uz n = 3, kvorumi {A, B} i {B, C} dijele B. B je pošten i glasa samo jednom, pa ne mogu proći obje isplate.
 
-![Dvije većine od tri uvijek dijele barem jednog člana](assets/quorum-majority.hr.pdf){width=95% fig-alt="Kvorum za tx1: A i B; kvorum za tx2: B i C; presjek je B, koji je pošten i glasa samo jednom. Dvije većine od tri uvijek dijele barem jednog člana"}
+![Dvije većine od tri dijele člana; pošten član omogućuje samo jednu odluku](assets/quorum-majority.hr.pdf){width=95% fig-alt="Mogući kvorumi {A, B} za tx1 i {B, C} za tx2 dijele B. B je pošten i glasa samo za tx1: kvorum za tx1 je skupljen, a za tx2 ima samo C i ostaje nepotpun. Dvije većine od tri dijele člana; pošten član omogućuje samo jednu odluku"}
 
 **Nastavni rad (43–45 min):** Pitajte zašto „jedan od tri” nije kvorum. Dva takva skupa ne moraju se preklapati.
 
 ## Uz padove: $n \geq 2f + 1$
 
-Neka do f članova može stati, a nijedan ne laže. Protokol smije čekati samo n − f glasova, jer f članova možda nikad ne odgovori. Dva kvoruma veličine n − f preklapaju se ako zajedno imaju više od n članova: 2(n − f) > n, tj. n > 2f. Najmanji takav broj je n = 2f + 1, a kvorum je tada većina, f + 1 članova.
+Neka do f članova može stati, a nijedan ne laže. Ne znamo koji će članovi pasti, nego samo koliko ih najviše može pasti. Zato n i veličinu kvoruma biramo tako da uvjet vrijedi za svaki mogući raspored kvarova, u dva koraka: živost određuje koliko glasova smijemo čekati, a sigurnost koliko se kvorumi moraju preklapati. Protokol smije čekati samo n − f glasova, jer f članova možda nikad ne odgovori. Dva kvoruma veličine n − f preklapaju se ako zajedno imaju više od n članova: 2(n − f) > n, tj. n > 2f. Najmanji takav broj je n = 2f + 1, a kvorum je tada većina, f + 1 članova.
 
-Za n = 3 sustav podnosi jedan pad uz kvorum 2; za n = 5 dva pada uz kvorum 3. Dwork, Lynch i Stockmeyer pokazuju da je uz djelomičnu sinkroniju i padove upravo $n \geq 2f + 1$ granica. [Dwork, Lynch i Stockmeyer, 1988, Tablica I](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf).
+Za n = 3 sustav podnosi jedan pad uz kvorum 2; za n = 5 dva pada uz kvorum 3. Dwork, Lynch i Stockmeyer pokazuju da je u djelomično sinkronom modelu uz padove upravo $n \geq 2f + 1$ granica. [Dwork, Lynch i Stockmeyer, 1988, Tablica I](https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf).
 
 ![Uz padove: $n \geq 2f + 1$, kvorum je većina](assets/crash-threshold.hr.pdf){width=95% fig-alt="n = 3, f = 1: A i B rade, C je pao, kvorum 2 = n − f. n = 5, f = 2: A, B i C rade, D i E su pali, kvorum 3 = n − f. Uz padove: n ≥ 2f + 1, kvorum je većina"}
 
@@ -235,7 +235,7 @@ Autori sami upozoravaju da je ovakvo neformalno zaključivanje varljivo i upuću
 
 ## Uz bizantske članove: $n \geq 3f + 1$
 
-Sada možemo izvesti prag. Protokol i dalje smije čekati samo n − f glasova, jer f članova može šutjeti. Dva kvoruma veličine n − f dijele barem 2(n − f) − n = n − 2f članova. Da bi u presjeku bio barem jedan pošten, presjek mora biti veći od f: n − 2f > f, tj. n > 3f. Najmanji takav broj je n = 3f + 1, a kvorum je tada 2f + 1. Castro i Liskov u radu o PBFT-u navode isti argument (§3), a rezultat se slaže s pragom 3m + 1 Lamporta, Shostaka i Peasea. [Castro i Liskov, 1999, §3](https://pmg.csail.mit.edu/papers/osdi99.pdf).
+Sada možemo izvesti prag istim dvama koracima kao uz padove, uz stroži uvjet presjeka: uz padove je bio dovoljan jedan zajednički član, a sada presjek mora biti veći od f, jer svi zajednički članovi mogu biti lažljivci. Protokol i dalje smije čekati samo n − f glasova, jer f članova može šutjeti. Dva kvoruma veličine n − f dijele barem 2(n − f) − n = n − 2f članova. Da bi u presjeku bio barem jedan pošten, presjek mora biti veći od f: n − 2f > f, tj. n > 3f. Najmanji takav broj je n = 3f + 1, a kvorum je tada 2f + 1. Castro i Liskov u radu o PBFT-u navode isti argument (§3), a rezultat se slaže s pragom 3m + 1 Lamporta, Shostaka i Peasea. [Castro i Liskov, 1999, §3](https://pmg.csail.mit.edu/papers/osdi99.pdf).
 
 Za f = 1 treba četiri člana i kvorum od tri. Dva kvoruma od tri među četiri člana dijele barem dva člana. Najviše jedan od njih laže.
 
@@ -256,6 +256,8 @@ Pravilo „glasaj najviše jednom po stanju” ključno je. Bez njega bi D mogao
 ## Kad bizantski član šuti
 
 Bizantski član ne mora lagati. Može i šutjeti, u nadi da će odluka zapeti. Uz n = 3f + 1 to ne pomaže: B, C i D zajedno čine kvorum od tri i odlučuju bez A. Prag 3f + 1 tako istodobno štiti dogovor (presjek sadrži poštenog člana) i okončanje (pošteni članovi sami čine kvorum).
+
+Pritom f broji sve neispravne članove, a ne samo lažljivce: pad poštenog člana troši isti f kao laž. Neka A laže, a pošteni B padne. C i D tada imaju samo dva glasa; ako A šuti, kvorum od tri se ne skupi i sustav stane, pa se gubi okončanje. Dva kvoruma od tri među četiri člana i dalje dijele dva člana, od kojih najviše jedan laže, pa proturječnih odluka nema i dogovor ostaje sačuvan. Kad je neispravnih članova više od f, a lažljivaca najviše f, sustav dakle staje, ali se ne raskoli. Pošten član koji se nakon pada ponovno pokrene mora pamtiti svoj glas, pa ga BFT protokoli trajno zapisuju prije slanja. Član koji zaboravi glas mogao bi u istom stanju glasati drukčije i za protokol bi se ponašao bizantski.
 
 ![n − f = 3 poštenih dovoljno je za kvorum i bez A](assets/silent-member.hr.pdf){width=95% fig-alt="A šuti; B, C i D zajedno čine 3 = 2f + 1 glasa i donose odluku. n − f = 3 poštenih dovoljno je za kvorum i bez A"}
 
@@ -281,7 +283,7 @@ Algoritam GST ne vidi i ne obrađuje: nijedan protokol nema korak „ako je nast
 
 Sinkroni algoritam zna Δ i na njemu gradi zaključke: izostanak poruke nakon Δ tretira kao dokaz da je pošiljatelj pao ili laže. Lamport, Shostak i Pease upravo to pretpostavljaju: izostanak poruke može se otkriti (A3). Na budžetu bi to bilo pravilo „ako C ne odgovori za 3 s, C je pao, pa odlučujemo bez njega”. To je ispravno samo ako je 3 s stvarno gornja granica; ako mreža jednom zakasni dulje, C je možda već sudjelovao u drugoj odluci i dogovor je prekršen.
 
-Djelomično sinkroni algoritam ne smije istek roka koristiti za sigurnost. Odluku donosi samo kvorumom 2f + 1, čiji presjek štiti dogovor bez obzira na vrijeme; istek roka koristi samo za napredak, kao „nema odgovora, pokušaj novi krug ili novog vođu”, i pritom produljuje rok jer Δ ne zna. Prije GST krugovi propadaju, ali ništa pogrešno se ne potvrdi; nakon GST istek roka jednom premaši stvarno kašnjenje i krug uspije. PBFT je takav: sigurnost ne ovisi o sinkroniji, a zamjena vođe pokreće se istekom roka. [Castro i Liskov, 1999, §3 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf). Cijena je u broju članova: kad šutnja ne dokazuje ništa, treba više poštenih, kao u tablici prethodnog odjeljka.
+Djelomično sinkroni algoritam ne smije istek roka koristiti za sigurnost. Odluku donosi samo kvorumom 2f + 1, čiji presjek štiti dogovor bez obzira na vrijeme; istek roka koristi samo za napredak, kao „nema odgovora, pokušaj novi krug ili novog vođu”, i pritom produljuje rok jer Δ ne zna. Prije GST krugovi propadaju, ali ništa pogrešno se ne potvrdi; nakon GST istek roka jednom premaši stvarno kašnjenje i krug uspije. PBFT je takav: sigurnost ne ovisi o vremenskim pretpostavkama, a zamjena vođe pokreće se istekom roka. [Castro i Liskov, 1999, §3 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf). Cijena je u broju članova: kad šutnja ne dokazuje ništa, treba više poštenih, kao u tablici prethodnog odjeljka.
 
 ![Vrijeme smije ubrzati odluku, ali je ne smije učiniti pogrešnom](assets/timing-algorithms.hr.pdf){width=95% fig-alt="Isto opažanje, B nema glas od C, dva algoritma. Sinkroni: zna rok Δ, nakon Δ zaključi da je C pao, odluči bez C; ispravno samo ako je Δ stvarna granica. Djelomično sinkroni: ne zna rok Δ, na isteku roka pokreće novi krug s duljim rokom, odlučuje tek s 2f + 1 glasova; istek roka nikad ne mijenja odluku. Vrijeme smije ubrzati odluku, ali je ne smije učiniti pogrešnom"}
 
@@ -291,7 +293,7 @@ Djelomično sinkroni algoritam ne smije istek roka koristiti za sigurnost. Odluk
 
 Protokoli za konsenzus koji podnose bizantske članove zovu se BFT (*Byzantine fault tolerance*, tolerancija bizantskih kvarova). Castro i Liskov opisali su 1999. praktičan BFT protokol, PBFT, za n = 3f + 1 replika. U normalnom radu ima tri faze: vođa predlaže redoslijed zahtjeva (*pre-prepare*), replike razmjenjuju poruke da prihvaćaju prijedlog (*prepare*) i zatim poruke da znaju da su ga prihvatili i drugi (*commit*); u fazama pripreme i potvrde čekaju kvorum. Ako vođa šuti ili šalje proturječne prijedloge, ostali na isteku roka biraju novog vođu. [Castro i Liskov, 1999, §4.2 i §4.4](https://pmg.csail.mit.edu/papers/osdi99.pdf).
 
-Algoritam ne ovisi o sinkroniji za sigurnost; za živost traži da kašnjenje poruka ne raste neograničeno (isto, §3). To je upravo podjela iz prvog dijela predavanja. Detalje faza ne učimo napamet; važno je da priprema i potvrda traže kvorum 2f + 1.
+Sigurnost algoritma ne ovisi o vremenskim pretpostavkama; za živost traži da kašnjenje poruka ne raste neograničeno (isto, §3). To je upravo podjela iz prvog dijela predavanja. Detalje faza ne učimo napamet; važno je da priprema i potvrda traže kvorum 2f + 1.
 
 ![Shema BFT protokola, npr. PBFT (Castro i Liskov, 1999)](assets/bft-phases.hr.pdf){width=95% fig-alt="Prijedlog: vođa predlaže tx1 v7; Priprema: 2f + 1 prihvaća prijedlog; Potvrda: 2f + 1 zna da su drugi prihvatili; Izvrši: tx1 v8 konačan. Vođa šuti ili laže: ostali biraju novog vođu. Shema BFT protokola, npr. PBFT"}
 
@@ -381,7 +383,7 @@ Prvi zaključak vrijedi samo uz poznato članstvo. Ako svatko može pokrenuti č
 
 ## Sažetak
 
-Konsenzus je zadatak s tri svojstva: dogovor i valjanost su sigurnost, a okončanje živost. Koliko članova treba, ovisi o modelu: uz padove i djelomičnu sinkroniju $n \geq 2f + 1$, a uz bizantske članove $n \geq 3f + 1$, jer dva kvoruma moraju dijeliti poštenog člana. Sve to broji neovisne članove. U otvorenoj mreži glasanje broji identitete, pa Sybil napad ruši pretpostavku na kojoj prag počiva.
+Konsenzus je zadatak s tri svojstva: dogovor i valjanost su sigurnost, a okončanje živost. Koliko članova treba, ovisi o modelu: u djelomično sinkronom modelu uz padove $n \geq 2f + 1$, a uz bizantske članove $n \geq 3f + 1$, jer dva kvoruma moraju dijeliti poštenog člana. Sve to broji neovisne članove. U otvorenoj mreži glasanje broji identitete, pa Sybil napad ruši pretpostavku na kojoj prag počiva.
 
 ![Svaki prag vrijedi samo uz izričit model vremena, kvarova i članstva](assets/recap.hr.pdf){width=95% fig-alt="Konsenzus: dogovor + valjanost (sigurnost) i okončanje (živost). Prag: pad n ≥ 2f + 1, bizantski n ≥ 3f + 1. Članstvo: f broji neovisne članove, ne identitete. Svaki prag vrijedi samo uz izričit model vremena, kvarova i članstva"}
 

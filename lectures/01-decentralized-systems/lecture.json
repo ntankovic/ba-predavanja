@@ -4,7 +4,7 @@
   "title_hr": "Od raspodijeljenih do decentraliziranih sustava",
   "status": "draft",
   "scaffold": false,
-  "duration_minutes": 120,
+  "duration_minutes": 116,
   "target_substantive_slides": {
     "min": 30,
     "max": 40
@@ -16,5 +16,5 @@
     "hr": "draft",
     "en": "planned"
   },
-  "slides_version": "1.54"
+  "slides_version": "1.62"
 }

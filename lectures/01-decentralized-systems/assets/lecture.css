@@ -161,3 +161,7 @@
 
 /* Transactions are amber chips tx with a subscript, like the TRANSAKCIJA pills in diagrams (lecturer, 2026-10-29). */
 .reveal .tx { display: inline-block; padding: 0.02em 0.45em; border-radius: 999px; font-size: 0.82em; font-weight: 600; line-height: 1.25; border: 1.5px solid #ebcf9f; background: #fff6ea; color: #8a5a1c; vertical-align: 0.06em; }
+
+/* Six-point summary slide (lecturer, 2026-11-03): smaller list so all points fit. */
+.reveal .dense-list ol { font-size: 0.82em; }
+.reveal .dense-list ol li { margin-bottom: 0.35em; }

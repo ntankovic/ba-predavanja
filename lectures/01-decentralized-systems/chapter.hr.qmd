@@ -3,7 +3,7 @@ title: "Od raspodijeljenih do decentraliziranih sustava"
 lang: hr
 ---
 
-**Nacrt za nastavnikov pregled.** Predavanje traje 120 minuta s raspravom, zadacima i ponavljanjem. Engleski prijevod slijedi nakon pregleda hrvatske verzije.
+**Nacrt za nastavnikov pregled.** Predavanje traje 116 minuta s raspravom, zadacima i ponavljanjem. Engleski prijevod slijedi nakon pregleda hrvatske verzije.
 
 ## Vodič kroz predavanje
 
@@ -97,7 +97,7 @@ Redoslijed rada je namjeran: prvo odredimo poslovno pravilo, zatim ga pokušamo 
 - Navesti pretpostavke povjerenja za predloženo rješenje.
 - Obrazložiti kada je zajednički koordinator dovoljan.
 
-**Nastavni rad (11–12 min):** Najavite 120 minuta uključujući kratke zadatke i raspravu. Provjerite poznaju li studenti JSON zapis i jednostavnu funkciju.
+**Nastavni rad (11–12 min):** Najavite 116 minuta uključujući kratke zadatke i raspravu. Provjerite poznaju li studenti JSON zapis i jednostavnu funkciju.
 
 ## Kako prikazujemo stanje i transakcije
 
@@ -426,11 +426,13 @@ Lamport, Shostak i Pease uvode problem pouzdanog dogovora kad neispravne kompone
 
 ## Kašnjenje ili proturječje?
 
+Usporedimo dva slučaja u kojima članovi vide različito stanje. U prvom je isplata 80 iz F na račun X već prihvaćena: A i B vide $S_{8}$ (F:20), a C još vidi $S_{7}$ (F:100). U drugom je A iz istog stanja $S_{7}$ (F:100) B-u odobrio $\mathrm{tx}_{1}$ (80 na X), a C-u $\mathrm{tx}_{2}$ (60 na Y); zajedno traže 140 od 100, pa obje ne mogu proći. Prvi je slučaj kašnjenje: C je pošten i, kad primi $S_{8}$, svi se slažu. Drugi je proturječje koje se neće samo izjednačiti, pa ga mora spriječiti protokol.
+
 U prvom slučaju opažanje je kompatibilno s poštenom, zaostalom replikom. Samo iz starog stanja ne zaključujemo da C laže. U drugom slučaju imamo konkretne proturječne potvrde koje krše pravilo, ako vjerodostojno znamo njihovo podrijetlo i značenje. Ne mora svaka razlika u zaslonima biti dokaz istog problema.
 
 Važno je odrediti koji dokaz imamo. „Moj ekran pokazuje drugo” slabije je od dvije poruke koje potvrđuju dvije nespojive konačne isplate iz istog stanja. Čak ni detekcija proturječja ne određuje automatski koja promjena vrijedi. To treba urediti protokol i način oporavka. Primjer priprema studente da pri analizi ispada ne zamijene opažanje za objašnjenje.
 
-![Različit prikaz nije automatski bizantski kvar](assets/figure-30.hr.pdf){width=95% fig-alt="Zaostala replika: Jedna odluka, C je još nije primio; Proturječne potvrde: Dvije isplate, pokriće za samo jednu; Provjera: Što poruke stvarno dokazuju?. Različit prikaz nije automatski bizantski kvar"}
+![Različit prikaz nije automatski bizantski kvar](assets/figure-30.hr.pdf){width=95% fig-alt="Slučaj 1, kašnjenje: Jedna odluka, C je još nije primio; Slučaj 2, proturječje: Dvije isplate, pokriće za samo jednu; Provjera: Što poruke stvarno dokazuju?. Različit prikaz nije automatski bizantski kvar"}
 
 **Nastavni rad (86–89 min):** Neka studenti klasificiraju oba slučaja i navedu što bi još zatražili za dijagnozu.
 
@@ -464,39 +466,31 @@ Otvoreno pristupanje postavlja dodatno pitanje: kako spriječiti da jedna strana
 
 **Nastavni rad (95–97 min):** Pitajte što je glas u našem modelu: paket, proces, račun ili organizacija? Odgovor ovisi o dogovorenom članstvu.
 
-## Studija slučaja: dvije isplate iz istog budžeta
+## Dva modela, dvije isplate iz istog budžeta
 
-Isti par isplata, $\mathrm{tx}_{1}$: 80 → X i $\mathrm{tx}_{2}$: 60 → Y, izvodimo tri puta. Svaki put pratimo samo poruke koje su stvarno stigle i lokalne zapise sudionika.
+Isti par isplata, $\mathrm{tx}_{1}$: 80 → X i $\mathrm{tx}_{2}$: 60 → Y, provodimo kroz oba modela iz predavanja. Zajedno traže 140 iz 100, pa smije proći najviše jedna. Model 1 je model s početka: zajednička služba radi kod A i svi joj vjeruju. I u njemu poruke mogu kasniti ili se gubiti; to je kašnjenje, kao prvi slučaj u odjeljku „Kašnjenje ili proturječje?”. Model 2 nema koordinatora, a bizantski član ondje stvara proturječje, kao u drugom slučaju. Svaki put pratimo samo poruke koje su stvarno stigle i lokalne zapise sudionika.
 
-### Pošten koordinator
+### Model 1: pošten koordinator
 
 Polazno stanje je F:100, X:0, Y:0 u $S_{7}$. B šalje $\mathrm{tx}_{1}$, C šalje $\mathrm{tx}_{2}$, a A je jedini ovlašteni donositelj odluke. A prima $\mathrm{tx}_{1}$ prvi, prihvaća ga i stvara $S_{8}$; $\mathrm{tx}_{2}$ i dalje očekuje $S_{7}$, pa ga odbija (a pokrića ionako ne bi bilo). Obje strane dobiju izričit odgovor i svi završe s istim stanjem. Pravilo je očuvano jer postoji jedno mjesto koje vidi oba zahtjeva i određuje redoslijed. Cijena: svi ovise o A.
 
-![Izvođenje 1: jedan koordinator, jedna prihvaćena isplata](assets/case-1.hr.pdf){width=95% fig-alt="B: tx1: 80 → X · S7; C: tx2: 60 → Y · S7; A prihvaća tx1, odbija tx2 (S7 zastario); A → B: tx1 prihvaćen · S8; A → C: tx2 odbijen; prihvaćen tx1, F:20 · S8; svi: F:20 · S8. Izvođenje 1: jedan koordinator, jedna prihvaćena isplata"}
+![Model 1: jedan koordinator, jedna prihvaćena isplata](assets/case-1.hr.pdf){width=95% fig-alt="B: tx1: 80 → X · S7; C: tx2: 60 → Y · S7; A prihvaća tx1, odbija tx2; A → B: tx1 prihvaćen · S8; A → C: tx2 odbijen; prihvaćen tx1, F:20 · S8; svi: F:20 · S8. Model 1: jedan koordinator, jedna prihvaćena isplata"}
 
-### Izgubljena potvrda
+### Model 1, ali moguća su kašnjenja
 
 Odluka je ista, ali poruka „$\mathrm{tx}_{1}$ prihvaćen” prema B se gubi. Stanje kod A je ispravno: jedna isplata, F:20. B međutim i dalje prikazuje F:100 · $S_{7}$ i ne zna je li $\mathrm{tx}_{1}$ prihvaćen, odbijen ili samo spor. Ako B ponovno pošalje $\mathrm{tx}_{1}$, A ga mora prepoznati kao isti zahtjev, a ne kao novu isplatu. Ovdje nije prekršeno pravilo fonda, nego je nepotpuno znanje klijenta. To je drukčiji problem od dvostrukog trošenja i traži drukčiji popravak: ponovno slanje, identifikator zahtjeva i upit o stanju.
 
-![Izvođenje 2: stanje je ispravno, ali B to ne zna](assets/case-2.hr.pdf){width=95% fig-alt="Isti tijek kao u izvođenju 1, ali poruka A → B „tx1 prihvaćen · S8” se gubi; A i C: F:20 · S8; B: F:100 · S7, čeka. Izvođenje 2: stanje je ispravno, ali B to ne zna"}
+![Model 1 uz izgubljenu potvrdu: stanje je ispravno, ali B to ne zna](assets/case-2.hr.pdf){width=95% fig-alt="Isti tijek kao u izvođenju 1, ali poruka A → B „tx1 prihvaćen · S8” se gubi; A i C: F:20 · S8; B: F:100 · S7, čeka. Model 1 uz izgubljenu potvrdu: stanje je ispravno, ali B to ne zna"}
 
-### Pravilo „dva od tri”
+### Model 2: pravilo „dva od tri”
 
 Sada nema koordinatora. Naivno pravilo kaže: isplata je konačna kad je podrže dva od tri sudionika. B glasa za svoj $\mathrm{tx}_{1}$ i pita A; C glasa za svoj $\mathrm{tx}_{2}$ i pita A. A odgovara DA obojici. B broji B + A i proglašava $\mathrm{tx}_{1}$ konačnim; C broji C + A i proglašava $\mathrm{tx}_{2}$ konačnim. Ukupno je isplaćeno 140 iz fonda od 100: dvostruko trošenje. Dva skupa od po dva glasa preklapaju se samo u A, a A je rekao dvije različite stvari. Pravilo „dva od tri” jamči sigurnost samo ako sudionik u presjeku ne smije glasati dvaput; to je tema predavanja 02.
 
-![Izvođenje 3: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100](assets/case-3.hr.pdf){width=95% fig-alt="A se ponaša bizantski. B i C traže glas od A; A odgovara DA za tx1 B-u i DA za tx2 C-u; B: B + A = 2 glasa, tx1 konačan, F:20; C: C + A = 2 glasa, tx2 konačan, F:40. Izvođenje 3: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100"}
+![Model 2: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100](assets/case-3.hr.pdf){width=95% fig-alt="A se ponaša bizantski. B i C traže glas od A; A odgovara DA za tx1 B-u i DA za tx2 C-u; B: B + A = 2 glasa, tx1 konačan, F:20; C: C + A = 2 glasa, tx2 konačan, F:40. Model 2: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100"}
 
-**Nastavni rad (97–103 min):** Nastavnik vodi tri izvođenja kroz ilustracije, po 2 minute. Prije otkrivanja ishoda pitajte što će svaki sudionik zapisati.
+U modelu 1 postoji jedan ovlašteni donositelj odluke i jedna prihvaćena isplata; kad poruka kasni, stanje ostaje ispravno, a znanje klijenta nepotpuno. U modelu 2 naivno pravilo dopušta dvije konačne odluke. Te razlike treba imenovati prije prijedloga popravka. „Dodaj još jednu kopiju” ne objašnjava kako će se promijeniti pravilo prihvaćanja.
 
-## Analiza: gdje je pravilo o saldu prekršeno?
-
-U prvom izvođenju postoji jedan ovlašteni donositelj odluke i jedna prihvaćena isplata. U drugom stanje može biti ispravno, a znanje klijenta nepotpuno. U trećem naivno pravilo dopušta dvije konačne odluke. Te razlike treba imenovati prije prijedloga popravka. „Dodaj još jednu kopiju” ne objašnjava kako će se promijeniti pravilo prihvaćanja.
-
-Za svaki prijedlog popravka tražimo preostalu slabost. Ako svi čekaju sve, što radi zaustavljen član? Ako netko odlučuje sam, kome je povjereno upravljanje? Ako glasujemo, koje članstvo i dopuštene kvarove pretpostavljamo? Odgovori pokazuju zašto je dogovor o redoslijedu poseban problem, a ne dodatna strelica na arhitekturnom crtežu.
-
-![Odgovor mora pokazati konkretan korak izvođenja](assets/figure-35.hr.pdf){width=95% fig-alt="Opažanje: Što je stvarno stiglo?; Pravilo: Zašto je potvrđeno?; Protuprimjer: Koji korak krši pravilo?. Odgovor mora pokazati konkretan korak izvođenja"}
-
-**Nastavni rad (103–107 min):** Prođite tri izvođenja iz studije slučaja. Pohvaliti konkretan protuprimjer, ne složenost predloženog protokola.
+**Nastavni rad (97–103 min):** Nastavnik vodi oba modela kroz tri ilustracije, po 2 minute. Prije otkrivanja ishoda pitajte što će svaki sudionik zapisati. Na kraju pitajte na kojoj strelici nastaje 140 iz 100.
 
 ## Odaberite arhitekturu prema problemu
 
@@ -512,7 +506,7 @@ Za budžet pitamo treba li svaka organizacija tehnički provjeravati odluke ili 
 
 **Više koordinacije ima cijenu.**
 
-**Nastavni rad (107–110 min):** Za naš budžet tražite dva različita, ali obrazložena izbora. Dodatne pretpostavke zapišite uz izbor.
+**Nastavni rad (103–106 min):** Za naš budžet tražite dva različita, ali obrazložena izbora. Dodatne pretpostavke zapišite uz izbor.
 
 ## Ponavljanje: što ne štima u ovom prijedlogu protokola?
 
@@ -524,21 +518,26 @@ Popravak ima tri dijela: izričito pravilo kada je isplata prihvaćena, isti ide
 
 ![Popravak: pravilo prihvaćanja, isti ID pokušaja i izričito tko upravlja.](assets/figure-37.hr.pdf){width=95% fig-alt="„decentraliziran”: Sva tri poslužitelja vodi isti administrator.; „prihvaćena”: Poslužitelj 1 potvrdi tx1, poslužitelj 2 potvrdi tx2: 140 od 100.; „nije prošla”: tx1 je prošao, izgubila se potvrda; novi zahtjev plati opet. Popravak: pravilo prihvaćanja, isti ID pokušaja i izričito tko upravlja."}
 
-**Nastavni rad (110–112 min):** 2 min u parovima, zatim 2 min rasprave uz protuprimjere.
+**Nastavni rad (106–108 min):** 2 min u parovima, zatim 2 min rasprave uz protuprimjere.
 
-## Sažetak: tri pojma koja ne smijemo izjednačiti
+## Sažetak: od koordinatora do konsenzusa
 
-Predavanje je krenulo od jednog zapisa i poslovnog pravila. Lokalna atomarna promjena riješila je sukob u jednoj bazi. Replike su otvorile pitanje svježine, a mreža neizvjesnost o ishodu. Neovisni operatori promijenili su granicu povjerenja i dodali mogućnost proturječnih poruka. Svaki korak zahtijevao je novu, izričitu pretpostavku.
+Predavanje je pošlo od jednog zapisa i skupa poslovnih pravila, a zatim je korak po korak mijenjalo pretpostavke. Svaki je korak zahtijevao novu, izričitu pretpostavku i otkrio novu vrstu problema.
 
-Provjerite možete li objasniti razliku između raspodijeljenosti, decentralizacije i P2P-a bez navođenja imena proizvoda. Zatim objasnite zašto su zaostala kopija i dvije suprotne konačne potvrde različiti problemi. Konačno, navedite što u našem primjeru znamo o članovima i vremenu dostave. To je podloga na koju će se nasloniti precizni zahtjevi konsenzusa.
+1. **Skup poslovnih pravila kao polazna točka.** Svaku arhitekturu vrednujemo prema tome čuva li pravila budžeta: saldo fonda ne smije postati negativan, a ista se sredstva ne smiju potrošiti dvaput.
+2. **Koordinator kao legitimno rješenje.** Ako svi sudionici prihvaćaju autoritet jednog operatora, jedinstveno mjesto određivanja redoslijeda čuva ta pravila; cijena je ovisnost o tom operatoru.
+3. **Replikacija i mreža uvode neizvjesnost, a ne proturječje.** Zastario prikaz nije poništena isplata, a istek roka nije dokaz neuspjeha; ponovljeni zahtjev zato nosi isti identifikator.
+4. **Decentralizacija kao raspodjela ovlasti.** Sustav može biti raspodijeljen, a da nije decentraliziran; P2P opisuje način razmjene poruka, a ne mehanizam dogovora.
+5. **Odstupanje od protokola.** Bez zajedničkog operatora član može slati proturječne poruke. Kašnjenje treba razlikovati od proturječja, a vjerodostojnost pošiljatelja od valjanosti odluke.
+6. **Granice naivne većine.** Jedan član koji odstupa dovoljan je da pravilo „dva od tri” dopusti dvije konačne isplate, ukupno 140 iz fonda od 100.
 
-![Jamstvo vrijedi samo uz izričit model: ovlasti, kvarovi i mreža.](assets/figure-38.hr.pdf){width=95% fig-alt="Replika ≠ ovlast: Kopija podataka ne određuje tko smije mijenjati stanje.; Istek roka ≠ neuspjeh: Bez odgovora ishod je nepoznat; ponovni pokušaj nosi isti ID.; Poruka ≠ odluka: Odluku sustava određuje pravilo prihvaćanja, ne jedan čvor. Jamstvo vrijedi samo uz izričit model: ovlasti, kvarovi i mreža."}
+Svako jamstvo vrijedi samo uz izričit model ovlasti, kvarova i mreže. Za provjeru razumijevanja objasnite razliku između raspodijeljenosti, decentralizacije i P2P-a bez navođenja imena proizvoda. Zatim obrazložite zašto su zaostala kopija i dvije proturječne konačne potvrde različiti problemi. Na kraju navedite što u našem primjeru znamo o članovima i vremenu dostave. Na toj će se podlozi temeljiti precizni zahtjevi konsenzusa.
 
-**Nastavni rad (114–116 min):** Brzi izlazni odgovori: jedno pitanje po redu učionice, bez ponovnog čitanja definicija.
+**Nastavni rad (110–112 min):** Izlazna provjera: jedan red učionice po točki, uz primjer iz budžeta, bez ponovnog čitanja definicija.
 
 ## Otvoreno pitanje za predavanje 02
 
-Prva polovica predavanja pretpostavljala je jednog operatora: koordinator, baza i replike bili su pod istom upravom. Od odjeljka „Nova pretpostavka: nema zajedničkog operatora” organizacije A, B i C vode čvorove neovisno, a jedna od njih može slati proturječne poruke. Pokazali smo koja pravila u tom slučaju ne rade; pravilo koje radi još nemamo. To je pitanje s početka predavanja: banke se oslanjaju na središnju banku, a mi tražimo dogovor bez nje. Otvoreno pitanje glasi: kako ispravni sudionici prihvaćaju istu promjenu i kada smiju prestati čekati?
+Prva polovica predavanja pretpostavljala je jednog operatora: koordinator, baza i replike bili su pod istom upravom. Od odjeljka „Nova pretpostavka: nema zajedničkog operatora” organizacije A, B i C vode čvorove neovisno, a jedna od njih može slati proturječne poruke. Pokazali smo da naivno pravilo prihvaćanja („dva od tri”) tada ne čuva pravilo o saldu, a pravilo koje ga čuva još nismo formulirali. Time se vraćamo na pitanje iz uvoda: kako uskladiti evidencije bez posrednika kakav je bankama središnja banka? Otvoreno pitanje glasi: kako ispravni sudionici mogu prihvatiti istu promjenu i pod kojim uvjetima postupak mora završiti? To je problem konsenzusa (*consensus*), čija je formalna specifikacija tema predavanja 02.
 
 Za sljedeće predavanje predajemo specifikaciju, a ne gotov odgovor: postoje poznati sudionici, dopuštena odstupanja i zahtjev da ispravni sudionici ne donose nespojive konačne odluke. Treba još precizno odrediti koje su odluke valjane i pod kojim uvjetima postupak mora završiti. Ako zaboravimo bilo koji od tih dijelova, lako je predložiti prividno rješenje koje uvijek čeka ili uvijek prihvaća unaprijed zadanu vrijednost.
 
@@ -546,9 +545,9 @@ Za pripremu nacrtajte dva prijedloga: jedan koji čeka sve odgovore i jedan koji
 
 ![Dobra specifikacija prethodi izboru protokola](assets/figure-39.hr.pdf){width=95% fig-alt="Ulaz: Članovi, poruke, prijedlozi; Ograničenja: Kašnjenje i odstupanje; Cilj: Valjana zajednička odluka. Dobra specifikacija prethodi izboru protokola"}
 
-**Nastavni rad (116–119 min):** Ostavite minute za završna pitanja. Najavite konsenzus i bizantske generale u 02, bez preuzimanja sljedećeg predavanja.
+**Nastavni rad (112–115 min):** Ostavite minute za završna pitanja. Najavite konsenzus i bizantske generale u 02, bez preuzimanja sljedećeg predavanja.
 
-## Literatura za produbljivanje
+## Dodatna literatura
 
 Za prvo čitanje odaberite Waldoov odjeljak o djelomičnim ispadima i usporedite ga s primjerom izgubljene potvrde. Iz RFC-a izdvojite jednu funkciju sustava koja može biti središnja čak kad je razmjena P2P. U uvodu rada o bizantskim generalima prepoznajte problem različitih informacija poslanih različitim primateljima. Algoritamski dio tog rada nije preduvjet za današnju vježbu.
 
@@ -559,5 +558,5 @@ AWS-ov tekst povezuje ponavljanje zahtjeva s API dizajnom. Primjeri i dijagrami 
 - [Lamport, Shostak, Pease: The Byzantine Generals Problem](https://lamport.azurewebsites.net/pubs/byz.pdf), uvod.
 - [AWS: Making retries safe with idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 
-**Nastavni rad (119–120 min):** Objasnite što čitati iz kojeg izvora. Literatura nije dodatna lista obveznih proizvoda.
+**Nastavni rad (115–116 min):** Objasnite što čitati iz kojeg izvora. Literatura nije dodatna lista obveznih proizvoda.
 

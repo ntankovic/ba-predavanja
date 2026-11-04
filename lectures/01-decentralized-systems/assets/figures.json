@@ -318,11 +318,12 @@
     "name": "figure-30",
     "mode": "compare",
     "nodes": [
-      "Zaostala replika|Jedna odluka, C je još nije primio",
-      "Proturječne potvrde|Dvije isplate, pokriće za samo jednu",
+      "Slučaj 1: kašnjenje|Jedna odluka, C je još nije primio",
+      "Slučaj 2: proturječje|Dvije isplate, pokriće za samo jednu",
       "Provjera|Što poruke stvarno dokazuju?"
     ],
-    "caption": "Različit prikaz nije automatski bizantski kvar"
+    "caption": "Različit prikaz nije automatski bizantski kvar",
+    "danger": true
   },
   {
     "name": "figure-31",
