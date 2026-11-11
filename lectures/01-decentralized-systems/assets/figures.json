@@ -3,7 +3,7 @@
     "name": "figure-02",
     "mode": "roles",
     "nodes": [
-      "Vlastite evidencije|A, B i C vode svoje zapise",
+      "Vlastite evidencije|Banke Sjever, Jug i Istok vode svoje zapise",
       "Obračun i poravnanje|Plaća se razlika; svi vjeruju središnjoj banci",
       "Ako nastane spor|Ugovor, dokazi, pravna zaštita"
     ],
@@ -165,8 +165,8 @@
     "name": "figure-16",
     "mode": "steps",
     "nodes": [
-      "K42 prvi put|Promjena + rezultat",
-      "K42 ponovno|Pronađi spremljeni ishod",
+      "Z42 prvi put|Promjena + rezultat",
+      "Z42 ponovno|Pronađi spremljeni ishod",
       "Odgovor|Isti rezultat, bez novog upisa"
     ],
     "caption": "ID zahtjeva nije broj mrežne dostave"

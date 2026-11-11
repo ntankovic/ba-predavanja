@@ -167,3 +167,14 @@
 /* Six-point summary slide (lecturer, 2026-11-03): smaller list so all points fit. */
 .reveal .dense-list ol { font-size: 0.82em; }
 .reveal .dense-list ol li { margin-bottom: 0.35em; }
+
+/* Label kinds (lecturer, 2026-11-11): each kind of label has its own shape.
+   Organisations/nodes: round blue badge, as the circles in diagrams. Accounts: square monospace box.
+   Bank postings (U1, K1): dashed grey tag. Transactions and states keep their pills (.tx, .ver). */
+.reveal .org { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 1.45em; height: 1.45em; padding: 0; border-radius: 50%; border: 1.5px solid #4f8fb3; background: #ffffff; color: #105d80; font-weight: 700; font-size: 0.78em; line-height: 1; vertical-align: 0.08em; }
+.reveal .acct { display: inline-block; padding: 0 0.3em; border-radius: 3px; border: 1.5px solid #9aa6b2; background: #f2f4f7; color: #2c3e50; font-family: "Courier New", Menlo, monospace; font-weight: 700; font-size: 0.86em; line-height: 1.25; vertical-align: 0.04em; }
+.reveal .post { display: inline-block; padding: 0 0.3em; border-radius: 3px; border: 1px dashed #8d9aa5; color: #44525e; font-weight: 700; font-size: 0.9em; line-height: 1.2; }
+.reveal .legend-label { color: #5b6f7d; font-weight: 600; }
+.reveal p:has(> .legend-label) { font-size: 0.72em; color: #5b6f7d; margin-top: 18px; }
+/* Recap slides near the end (lecturer, 2026-11-11). */
+.reveal .step-tag.recap-tag { background:#f1edf9; border-color:#b9a7dc; color:#5a3f93; }

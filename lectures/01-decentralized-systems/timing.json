@@ -204,21 +204,21 @@
   },
   {
     "slide": 30,
-    "title": "P2P opisuje razmjenu, ne jamči dogovor",
+    "title": "Decentralizacija: tko ima ovlasti, a ne koliko računala",
     "start": 69,
-    "end": 71,
-    "minutes": 2
-  },
-  {
-    "slide": 31,
-    "title": "Raspodijeljen, decentraliziran ili P2P?",
-    "start": 71,
-    "end": 74,
+    "end": 72,
     "minutes": 3
   },
   {
+    "slide": 31,
+    "title": "P2P opisuje razmjenu, ne jamči dogovor",
+    "start": 72,
+    "end": 74,
+    "minutes": 2
+  },
+  {
     "slide": 32,
-    "title": "Nova pretpostavka: nema zajedničkog operatora",
+    "title": "Raspodijeljen, decentraliziran ili P2P?",
     "start": 74,
     "end": 77,
     "minutes": 3
@@ -239,24 +239,24 @@
   },
   {
     "slide": 35,
-    "title": "Pad i proizvoljno ponašanje nisu isti kvar",
+    "title": "Identitet ne zamjenjuje pravilo prihvaćanja",
     "start": 83,
-    "end": 86,
-    "minutes": 3
+    "end": 85,
+    "minutes": 2
   },
   {
     "slide": 36,
-    "title": "Kašnjenje ili proturječje?",
-    "start": 86,
-    "end": 89,
+    "title": "Pad i proizvoljno ponašanje nisu isti kvar",
+    "start": 85,
+    "end": 88,
     "minutes": 3
   },
   {
     "slide": 37,
-    "title": "Identitet ne zamjenjuje pravilo prihvaćanja",
-    "start": 89,
+    "title": "Kašnjenje ili proturječje?",
+    "start": 88,
     "end": 91,
-    "minutes": 2
+    "minutes": 3
   },
   {
     "slide": 38,
@@ -281,55 +281,48 @@
   },
   {
     "slide": 41,
-    "title": "Model 1, ali moguća su kašnjenja",
+    "title": "Model 2: pravilo „dva od tri”",
     "start": 99,
     "end": 101,
     "minutes": 2
   },
   {
     "slide": 42,
-    "title": "Model 2: pravilo „dva od tri”",
-    "start": 101,
-    "end": 103,
-    "minutes": 2
-  },
-  {
-    "slide": 43,
     "title": "Odaberite arhitekturu prema problemu",
-    "start": 103,
-    "end": 106,
+    "start": 101,
+    "end": 104,
     "minutes": 3
   },
   {
-    "slide": 44,
-    "title": "Ponavljanje: što ne štima u ovom prijedlogu protokola?",
-    "start": 106,
+    "slide": 43,
+    "title": "Što ne štima u ovom prijedlogu protokola?",
+    "start": 104,
     "end": 108,
-    "minutes": 2
+    "minutes": 4
   },
   {
-    "slide": 45,
+    "slide": 44,
     "title": "Tri zaključka, tri protuprimjera",
     "start": 108,
     "end": 110,
     "minutes": 2
   },
   {
-    "slide": 46,
+    "slide": 45,
     "title": "Sažetak: od koordinatora do konsenzusa",
     "start": 110,
     "end": 112,
     "minutes": 2
   },
   {
-    "slide": 47,
+    "slide": 46,
     "title": "Otvoreno pitanje za predavanje 02",
     "start": 112,
     "end": 115,
     "minutes": 3
   },
   {
-    "slide": 48,
+    "slide": 47,
     "title": "Dodatna literatura",
     "start": 115,
     "end": 116,

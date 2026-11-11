@@ -250,8 +250,8 @@ for fig in json.loads((P/'figures.json').read_text()):
   elif mode=='roles' and fig['name']=='figure-04':s+=text(520,235,'Članovi predlažu; o prihvaćanju odlučuje protokol: zajednička pravila koja svi moraju poštovati.',22)
  s+=figcaption(520,height-22,fig['caption'])
  svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="{height}" viewBox="0 0 1040 {height}">'+markers()+f'<rect width="1040" height="{height}" fill="white"/>'+s+'</svg>'
- # Request IDs such as K42 are identifiers: monospace, as on the slides (lecturer, 2026-10-28). rsvg cannot see Menlo, so use Courier New.
- svg=re.sub(r'\bK42\b','<tspan font-family="Courier New, monospace">K42</tspan>',svg)
+ # Request IDs such as Z42 are identifiers: monospace, as on the slides (lecturer, 2026-10-28). rsvg cannot see Menlo, so use Courier New.
+ svg=re.sub(r'\bZ42\b','<tspan font-family="Courier New, monospace">Z42</tspan>',svg)
  path=P/(fig['name']+'.hr.svg');path.write_text(chips(svg))
  subprocess.run(['rsvg-convert','-f','pdf','-o',str(path.with_suffix('.pdf')),str(path)],check=True)
 print('Exported',len(json.loads((P/'figures.json').read_text())),'SVG/PDF pairs')

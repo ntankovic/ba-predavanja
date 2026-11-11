@@ -51,13 +51,13 @@ Svako knjiženje ima dva retka s istim iznosom, pa su zbrojevi terećenja i odob
 
 ## Kako surađuju banke s odvojenim evidencijama?
 
-Banke ne moraju dati jednoj drugoj administratorsku kontrolu nad svim svojim evidencijama. Vode zasebne zapise, razmjenjuju naloge i koriste dogovorene postupke obračuna obveza i njihova poravnanja. U jednom konkretnom sustavu, $\mathrm{tx}_{2}$, međubankovne se obveze poravnavaju prijenosom novca između računa kod središnje banke u stvarnom vremenu. [ECB: $\mathrm{tx}_{2}$](https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/what-is-t2.en.html). Sud nije korak kroz koji prolazi svako plaćanje: pravna zaštita služi rješavanju sporova, dok poravnanje ima vlastita pravila i infrastrukturu. U redovnom radu evidencije se slažu: nalozi između dviju banaka skupljaju se tijekom ciklusa, a poravnava se samo razlika, pa A plati B ili B plati A (netiranje; velika i hitna plaćanja idu pojedinačno i u stvarnom vremenu). Evidencije se ne slažu zato što banke međusobno uspoređuju knjige, nego zato što sve vjeruju središnjoj banci i oslanjaju se na njezin zapis. Ako se pojavi razlika, npr. pogrešan iznos ili dvostruki nalog, rješava se povratom ili opozivom po pravilima platne sheme. Sud dolazi tek kod spora o samom poslu. To je slučaj posrednika od povjerenja iz predavanja 00. Račun u $\mathrm{tx}_{2}$ mogu imati kreditne institucije, a od 2025. i platne institucije i institucije za e-novac pod istim uvjetima (samo sredstva za poravnanje tog dana, bez čuvanja novca korisnika; [ECB, 19. 7. 2024.](https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews240719.en.html)); građani i obične tvrtke ne mogu. Naknade prema [ECB TARGET Services Pricing Guide $S_{3}$.0, srpanj 2026.](https://www.ecb.europa.eu/paym/target/coco/shared/docs/ecb.pricingcoco_target_2026_v3.0.en.pdf): račun za plaćanja (RTGS) 400 € mjesečno + 0,80 € po nalogu ili 5.000 € mjesečno + 0,60–0,05 € po nalogu; TIPS 800 € mjesečno + 0,002 € po trenutnom plaćanju. Revizija cijena RTGS-a 2026.: provjeriti jesu li navedeni iznosi već nove vrijednosti. Usporedba: pristup posredniku daje licenca uz fiksne troškove i nadzor; javni *blockchain* otvoren je svima, ali se plaća svaki zapis.
+Banke ne moraju dati jednoj drugoj administratorsku kontrolu nad svim svojim evidencijama. Vode zasebne zapise, razmjenjuju naloge i koriste dogovorene postupke obračuna obveza i njihova poravnanja. U jednom konkretnom sustavu, T2, međubankovne se obveze poravnavaju prijenosom novca između računa kod središnje banke u stvarnom vremenu. [ECB: T2](https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me/html/what-is-t2.en.html). Sud nije korak kroz koji prolazi svako plaćanje: pravna zaštita služi rješavanju sporova, dok poravnanje ima vlastita pravila i infrastrukturu. U redovnom radu evidencije se slažu: nalozi između dviju banaka skupljaju se tijekom ciklusa, a poravnava se samo razlika, pa jedna banka drugoj plati samo razliku (netiranje; velika i hitna plaćanja idu pojedinačno i u stvarnom vremenu). Evidencije se ne slažu zato što banke međusobno uspoređuju knjige, nego zato što sve vjeruju središnjoj banci i oslanjaju se na njezin zapis. Ako se pojavi razlika, npr. pogrešan iznos ili dvostruki nalog, rješava se povratom ili opozivom po pravilima platne sheme. Sud dolazi tek kod spora o samom poslu. To je slučaj posrednika od povjerenja iz predavanja 00. Račun u T2 mogu imati kreditne institucije, a od 2025. i platne institucije i institucije za e-novac pod istim uvjetima (samo sredstva za poravnanje tog dana, bez čuvanja novca korisnika; [ECB, 19. 7. 2024.](https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews240719.en.html)); građani i obične tvrtke ne mogu. Naknade prema [ECB TARGET Services Pricing Guide v3.0, srpanj 2026.](https://www.ecb.europa.eu/paym/target/coco/shared/docs/ecb.pricingcoco_target_2026_v3.0.en.pdf): račun za plaćanja (RTGS) 400 € mjesečno + 0,80 € po nalogu ili 5.000 € mjesečno + 0,60–0,05 € po nalogu; TIPS 800 € mjesečno + 0,002 € po trenutnom plaćanju. Revizija cijena RTGS-a 2026.: provjeriti jesu li navedeni iznosi već nove vrijednosti. Usporedba: pristup posredniku daje licenca uz fiksne troškove i nadzor; javni *blockchain* otvoren je svima, ali se plaća svaki zapis.
 
 Naš zajednički digitalni budžet pojednostavnjuje pitanje zajednički prihvaćenog stanja; nije model cjelokupnog bankovnog poslovanja. Organizacije mogu prihvatiti operatora, ugovor, reviziju i nadležni sud. Ako zapisi postanu nespojivi, treba prikupiti dokaze, uskladiti evidencije ili riješiti spor. Želimo istražiti može li zajedničko provođenje preciznih pravila spriječiti dio takvih neslaganja prije nego što nastanu.
 
 Zato početno pitanje nije kako računati dvije istodobne isplate. Pitanje je tko smije konačno prihvatiti ili promijeniti zajednički zapis i na čiji se autoritet ostali oslanjaju. Najprije ćemo vidjeti što rješava pouzdan koordinator, zatim replike i na kraju neovisni operatori. Isplate 80 i 60 kasnije daju konkretno pravilo za provjeru tih rješenja.
 
-![Redovito poravnanje i sudsko rješavanje spora različiti su postupci](assets/figure-02.hr.pdf){width=95% fig-alt="Vlastite evidencije: A, B i C vode svoje zapise; Obračun i poravnanje: Plaća se razlika; svi vjeruju središnjoj banci; Ako nastane spor: Ugovor, dokazi, pravna zaštita. Redovito poravnanje i sudsko rješavanje spora različiti su postupci"}
+![Redovito poravnanje i sudsko rješavanje spora različiti su postupci](assets/figure-02.hr.pdf){width=95% fig-alt="Vlastite evidencije: Banke Sjever, Jug i Istok vode svoje zapise; Obračun i poravnanje: Plaća se razlika; svi vjeruju središnjoj banci; Ako nastane spor: Ugovor, dokazi, pravna zaštita. Redovito poravnanje i sudsko rješavanje spora različiti su postupci"}
 
 **Nastavni rad (5–7 min):** Pitajte što rješava poravnanje, a što sud. Zatim zatražite primjer troška koji nastaje tek kada se sudionici ne mogu usuglasiti.
 
@@ -235,11 +235,11 @@ Sve kopije zasad vodi isti pouzdani operator. Poboljšavamo mogućnosti čitanja
 
 ## Kopije nisu trenutačno jednake
 
-Tablica prikazuje saldo fonda F i oznaku stanja na svakoj replici. U $t_{1}$ A prihvaća $\mathrm{tx}_{1}$: fond ima 20, a X dobiva 80. B i C još prikazuju starih 100. U $t_{2}$ promjena stiže do B, a u $t_{3}$ do C. Odredišni račun X ažurira se kao dio iste promjene iako zbog preglednosti nije prikazan u tablici.
+Tablica prikazuje saldo fonda F i oznaku stanja na svakoj kopiji; A je primarna baza, B i C su replike. U $t_{1}$ A prihvaća $\mathrm{tx}_{1}$: fond ima 20, a X dobiva 80. B i C još prikazuju starih 100. U $t_{2}$ promjena stiže do B, a u $t_{3}$ do C. Odredišni račun X ažurira se kao dio iste promjene iako zbog preglednosti nije prikazan u tablici.
 
 To je kašnjenje širenja jedne odluke, a ne sukob dvaju donositelja odluke. Kada se sve prihvaćene promjene dostave, kopije se u ovom izvođenju izjednače. Četiri retka nisu dokaz da će svaka buduća mrežna situacija završiti tako: potrebne su pretpostavke o dostavi i oporavku. Replika koja prikazuje 100 nema time pravo neovisno odobriti novu isplatu iz tih sredstava.
 
-| Trenutak | Replika A | Replika B | Replika C |
+| Trenutak | A · primarna baza | B · replika | C · replika |
 |:---|:---|:---|:---|
 | $t_{0}$ | 100, $S_{7}$ | 100, $S_{7}$ | 100, $S_{7}$ |
 | $t_{1}$ | 20, $S_{8}$ | 100, $S_{7}$ | 100, $S_{7}$ |
@@ -250,7 +250,7 @@ To je kašnjenje širenja jedne odluke, a ne sukob dvaju donositelja odluke. Kad
 
 ## Korisnik ne vidi vlastitu isplatu
 
-Gledamo iz perspektive korisnika organizacije B koji je upravo dobio potvrdu da je isplata 80 ($\mathrm{tx}_{1}$) prihvaćena na A. Nakon uspjeha očekuje da sljedeći prikaz sadržava njegovu promjenu. Čitanje sa zaostale replike C može prikazati 100 umjesto 20. Jedno rješenje je čitati od autoriteta za upis, drugo tražiti da replika dosegne barem stanje $S_{8}$. Oba pristupa imaju trošak: čekanje, usmjeravanje ili privremenu nedostupnost čitanja.
+Gledamo iz perspektive korisnika organizacije B koji je upravo dobio potvrdu da je isplata 80 ($\mathrm{tx}_{1}$) prihvaćena na A. Nakon uspjeha očekuje da sljedeći prikaz sadržava njegovu promjenu. Aplikacija raspoređuje čitanja po replikama radi opterećenja i ovaj put čita s C. Čitanje sa zaostale replike C može prikazati 100 umjesto 20. Jedno rješenje je čitati od autoriteta za upis, drugo tražiti da replika dosegne barem stanje $S_{8}$. Oba pristupa imaju trošak: čekanje, usmjeravanje ili privremenu nedostupnost čitanja.
 
 Informativni izvještaj može dopustiti označeno kašnjenje. Konačna odluka o novoj isplati ne smije se osloniti samo na zastarjeli prikaz salda. Zato razdvajamo prikaz podataka i ovlast odlučivanja. Sučelje treba prikazati prihvaćenu isplatu i svježinu podataka bez stvaranja dojma da je stari saldo ponovno raspoloživ.
 
@@ -270,11 +270,11 @@ Ta neizvjesnost nastaje na granici sustava. Waldo et al. u odjeljku 4.3 opisuju 
 
 ## Ponovljeni pokušaj treba isti identitet
 
-Klijent ne zna je li isplata prošla pa ponavlja zahtjev; bez zaštite bi ista isplata prošla dvaput. Zahtjevu zato dodajemo identifikator K42. Koordinator uz prihvaćenu isplatu bilježi rezultat vezan uz klijenta i taj identifikator. Ako isti klijent ponovi isti zahtjev, može dobiti raniji rezultat umjesto još jedne promjene. Takav je zahtjev idempotentan (*idempotent*): njegovo ponavljanje ne mijenja ishod. ID pritom ne smije biti ponovno iskorišten za drukčiji sadržaj: takav slučaj treba odbiti ili posebno obraditi.
+Klijent ne zna je li isplata prošla pa ponavlja zahtjev; bez zaštite bi ista isplata prošla dvaput. Zahtjevu zato dodajemo identifikator Z42. Koordinator uz prihvaćenu isplatu bilježi rezultat vezan uz klijenta i taj identifikator. Ako isti klijent ponovi isti zahtjev, može dobiti raniji rezultat umjesto još jedne promjene. Takav je zahtjev idempotentan (*idempotent*): njegovo ponavljanje ne mijenja ishod. ID pritom ne smije biti ponovno iskorišten za drukčiji sadržaj: takav slučaj treba odbiti ili posebno obraditi.
 
 Pohrana rezultata i promjena stanja moraju biti povezane tako da pad između njih ne stvori novu dvosmislenost. U nastavnom modelu pretpostavljamo atomarnu pohranu obaju zapisa i čuvanje ID-a tijekom promatranog razdoblja. Time ne tvrdimo da je mreža dostavila poruku točno jednom. Ograničili smo učinak ponavljanja na strani usluge. [AWS Builders’ Library](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/) opisuje taj obrazac.
 
-![ID zahtjeva nije broj mrežne dostave](assets/figure-16.hr.pdf){width=95% fig-alt="K42 prvi put: Promjena + rezultat; K42 ponovno: Pronađi spremljeni ishod; Odgovor: Isti rezultat, bez novog upisa. ID zahtjeva nije broj mrežne dostave"}
+![ID zahtjeva nije broj mrežne dostave](assets/figure-16.hr.pdf){width=95% fig-alt="Z42 prvi put: Promjena + rezultat; Z42 ponovno: Pronađi spremljeni ishod; Odgovor: Isti rezultat, bez novog upisa. ID zahtjeva nije broj mrežne dostave"}
 
 **Nastavni rad (46–49 min):** Pitajte što ako klijent za ponovni pokušaj stvori novi ID. Razlikujte ponovni pokušaj od nove korisničke namjere.
 
@@ -330,7 +330,7 @@ Važno je nacrtati konkretne nedostupne veze. Rečenica „internet je pao” sk
 
 Primarna baza i dalje je A, ali C više ne čuje A. Kao na slajdu o sporom i zaustavljenom čvoru, C ne može razlikovati pad od prekida veze: zaključi da je A pao i sam počne prihvaćati upise. Prije razdvajanja obje strane imaju F:100, X:0, Y:0 u $S_{7}$. A i B konačno potvrde $\mathrm{tx}_{1}$ pa vide F:20, X:80, Y:0. C konačno potvrdi $\mathrm{tx}_{2}$ pa vidi F:40, X:0, Y:60. Kada se veza vrati, ne možemo obje isplate uključiti u valjanu povijest iz početnih 100 bez novih sredstava. Njihovim zbrajanjem F bi pao na −40; odbacivanjem jedne morali bismo povući već izdanu konačnu potvrdu.
 
-Odvojena strana može primati zahtjeve kao nepotvrđene prijedloge ili privremeno zaustaviti isplate. Drukčiji dizajn može unaprijed podijeliti prava potrošnje između strana, ali tada svaka više ne raspolaže cijelih 100. To nije pretpostavka našeg primjera. Pokazujemo zašto neovisne odluke nad istim raspoloživim sredstvima krše odabrano pravilo.
+Odvojena strana može primati zahtjeve kao nepotvrđene prijedloge ili privremeno zaustaviti isplate. Drukčiji dizajn može unaprijed podijeliti prava potrošnje između strana, ali tada svaka više ne raspolaže cijelih 100. To nije pretpostavka našeg primjera. Pokazujemo zašto neovisne odluke nad istim raspoloživim sredstvima krše odabrano pravilo. Kad bi upise smjela konačno potvrditi samo strana s većinom čvorova, dva od tri, A i B bi smjeli, a C ne bi. Takvo pravilo (kvorum) razrađujemo u predavanju 02.
 
 ![Svaka strana poštuje pravilo nad svojom kopijom; zajedno to je dvostruko trošenje](assets/figure-21.hr.pdf){width=95% fig-alt="Strana 1, čvorovi A i B: iz S7 (F:100) transakcija tx1, isplata 80 iz F na račun X, vodi u S8 (F:20, X:80). Strana 2, čvor C: iz S7 (F:100) transakcija tx2, isplata 60 iz F na račun Y, vodi u S8′ (F:40, Y:60). Spajanje: 140 iz 100, F bi pao na −40. Svaka strana poštuje pravilo nad svojom kopijom; zajedno to je dvostruko trošenje"}
 
@@ -356,6 +356,18 @@ Za zajednički budžet zajednički operator može biti razumno ugovorno rješenj
 
 **Nastavni rad (66–69 min):** Prekrijte sve čvorove jednom granicom „jedan administrator”. Pitajte što ostaje neriješeno.
 
+## Decentralizacija: tko ima ovlasti, a ne koliko računala
+
+::: {.definition number="1.2"}
+**Decentralizirani sustav (*decentralized system*)** je raspodijeljeni sustav u kojem su ovlasti nad zajedničkim stanjem (upis, potvrda, pravila, članstvo) podijeljene između neovisnih sudionika, tako da nijedan sam ne može nametnuti promjenu.
+:::
+
+Svaki decentralizirani sustav je raspodijeljen, ali obrnuto ne vrijedi: sto replika pod jednim administratorom raspodijeljeno je, a nije decentralizirano. Ovu definiciju zasnivamo na ovlastima; Buterin (2017) to zove političkom decentralizacijom, za razliku od arhitekturne (broj računala). Van Steen i Tanenbaum (2023, §1.1) razliku opisuju drukčije, kao nužnu nasuprot dovoljnoj raspodjeli procesa i resursa.
+
+![Dogovor mora povezati neovisne operatore](assets/figure-26.hr.pdf){width=95% fig-alt="Organizacija A: Vlastite ovlasti i kopija; Organizacija B: Vlastite ovlasti i kopija; Organizacija C: Vlastite ovlasti i kopija. Dogovor mora povezati neovisne operatore"}
+
+**Nastavni rad (69–72 min):** Pitajte zašto sto poslužitelja iz prethodnog odjeljka ne zadovoljava definiciju. Nije se promijenio broj strojeva, nego bi se morao promijeniti broj neovisnih nositelja ovlasti.
+
 ## P2P opisuje razmjenu, ne jamči dogovor
 
 P2P (*peer-to-peer*) označava ravnopravne čvorove koji i traže i pružaju uslugu. U P2P dijelu aplikacije A može tražiti zapis od B, a zatim drugom sudioniku pružiti podatak koji ima. To razlikujemo od stroge podjele na klijente koji samo traže i poslužitelje koji samo pružaju uslugu. Ne zahtijevamo da svaki čvor bude povezan sa svakim drugim niti da svi imaju jednake resurse.
@@ -364,35 +376,21 @@ Ni P2P razmjena ni topologija trokuta ne definiraju pravilo prihvaćanja. A i B 
 
 ![Razmjena podataka $\neq$ pravilo prihvaćanja](assets/figure-24.hr.pdf){width=95% fig-alt="A: Traži i pruža; B: Traži i pruža; C: Traži i pruža. Razmjena podataka ≠ pravilo prihvaćanja"}
 
-**Nastavni rad (69–71 min):** Nacrtajte strelice u oba smjera i zatražite da student navede informaciju koja još nedostaje.
+**Nastavni rad (72–74 min):** Nacrtajte strelice u oba smjera i zatražite da student navede informaciju koja još nedostaje.
 
 ## Raspodijeljen, decentraliziran ili P2P?
 
-Zadatak traži obrazloženje, ne samo naljepnicu. Prvi sustav ima raspodijeljenu pohranu, ali opisana kontrola ostaje kod tvrtke. Drugi raspodjeljuje odobravanje između organizacija, a poslužitelj, baza i kod, pa time izvršavanje i dostupnost, ostaju kod jedne tvrtke. Treći ima P2P razmjenu datoteka i središnju ovlast za članstvo.
+Zadatak traži obrazloženje, ne samo naljepnicu. Prvi sustav ima raspodijeljenu pohranu, ali opisana kontrola ostaje kod tvrtke. Drugi je raspodijeljen jer tri organizacije odobravaju isplate porukama preko mreže, ali nije decentraliziran: poslužitelj, baza i kod ostaju kod jedne tvrtke, koja odobravanje može zaobići, pa je podjela ovlasti samo ugovorna. Treći ima P2P razmjenu datoteka i središnju ovlast za članstvo.
 
-Za neke osi tekst nema dovoljno podataka. Primjerice, iz činjenice da tri organizacije odobravaju promjene ne znamo jesu li te ovlasti tehnički provedive ili samo ugovorne. Dobar odgovor navodi što znamo, što ne znamo i koje bismo dodatno pitanje postavili. Time vježbamo disciplinu važniju od prepoznavanja buzzworda.
+Odgovor „ne znamo” je dopušten kad opis ne daje dovoljno podataka, uz dodatno pitanje koje bi to razriješilo. Dobar odgovor navodi što znamo, što ne znamo i koje bismo dodatno pitanje postavili. Time vježbamo disciplinu važniju od prepoznavanja buzzworda.
 
 ![Tko može sam promijeniti važno pravilo?](assets/figure-25.hr.pdf){width=95% fig-alt="Sustav 1: 20 kopija / jedna tvrtka; Sustav 2: Tri odobrenja / jedna tvrtka drži sustav; Sustav 3: P2P / središnje članstvo. Tko može sam promijeniti važno pravilo?"}
 
-**Nastavni rad (71–74 min):** Dvije minute u parovima, zatim po jedan zaključak za svaki sustav. Priznati „nedovoljno informacija” uz dobro dodatno pitanje.
-
-## Nova pretpostavka: nema zajedničkog operatora
-
-::: {.definition number="1.2"}
-**Decentralizirani sustav (*decentralized system*)** je raspodijeljeni sustav u kojem su ovlasti nad zajedničkim stanjem (upis, potvrda, pravila, članstvo) podijeljene između neovisnih sudionika, tako da nijedan sam ne može nametnuti promjenu.
-:::
-
-Svaki decentralizirani sustav je raspodijeljen, ali obrnuto ne vrijedi: sto replika pod jednim administratorom raspodijeljeno je, a nije decentralizirano. Ovu definiciju zasnivamo na ovlastima; Buterin (2017) to zove političkom decentralizacijom, za razliku od arhitekturne (broj računala). Van Steen i Tanenbaum (2023, §1.1) razliku opisuju drukčije, kao nužnu nasuprot dovoljnoj raspodjeli procesa i resursa.
-
-Sada mijenjamo zahtjev, a ne samo tehnički raspored. Organizacije ne žele dati jednoj organizaciji ovlast konačnog odlučivanja. Svaki drži svoju kopiju i provodi dogovorena pravila. Neovisnost upravljanja donosi novu zadaću: treba se usuglasiti ne samo oko sadržaja poruke nego oko toga koja je promjena prihvaćena.
-
-Mreža i dalje može kasniti, a čvorovi i dalje mogu stati. Uz to, različiti operatori mogu imati različite interese. To ne znači da svi moraju biti zlonamjerni. Model mora objasniti što se događa ako se netko ne pridržava protokola. Decentralizacija ovdje premješta dio povjerenja iz jedne organizacije u pravila i pretpostavke zajedničkog postupka.
-
-![Dogovor mora povezati neovisne operatore](assets/figure-26.hr.pdf){width=95% fig-alt="Organizacija A: Vlastite ovlasti i kopija; Organizacija B: Vlastite ovlasti i kopija; Organizacija C: Vlastite ovlasti i kopija. Dogovor mora povezati neovisne operatore"}
-
-**Nastavni rad (74–77 min):** Pitajte koja se pretpostavka promijenila u odnosu na slajd sa sto poslužitelja. Nije se samo povećao broj strojeva.
+**Nastavni rad (74–77 min):** Dvije minute u parovima, zatim po jedan zaključak za svaki sustav. Priznati „nedovoljno informacija” uz dobro dodatno pitanje.
 
 ## Povjerenje rastavljamo na konkretne ovlasti
+
+Sada mijenjamo zahtjev, a ne samo tehnički raspored: organizacije više ne prihvaćaju zajedničkog operatora i ne žele jednoj organizaciji dati ovlast konačnog odlučivanja. A, B i C vode svaka svoj čvor i svoju kopiju te provode dogovorena pravila. Neovisnost upravljanja donosi novu zadaću: treba se usuglasiti ne samo oko sadržaja poruke nego oko toga koja je promjena prihvaćena. Mreža i dalje može kasniti, a čvorovi i dalje mogu stati; uz to, različiti operatori mogu imati različite interese. To ne znači da su svi zlonamjerni, ali model mora objasniti što se događa ako se netko ne pridržava protokola.
 
 Koordinatoru su sve organizacije vjerovale u svemu: upisu, redoslijedu, kodu i oporavku. Bez zajedničkog operatora povjerenje ne nestaje, nego se dijeli: za svaku ovlast treba reći kome je povjerena. „Ne vjerujemo A-u” preširoka je izjava. Možemo vjerovati A-u da ispravno identificira svoje zaposlenike, ali mu ne dati pravo da sam briše tuđe zapise. Možemo dopustiti operatoru slanje poruka, ali od njega ne preuzimati konačnu odluku bez provjere. Treba opisati ovlasti i posljedice njihove zlouporabe.
 
@@ -406,7 +404,7 @@ Za budžet sastavljamo malu matricu: tko podnosi zahtjev, tko provjerava lokalne
 
 ## Isti pošiljatelj govori dvije stvari
 
-Koordinatora više nema: svaka organizacija sama odobrava ili odbija prijedloge. Što ako A tu ovlast zloupotrijebi? B predlaže $\mathrm{tx}_{1}$, C predlaže $\mathrm{tx}_{2}$, a A odstupa od pravila i odobrava oba nespojiva prijedloga. B dobiva A-ovo odobrenje za $\mathrm{tx}_{1}$: 80 za X, a C za $\mathrm{tx}_{2}$: 60 za Y. Zasad pretpostavljamo da se poruka u tuđe ime ne može krivotvoriti, pa oba znaju da poruka stvarno dolazi od A. Ipak, obje isplate ne stanu u početni budžet od 100. Čak i kada A navede pojedinačno ispravan novi saldo za svaki zahtjev, ukupna obećanja nemaju pokriće.
+Koordinatora više nema. Prvo, intuitivno pravilo bez njega glasi: predlagatelj traži odobrenje ostalih, a isplata je prihvaćena kad je odobri još jedan član. Što ako A tu ovlast zloupotrijebi? B predlaže $\mathrm{tx}_{1}$, C predlaže $\mathrm{tx}_{2}$, a A odstupa od pravila i odobrava oba nespojiva prijedloga. B dobiva A-ovo odobrenje za $\mathrm{tx}_{1}$: 80 za X, a C za $\mathrm{tx}_{2}$: 60 za Y. Obje isplate dobile su odobrenje, a odakle B i C znaju da odobrenje stvarno dolazi od A, razmatramo u sljedećem odjeljku. Ipak, obje isplate ne stanu u početni budžet od 100. Čak i kada A navede pojedinačno ispravan novi saldo za svaki zahtjev, ukupna obećanja nemaju pokriće.
 
 Potrebna je dodatna razmjena informacija i pravilo zajedničkog prihvaćanja. Informacija „A je poslao” nije dovoljna. Kod zaostale replike postoji jedna prihvaćena odluka i različita svježina znanja. Ovdje postoje nespojive tvrdnje o tome što je konačno prihvaćeno.
 
@@ -414,15 +412,25 @@ Potrebna je dodatna razmjena informacija i pravilo zajedničkog prihvaćanja. In
 
 **Nastavni rad (80–83 min):** Na ploči razdvojite pogled B-a i C-a. Što svaki od njih može zaključiti bez dodatne poruke?
 
+## Identitet ne zamjenjuje pravilo prihvaćanja
+
+U prethodnom primjeru B i C pretpostavljaju da poruka koja kaže da je od A doista dolazi od A. Mreža to sama ne provjerava: poruku „odobravam $\mathrm{tx}_{1}$” mogao bi poslati bilo tko i potpisati se kao A. Zasad pretpostavljamo da krivotvorenje pošiljatelja nije moguće; to omogućuje digitalni potpis, koji obrađujemo u predavanju 03. Ni to nije dovoljno: A je stvarno poslao oba odobrenja. Provjeren identitet ne daje sadržaju automatsku valjanost. Poznati član može poslati zahtjev za isplatu iz stanja koje više nije aktualno, tražiti radnju za koju nije ovlašten ili dati suprotne odgovore različitim primateljima.
+
+Provjera zato ima više slojeva: podrijetlo, dopuštenost radnje prema stanju i dogovor da je promjena prihvaćena. Ova razlika štiti od česte prečice da je svaka autentificirana poruka ujedno zajednička odluka. Mehanizme potpisa obradit ćemo kad budu potrebni za provjerljive zapise.
+
+![Ovlašten član također može predložiti nedopuštenu isplatu](assets/figure-31.hr.pdf){width=95% fig-alt="Podrijetlo: Koji je član poslao?; Pravilo: Ima li ovlast i pokriće?; Prihvaćanje: Je li to zajednička odluka?. Ovlašten član također može predložiti nedopuštenu isplatu"}
+
+**Nastavni rad (83–85 min):** Nemojte uvoditi hash funkcije ni sintaksu potpisa. Studenti trebaju samo prepoznati tri različita pitanja.
+
 ## Pad i proizvoljno ponašanje nisu isti kvar
 
-Ono što je A upravo napravio, slanje nespojivih potvrda različitim primateljima, zove se bizantsko ponašanje (*Byzantine behaviour*). U modelu pada čvor prestane izvršavati korake; ostatak sustava mora raditi s manjkom odgovora. Bizantski model dopušta proizvoljno odstupanje od protokola, uključujući selektivno slanje, lažne vrijednosti i međusobno proturječne tvrdnje. Uzrok može biti napad, programska pogreška ili kvar; za ponašanje protokola važna je dopuštena radnja, ne moralna ocjena operatora.
+Ono što je A napravio u primjeru s dva odobrenja, slanje nespojivih potvrda različitim primateljima, zove se bizantsko ponašanje (*Byzantine behaviour*). U modelu pada čvor prestane izvršavati korake; ostatak sustava mora raditi s manjkom odgovora. Bizantski model dopušta proizvoljno odstupanje od protokola, uključujući selektivno slanje, lažne vrijednosti i međusobno proturječne tvrdnje. Uzrok može biti napad, programska pogreška ili kvar; za ponašanje protokola važna je dopuštena radnja, ne moralna ocjena operatora.
 
 Lamport, Shostak i Pease uvode problem pouzdanog dogovora kad neispravne komponente različitim dijelovima sustava daju proturječne informacije. Ovdje uzimamo tu razliku, a njihove uvjete i algoritme ostavljamo za sljedeće predavanje. Ne zaključujemo prag otpornosti bez specifikacije komunikacije, identiteta i protokola. [The Byzantine Generals Problem](https://lamport.azurewebsites.net/pubs/byz.pdf), uvod.
 
 ![Protokol ovisi o dopuštenim vrstama odstupanja](assets/figure-28.hr.pdf){width=95% fig-alt="Pad čvora: Nema novih odgovora; Bizantsko ponašanje: Mogući proturječni odgovori; Posljedica: Treba drukčije pravilo prihvaćanja. Protokol ovisi o dopuštenim vrstama odstupanja"}
 
-**Nastavni rad (83–86 min):** Pitajte mora li bizantski kvar biti namjerna prijevara. Ne mora.
+**Nastavni rad (85–88 min):** Pitajte mora li bizantski kvar biti namjerna prijevara. Ne mora.
 
 ## Kašnjenje ili proturječje?
 
@@ -434,21 +442,11 @@ Važno je odrediti koji dokaz imamo. „Moj ekran pokazuje drugo” slabije je o
 
 ![Različit prikaz nije automatski bizantski kvar](assets/figure-30.hr.pdf){width=95% fig-alt="Slučaj 1, kašnjenje: Jedna odluka, C je još nije primio; Slučaj 2, proturječje: Dvije isplate, pokriće za samo jednu; Provjera: Što poruke stvarno dokazuju?. Različit prikaz nije automatski bizantski kvar"}
 
-**Nastavni rad (86–89 min):** Neka studenti klasificiraju oba slučaja i navedu što bi još zatražili za dijagnozu.
-
-## Identitet ne zamjenjuje pravilo prihvaćanja
-
-Dosad smo prešutno pretpostavljali da poruka koja kaže da je od A doista dolazi od A. Mreža to sama ne provjerava: poruku „odobravam $\mathrm{tx}_{1}$” mogao bi poslati bilo tko i potpisati se kao A. Zasad pretpostavljamo da krivotvorenje pošiljatelja nije moguće; to omogućuje digitalni potpis, koji obrađujemo u predavanju 03. Ni to nije dovoljno. Provjeren identitet ne daje sadržaju automatsku valjanost. Poznati član može poslati zahtjev za isplatu iz stanja koje više nije aktualno, tražiti radnju za koju nije ovlašten ili dati suprotne odgovore različitim primateljima.
-
-Provjera zato ima više slojeva: podrijetlo, dopuštenost radnje prema stanju i dogovor da je promjena prihvaćena. Ova razlika štiti od česte prečice da je svaka autentificirana poruka ujedno zajednička odluka. Mehanizme potpisa obradit ćemo kad budu potrebni za provjerljive zapise.
-
-![Ovlašten član također može predložiti nedopuštenu isplatu](assets/figure-31.hr.pdf){width=95% fig-alt="Podrijetlo: Koji je član poslao?; Pravilo: Ima li ovlast i pokriće?; Prihvaćanje: Je li to zajednička odluka?. Ovlašten član također može predložiti nedopuštenu isplatu"}
-
-**Nastavni rad (89–91 min):** Nemojte uvoditi hash funkcije ni sintaksu potpisa. Studenti trebaju samo prepoznati tri različita pitanja.
+**Nastavni rad (88–91 min):** Neka studenti klasificiraju oba slučaja i navedu što bi još zatražili za dijagnozu.
 
 ## „Uzmimo dva od tri” još nije protokol
 
-Ako potvrda jednog člana nije dovoljna, prirodan je pokušaj tražiti većinu: dva od tri. Neka B prihvati $\mathrm{tx}_{1}$ kad vidi dvije potvrde, svoju i A-ovu. C prema istom pravilu prihvati $\mathrm{tx}_{2}$ jer vidi svoju i A-ovu potvrdu. A je potvrdio oba zahtjeva. Obje skupine imaju po dva od tri člana, ali jedini član u njihovu presjeku odstupa od protokola. Zato pravilo „većina glasova” u ovom naivnom primjeru nije osiguralo jedinstven rezultat.
+Pravilo „predlagatelj i još jedan član” iz odjeljka „Isti pošiljatelj govori dvije stvari” zapravo je većina: dva od tri. Neka B prihvati $\mathrm{tx}_{1}$ kad vidi dvije potvrde, svoju i A-ovu. C prema istom pravilu prihvati $\mathrm{tx}_{2}$ jer vidi svoju i A-ovu potvrdu. A je potvrdio oba zahtjeva. Obje skupine imaju po dva od tri člana, ali jedini član u njihovu presjeku odstupa od protokola. Zato pravilo „većina glasova” u ovom naivnom primjeru nije osiguralo jedinstven rezultat.
 
 Ovo nije dokaz da svaki dogovor s tri sudionika uvijek mora propasti, niti izvod općeg praga tolerancije. To je protuprimjer točno navedenom postupku. Za jamstvo treba opisati tko i kada smije glasati, koje poruke razmjenjuje, kakve kvarove toleriramo i pod kojim uvjetima čekanje završava. Tu ćemo u predavanju 02 formalizirati problem konsenzusa.
 
@@ -468,29 +466,23 @@ Otvoreno pristupanje postavlja dodatno pitanje: kako spriječiti da jedna strana
 
 ## Dva modela, dvije isplate iz istog budžeta
 
-Isti par isplata, $\mathrm{tx}_{1}$: 80 → X i $\mathrm{tx}_{2}$: 60 → Y, provodimo kroz oba modela iz predavanja. Zajedno traže 140 iz 100, pa smije proći najviše jedna. Model 1 je model s početka: zajednička služba radi kod A i svi joj vjeruju. I u njemu poruke mogu kasniti ili se gubiti; to je kašnjenje, kao prvi slučaj u odjeljku „Kašnjenje ili proturječje?”. Model 2 nema koordinatora, a bizantski član ondje stvara proturječje, kao u drugom slučaju. Svaki put pratimo samo poruke koje su stvarno stigle i lokalne zapise sudionika.
+Isti par isplata, $\mathrm{tx}_{1}$: 80 → X i $\mathrm{tx}_{2}$: 60 → Y, provodimo kroz oba modela iz predavanja. Zajedno traže 140 iz 100, pa smije proći najviše jedna. Model 1 je model s početka: zajednička služba radi kod A i svi joj vjeruju. Model 2 nema koordinatora, a bizantski član ondje stvara proturječje, kao u drugom slučaju. Svaki put pratimo samo poruke koje su stvarno stigle i lokalne zapise sudionika.
 
-### Model 1: pošten koordinator
+### Model 1: sve ovisi o poštenju koordinatora
 
-Polazno stanje je F:100, X:0, Y:0 u $S_{7}$. B šalje $\mathrm{tx}_{1}$, C šalje $\mathrm{tx}_{2}$, a A je jedini ovlašteni donositelj odluke. A prima $\mathrm{tx}_{1}$ prvi, prihvaća ga i stvara $S_{8}$; $\mathrm{tx}_{2}$ i dalje očekuje $S_{7}$, pa ga odbija (a pokrića ionako ne bi bilo). Obje strane dobiju izričit odgovor i svi završe s istim stanjem. Pravilo je očuvano jer postoji jedno mjesto koje vidi oba zahtjeva i određuje redoslijed. Cijena: svi ovise o A.
+Polazno stanje je F:100, X:0, Y:0 u $S_{7}$. B šalje $\mathrm{tx}_{1}$, C šalje $\mathrm{tx}_{2}$, a A je jedini ovlašteni donositelj odluke. A prima $\mathrm{tx}_{1}$ prvi, prihvaća ga i stvara $S_{8}$; $\mathrm{tx}_{2}$ i dalje očekuje $S_{7}$, pa ga odbija (a pokrića ionako ne bi bilo). Obje strane dobiju izričit odgovor i svi završe s istim stanjem. Pravilo je očuvano jer postoji jedno mjesto koje vidi oba zahtjeva i određuje redoslijed, ali samo ako je A pošten. Kad bi se A ponašao bizantski, mogao bi i B-u i C-u javiti „prihvaćen”, a nitko ga ne bi mogao otkriti ni spriječiti, jer odlučuje samo A. Model 1 ne rješava bizantsko ponašanje, nego ga isključuje pretpostavkom: povjerenje u A osiguravaju ugovor, revizija i sud, a ne protokol. I u ovom modelu poruke mogu kasniti ili se gubiti; ako se izgubi potvrda prema B, stanje ostaje ispravno, a B samo još ne zna ishod (odjeljak „Zahtjev je izvršen, potvrda nije stigla”). To je kašnjenje, ne proturječje.
 
 ![Model 1: jedan koordinator, jedna prihvaćena isplata](assets/case-1.hr.pdf){width=95% fig-alt="B: tx1: 80 → X · S7; C: tx2: 60 → Y · S7; A prihvaća tx1, odbija tx2; A → B: tx1 prihvaćen · S8; A → C: tx2 odbijen; prihvaćen tx1, F:20 · S8; svi: F:20 · S8. Model 1: jedan koordinator, jedna prihvaćena isplata"}
 
-### Model 1, ali moguća su kašnjenja
-
-Odluka je ista, ali poruka „$\mathrm{tx}_{1}$ prihvaćen” prema B se gubi. Stanje kod A je ispravno: jedna isplata, F:20. B međutim i dalje prikazuje F:100 · $S_{7}$ i ne zna je li $\mathrm{tx}_{1}$ prihvaćen, odbijen ili samo spor. Ako B ponovno pošalje $\mathrm{tx}_{1}$, A ga mora prepoznati kao isti zahtjev, a ne kao novu isplatu. Ovdje nije prekršeno pravilo fonda, nego je nepotpuno znanje klijenta. To je drukčiji problem od dvostrukog trošenja i traži drukčiji popravak: ponovno slanje, identifikator zahtjeva i upit o stanju.
-
-![Model 1 uz izgubljenu potvrdu: stanje je ispravno, ali B to ne zna](assets/case-2.hr.pdf){width=95% fig-alt="Isti tijek kao u izvođenju 1, ali poruka A → B „tx1 prihvaćen · S8” se gubi; A i C: F:20 · S8; B: F:100 · S7, čeka. Model 1 uz izgubljenu potvrdu: stanje je ispravno, ali B to ne zna"}
-
 ### Model 2: pravilo „dva od tri”
 
-Sada nema koordinatora. Naivno pravilo kaže: isplata je konačna kad je podrže dva od tri sudionika. B glasa za svoj $\mathrm{tx}_{1}$ i pita A; C glasa za svoj $\mathrm{tx}_{2}$ i pita A. A odgovara DA obojici. B broji B + A i proglašava $\mathrm{tx}_{1}$ konačnim; C broji C + A i proglašava $\mathrm{tx}_{2}$ konačnim. Ukupno je isplaćeno 140 iz fonda od 100: dvostruko trošenje. Dva skupa od po dva glasa preklapaju se samo u A, a A je rekao dvije različite stvari. Pravilo „dva od tri” jamči sigurnost samo ako sudionik u presjeku ne smije glasati dvaput; to je tema predavanja 02.
+Model 2 pokušava ukloniti to povjerenje: odlučuje većina, a ne jedan član. Naivno pravilo kaže: isplata je konačna kad je podrže dva od tri sudionika. B glasa za svoj $\mathrm{tx}_{1}$ i pita A; C glasa za svoj $\mathrm{tx}_{2}$ i pita A. A odgovara DA obojici. B broji B + A i proglašava $\mathrm{tx}_{1}$ konačnim; C broji C + A i proglašava $\mathrm{tx}_{2}$ konačnim. Ukupno je isplaćeno 140 iz fonda od 100: dvostruko trošenje. Dva skupa od po dva glasa preklapaju se samo u A, a A je rekao dvije različite stvari. Pravilo „dva od tri” jamči sigurnost samo ako sudionik u presjeku ne smije glasati dvaput; to je tema predavanja 02.
 
 ![Model 2: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100](assets/case-3.hr.pdf){width=95% fig-alt="A se ponaša bizantski. B i C traže glas od A; A odgovara DA za tx1 B-u i DA za tx2 C-u; B: B + A = 2 glasa, tx1 konačan, F:20; C: C + A = 2 glasa, tx2 konačan, F:40. Model 2: pravilo „dva od tri” daje dvije konačne odluke, 140 iz 100"}
 
-U modelu 1 postoji jedan ovlašteni donositelj odluke i jedna prihvaćena isplata; kad poruka kasni, stanje ostaje ispravno, a znanje klijenta nepotpuno. U modelu 2 naivno pravilo dopušta dvije konačne odluke. Te razlike treba imenovati prije prijedloga popravka. „Dodaj još jednu kopiju” ne objašnjava kako će se promijeniti pravilo prihvaćanja.
+Bizantski A ruši oba modela. Model 1 to prihvaća kao pretpostavku povjerenja u koordinatora; model 2 obećava da jedan član ne odlučuje sam, ali naivno pravilo „dva od tri” to obećanje ne ispunjava i dopušta dvije konačne odluke. Te razlike treba imenovati prije prijedloga popravka. „Dodaj još jednu kopiju” ne objašnjava kako će se promijeniti pravilo prihvaćanja.
 
-**Nastavni rad (97–103 min):** Nastavnik vodi oba modela kroz tri ilustracije, po 2 minute. Prije otkrivanja ishoda pitajte što će svaki sudionik zapisati. Na kraju pitajte na kojoj strelici nastaje 140 iz 100.
+**Nastavni rad (97–101 min):** Ponavljanje. Nastavnik vodi oba modela kroz dvije ilustracije, po 2 minute. Prije otkrivanja ishoda pitajte što će svaki sudionik zapisati. Na kraju pitajte na kojoj strelici nastaje 140 iz 100.
 
 ## Odaberite arhitekturu prema problemu
 
@@ -506,19 +498,19 @@ Za budžet pitamo treba li svaka organizacija tehnički provjeravati odluke ili 
 
 **Više koordinacije ima cijenu.**
 
-**Nastavni rad (103–106 min):** Za naš budžet tražite dva različita, ali obrazložena izbora. Dodatne pretpostavke zapišite uz izbor.
+**Nastavni rad (101–104 min):** Za naš budžet tražite dva različita, ali obrazložena izbora. Dodatne pretpostavke zapišite uz izbor.
 
-## Ponavljanje: što ne štima u ovom prijedlogu protokola?
+## Što ne štima u ovom prijedlogu protokola?
 
 Vratimo se budžetu: fond F ima 100 jedinica, B predlaže $\mathrm{tx}_{1}$ (80 iz F na račun X), a C predlaže $\mathrm{tx}_{2}$ (60 iz F na račun Y). Svaka isplata zasebno ima pokriće, ali zajedno nemaju. Netko predlaže: „Isplatu spremamo na tri poslužitelja, pa je sustav decentraliziran. Čim jedan poslužitelj potvrdi, isplata je prihvaćena. Ako potvrda ne stigne na vrijeme, isplata nije prošla, pa šaljemo novi zahtjev.” Prijedlog zvuči uvjerljivo, ali sadrži tri neobrazložena zaključka. Svaki se ruši scenarijem koji smo već vidjeli.
 
-Prvo, „decentraliziran”: broj kopija ne govori tko upravlja. Tri poslužitelja pod jednim administratorskim računom i dalje su jedan centar kontrole. Drugo, „prihvaćena”: $\mathrm{tx}_{1}$ i $\mathrm{tx}_{2}$ polaze od stanja $S_{7}$. Ako poslužitelj 1 prvi potvrdi $\mathrm{tx}_{1}$, a poslužitelj 2 prvi potvrdi $\mathrm{tx}_{2}$, i A i B misle da su uspjeli, a fond bi trebao isplatiti 140 od 100 jedinica. Treće, „nije prošla”: istek roka ne znači neuspjeh. Isplata je možda izvršena, a izgubila se samo potvrda; novi zahtjev s novim identitetom tada se izvršava kao druga isplata.
+Prvo, „decentraliziran”: broj kopija ne govori tko upravlja. Tri poslužitelja pod jednim administratorskim računom i dalje su jedan centar kontrole. Drugo, „prihvaćena”: $\mathrm{tx}_{1}$ i $\mathrm{tx}_{2}$ polaze od stanja $S_{7}$. Ako poslužitelj 1 prvi potvrdi $\mathrm{tx}_{1}$, a poslužitelj 2 prvi potvrdi $\mathrm{tx}_{2}$, i B i C misle da su uspjeli, a fond bi trebao isplatiti 140 od 100 jedinica. Treće, „nije prošla”: istek roka ne znači neuspjeh. Isplata je možda izvršena, a izgubila se samo potvrda; novi zahtjev s novim identitetom tada se izvršava kao druga isplata.
 
 Popravak ima tri dijela: izričito pravilo kada je isplata prihvaćena, isti identitet pri ponovnom pokušaju i odvojena tvrdnja o tome tko upravlja poslužiteljima. Ni ta poboljšanja zajedno ne čine cjelovit protokol tolerantan na bizantske kvarove.
 
 ![Popravak: pravilo prihvaćanja, isti ID pokušaja i izričito tko upravlja.](assets/figure-37.hr.pdf){width=95% fig-alt="„decentraliziran”: Sva tri poslužitelja vodi isti administrator.; „prihvaćena”: Poslužitelj 1 potvrdi tx1, poslužitelj 2 potvrdi tx2: 140 od 100.; „nije prošla”: tx1 je prošao, izgubila se potvrda; novi zahtjev plati opet. Popravak: pravilo prihvaćanja, isti ID pokušaja i izričito tko upravlja."}
 
-**Nastavni rad (106–108 min):** 2 min u parovima, zatim 2 min rasprave uz protuprimjere.
+**Nastavni rad (104–110 min):** Ponavljanje. 4 min u parovima, zatim 2 min rasprave uz protuprimjere.
 
 ## Sažetak: od koordinatora do konsenzusa
 
@@ -537,7 +529,7 @@ Svako jamstvo vrijedi samo uz izričit model ovlasti, kvarova i mreže. Za provj
 
 ## Otvoreno pitanje za predavanje 02
 
-Prva polovica predavanja pretpostavljala je jednog operatora: koordinator, baza i replike bili su pod istom upravom. Od odjeljka „Nova pretpostavka: nema zajedničkog operatora” organizacije A, B i C vode čvorove neovisno, a jedna od njih može slati proturječne poruke. Pokazali smo da naivno pravilo prihvaćanja („dva od tri”) tada ne čuva pravilo o saldu, a pravilo koje ga čuva još nismo formulirali. Time se vraćamo na pitanje iz uvoda: kako uskladiti evidencije bez posrednika kakav je bankama središnja banka? Otvoreno pitanje glasi: kako ispravni sudionici mogu prihvatiti istu promjenu i pod kojim uvjetima postupak mora završiti? To je problem konsenzusa (*consensus*), čija je formalna specifikacija tema predavanja 02.
+Prva polovica predavanja pretpostavljala je jednog operatora: koordinator, baza i replike bili su pod istom upravom. Od odjeljka „Povjerenje rastavljamo na konkretne ovlasti” organizacije A, B i C vode čvorove neovisno, a jedna od njih može slati proturječne poruke. Pokazali smo da naivno pravilo prihvaćanja („dva od tri”) tada ne čuva pravilo o saldu, a pravilo koje ga čuva još nismo formulirali. Time se vraćamo na pitanje iz uvoda: kako uskladiti evidencije bez posrednika kakav je bankama središnja banka? Otvoreno pitanje glasi: kako ispravni sudionici mogu prihvatiti istu promjenu i pod kojim uvjetima postupak mora završiti? To je problem konsenzusa (*consensus*), čija je formalna specifikacija tema predavanja 02.
 
 Za sljedeće predavanje predajemo specifikaciju, a ne gotov odgovor: postoje poznati sudionici, dopuštena odstupanja i zahtjev da ispravni sudionici ne donose nespojive konačne odluke. Treba još precizno odrediti koje su odluke valjane i pod kojim uvjetima postupak mora završiti. Ako zaboravimo bilo koji od tih dijelova, lako je predložiti prividno rješenje koje uvijek čeka ili uvijek prihvaća unaprijed zadanu vrijednost.
 
